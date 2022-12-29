@@ -3,9 +3,10 @@ import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons';
 
-function Header() {
+function Header(props) {
+	const active = { color: '#4b84db' };
 	return (
-		<header>
+		<header className={props.type}>
 			<div className='inner'>
 				<h1>
 					<NavLink exact to='/'>
@@ -16,30 +17,40 @@ function Header() {
 					<nav id='gnb'>
 						<ul>
 							<li>
-								<NavLink to='/about'>ABOUT</NavLink>
+								<NavLink to='/about' activeStyle={active}>
+									ABOUT
+								</NavLink>
 							</li>
 							<li>
-								<NavLink to='/youtube'>YOUTUBE</NavLink>
+								<NavLink to='/youtube' activeStyle={active}>
+									YOUTUBE
+								</NavLink>
 							</li>
 							<li>
-								<NavLink to='/gallery'>GALLERY</NavLink>
+								<NavLink to='/gallery' activeStyle={active}>
+									GALLERY
+								</NavLink>
 							</li>
 							<li>
-								<NavLink to='/news'>NEWS</NavLink>
+								<NavLink to='/news' activeStyle={active}>
+									NEWS
+								</NavLink>
 							</li>
 							<li>
-								<NavLink to='/contact'>CONTACT</NavLink>
+								<NavLink to='/contact' activeStyle={active}>
+									CONTACT
+								</NavLink>
 							</li>
 						</ul>
 					</nav>
 					<ul className='util'>
 						<li>
-							<NavLink to='/search'>
+							<NavLink to='/search' activeStyle={active}>
 								<FontAwesomeIcon icon={faMagnifyingGlass} />
 							</NavLink>
 						</li>
 						<li>
-							<NavLink to='/join'>
+							<NavLink to='/join' activeStyle={active}>
 								<FontAwesomeIcon icon={faUser} />
 							</NavLink>
 						</li>

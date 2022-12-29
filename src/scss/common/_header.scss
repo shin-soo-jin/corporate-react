@@ -73,4 +73,31 @@ header {
 			}
 		}
 	}
+
+	&.sub {
+		position: static;
+		.inner {
+			.menuWeb {
+				#gnb {
+					ul {
+						li {
+							a {
+								color: #333;
+							}
+						}
+					}
+				}
+				.util {
+					li {
+						a {
+							color: #333;
+							&:hover {
+								color: #4b84db;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
