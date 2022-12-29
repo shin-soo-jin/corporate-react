@@ -14,7 +14,10 @@ import Contact from './components/sub/Contact';
 import Gallery from './components/sub/Gallery';
 import Join from './components/sub/Join';
 import News from './components/sub/News';
+import Search from './components/sub/Search';
 import Youtube from './components/sub/Youtube';
+
+import './scss/style.scss';
 
 function App() {
 	return (
@@ -29,9 +32,10 @@ function App() {
 			<Route path='/about' component={About} />
 			<Route path='/contact' component={Contact} />
 			<Route path='/gallery' component={Gallery} />
-			<Route path='/Join' component={Join} />
-			<Route path='/News' component={News} />
-			<Route path='/Youtube' component={Youtube} />
+			<Route path='/news' component={News} />
+			<Route path='/youtube' component={Youtube} />
+			<Route path='/search' component={Search} />
+			<Route path='/join' component={Join} />
 
 			<Footer />
 		</>
