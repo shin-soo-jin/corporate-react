@@ -5,6 +5,7 @@ import Modal from '../common/Modal';
 
 function Youtube() {
 	const [Vids, setVids] = useState([]);
+	const [Open, setOpen] = useState(false);
 
 	useEffect(() => {
 		const key = 'AIzaSyCaXRXk4IImstZdfY92MFZLzPLaz0VxlRc';
@@ -28,7 +29,12 @@ function Youtube() {
 
 						return (
 							<article key={data.id}>
-								<div className='pic'>
+								<div
+									className='pic'
+									onClick={() => {
+										setOpen(true);
+									}}
+								>
 									<img src={data.snippet.thumbnails.maxres.url} alt={data.snippet.title} />
 								</div>
 								<div className='text'>
@@ -41,7 +47,7 @@ function Youtube() {
 					})}
 				</div>
 			</Layout>
-			<Modal />
+			{Open && <Modal setOpen={setOpen}></Modal>}
 		</>
 	);
 }
