@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Layout from '../common/Layout';
+import Modal from '../common/Modal';
 
 function Youtube() {
 	const [Vids, setVids] = useState([]);
@@ -17,28 +18,31 @@ function Youtube() {
 	}, []);
 
 	return (
-		<Layout name={'YOUTUBE'} txt={'Meet YouTube'}>
-			<div className='vidList'>
-				{Vids.map((data) => {
-					const tit = data.snippet.title;
-					const owner = data.snippet.videoOwnerChannelTitle;
-					const desc = data.snippet.description;
+		<>
+			<Layout name={'YOUTUBE'} txt={'Meet YouTube'}>
+				<div className='vidList'>
+					{Vids.map((data) => {
+						const tit = data.snippet.title;
+						const owner = data.snippet.videoOwnerChannelTitle;
+						const desc = data.snippet.description;
 
-					return (
-						<article key={data.id}>
-							<div className='pic'>
-								<img src={data.snippet.thumbnails.maxres.url} alt={data.snippet.title} />
-							</div>
-							<div className='text'>
-								<h2>{tit.length > 30 ? tit.substr(0, 30) + '...' : tit}</h2>
-								<span>{owner}</span>
-								<em>{desc.length > 100 ? desc.substr(0, 25) + '...' : desc}</em>
-							</div>
-						</article>
-					);
-				})}
-			</div>
-		</Layout>
+						return (
+							<article key={data.id}>
+								<div className='pic'>
+									<img src={data.snippet.thumbnails.maxres.url} alt={data.snippet.title} />
+								</div>
+								<div className='text'>
+									<h2>{tit.length > 30 ? tit.substr(0, 30) + '...' : tit}</h2>
+									<span>{owner}</span>
+									<em>{desc.length > 100 ? desc.substr(0, 25) + '...' : desc}</em>
+								</div>
+							</article>
+						);
+					})}
+				</div>
+			</Layout>
+			<Modal />
+		</>
 	);
 }
 
