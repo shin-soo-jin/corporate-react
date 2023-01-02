@@ -13,7 +13,7 @@ function Modal(props) {
 
 	return (
 		<aside>
-			<div className='con'></div>
+			<div className='con'>{props.children}</div>
 			<span
 				className='btnClose'
 				onClick={() => {

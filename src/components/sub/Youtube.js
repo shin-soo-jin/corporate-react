@@ -6,6 +6,9 @@ import Modal from '../common/Modal';
 function Youtube() {
 	const [Vids, setVids] = useState([]);
 	const [Open, setOpen] = useState(false);
+	const [Index, setIndex] = useState(0);
+
+	console.log(Vids[Index]);
 
 	useEffect(() => {
 		const key = 'AIzaSyCaXRXk4IImstZdfY92MFZLzPLaz0VxlRc';
@@ -22,7 +25,7 @@ function Youtube() {
 		<>
 			<Layout name={'YOUTUBE'} txt={'Meet YouTube'}>
 				<div className='vidList'>
-					{Vids.map((data) => {
+					{Vids.map((data, idx) => {
 						const tit = data.snippet.title;
 						const owner = data.snippet.videoOwnerChannelTitle;
 						const desc = data.snippet.description;
@@ -33,6 +36,7 @@ function Youtube() {
 									className='pic'
 									onClick={() => {
 										setOpen(true);
+										setIndex(idx);
 									}}
 								>
 									<img src={data.snippet.thumbnails.maxres.url} alt={data.snippet.title} />
@@ -47,7 +51,14 @@ function Youtube() {
 					})}
 				</div>
 			</Layout>
-			{Open && <Modal setOpen={setOpen}></Modal>}
+			{Open && (
+				<Modal setOpen={setOpen}>
+					<iframe
+						title={Vids[Index].id}
+						src={`https://www.youtube.com/embed/${Vids[Index].snippet.resourceId.videoId}`}
+					></iframe>
+				</Modal>
+			)}
 		</>
 	);
 }
