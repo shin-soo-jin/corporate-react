@@ -1,0 +1,144 @@
+.CONTACT {
+	#map {
+		width: 100%;
+		height: 500px;
+		margin: 80px 0;
+		background: #000;
+	}
+	.wrap {
+		&::after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.text {
+			width: 25%;
+			float: left;
+			h2 {
+				font-size: 24px;
+				font-weight: bold;
+				margin-bottom: 20px;
+			}
+			ul {
+				li {
+					margin-bottom: 20px;
+					font-size: 16px;
+					font-weight: bold;
+					letter-spacing: 1px;
+					i {
+						display: inline-block;
+						width: 50px;
+						height: 50px;
+						border: 1px solid #ccc;
+						border-radius: 50%;
+						text-align: center;
+						line-height: 50px;
+						font-size: 20px;
+						color: #3c6ab0;
+						margin-right: 10px;
+					}
+				}
+			}
+		}
+
+		form {
+			float: left;
+			width: 75%;
+			fieldset {
+				legend {
+					font-size: 24px;
+					font-weight: bold;
+					margin-bottom: 20px;
+				}
+				b {
+					font-size: 16px;
+					font-weight: bold;
+					color: #333;
+					margin-right: 40px;
+				}
+				label {
+					margin-right: 20px;
+					font-size: 16px;
+					color: #333;
+					input[type='checkbox'] {
+						display: inline-block;
+						margin-right: 10px;
+						margin-bottom: 20px;
+					}
+				}
+				input[type='text'] {
+					display: block;
+					width: 100%;
+					height: 40px;
+					border: none;
+					border-bottom: 1px solid #333;
+					text-indent: 10px;
+					font-size: 16px;
+					margin-bottom: 20px;
+				}
+				textarea {
+					width: 100%;
+					height: 200px;
+					border: none;
+					border-bottom: 1px solid #333;
+					text-indent: 10px;
+					font-size: 16px;
+					margin-bottom: 20px;
+				}
+				input[type='button'] {
+					display: block;
+					width: 20%;
+					height: 40px;
+					margin: 0 auto;
+					border: 1px solid #3c6ab0;
+					background: #3c6ab0;
+					color: #fff;
+					font-size: 16px;
+					font-weight: bold;
+					letter-spacing: 1px;
+					cursor: pointer;
+					transition: 0.3s;
+					&:hover {
+						background: #fff;
+						color: #3c6ab0;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $tablet) {
+	.CONTACT {
+		.wrap {
+			.text {
+				width: 15%;
+				margin-right: 5%;
+				h2 {
+					text-align: center;
+				}
+				ul {
+					li {
+						text-align: center;
+						i {
+							display: block;
+							margin: 0 auto 10px;
+						}
+					}
+				}
+			}
+			form {
+				fieldset {
+					legend {
+						text-align: center;
+					}
+					b {
+						display: block;
+						margin-right: 0px;
+						margin-bottom: 10px;
+					}
+				}
+			}
+		}
+	}
+}

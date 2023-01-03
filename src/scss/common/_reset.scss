@@ -16,3 +16,14 @@ li {
 a {
 	text-decoration: none;
 }
+.hidden {
+	position: absolute;
+	left: -99999px;
+	opacity: 0;
+}
+fieldset {
+	border: none;
+}
+textarea {
+	resize: none;
+}
