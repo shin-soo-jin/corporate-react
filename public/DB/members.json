@@ -1,0 +1,68 @@
+{
+  "team1": [
+    {
+      "name": "James",
+      "position": "co-founder, mobile apps production",
+      "pic": "member1.jpg"
+    },
+    {
+      "name": "Jane",
+      "position": " co-founder, web apps development",
+      "pic": "member1.jpg"
+    },
+    {
+      "name": "Charles",
+      "position": "designer",
+      "pic": "member1.jpg"
+    },
+    {
+      "name": "Noah",
+      "position": "developer",
+      "pic": "member1.jpg"
+    }
+  ],
+  "team2": [
+    {
+      "name": "James",
+      "position": "co-founder, mobile apps production",
+      "pic": "member2.jpg"
+    },
+    {
+      "name": "Jane",
+      "position": " co-founder, web apps development",
+      "pic": "member2.jpg"
+    },
+    {
+      "name": "Charles",
+      "position": "designer",
+      "pic": "member2.jpg"
+    },
+    {
+      "name": "Noah",
+      "position": "developer",
+      "pic": "member2.jpg"
+    }
+  ],
+  "team3": [
+    {
+      "name": "James",
+      "position": "co-founder, mobile apps production",
+      "pic": "member3.jpg"
+    },
+    {
+      "name": "Jane",
+      "position": " co-founder, web apps development",
+      "pic": "member3.jpg"
+    },
+    {
+      "name": "Charles",
+      "position": "designer",
+      "pic": "member3.jpg"
+    },
+    {
+      "name": "Noah",
+      "position": "developer",
+      "pic": "member3.jpg"
+    }
+  ]
+}
