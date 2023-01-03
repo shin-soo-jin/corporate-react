@@ -13,6 +13,7 @@ function About() {
 	const [Members1, setMembers1] = useState([]);
 	const [Members2, setMembers2] = useState([]);
 	const [Members3, setMembers3] = useState([]);
+	const [Index, setIndex] = useState(1);
 
 	useEffect(() => {
 		axios.get(`${process.env.PUBLIC_URL}/DB/members.json`).then((json) => {
@@ -78,11 +79,32 @@ function About() {
 				</div>
 				<div className='team'>
 					<ul className='tabBtn'>
-						<li className='on'>TEAM1</li>
-						<li>TEAM2</li>
-						<li>TEAM3</li>
+						<li
+							className={Index === 1 ? 'on' : ''}
+							onClick={() => {
+								setIndex(1);
+							}}
+						>
+							TEAM1
+						</li>
+						<li
+							className={Index === 2 ? 'on' : ''}
+							onClick={() => {
+								setIndex(2);
+							}}
+						>
+							TEAM2
+						</li>
+						<li
+							className={Index === 3 ? 'on' : ''}
+							onClick={() => {
+								setIndex(3);
+							}}
+						>
+							TEAM3
+						</li>
 					</ul>
-					<ul className='tabBox on'>
+					<ul className={Index === 1 ? 'tabBox on' : 'tabBox'}>
 						{Members1.map((data, idx) => {
 							return (
 								<li key={idx}>
@@ -100,7 +122,7 @@ function About() {
 							);
 						})}
 					</ul>
-					<ul className='tabBox'>
+					<ul className={Index === 2 ? 'tabBox on' : 'tabBox'}>
 						{Members2.map((data, idx) => {
 							return (
 								<li key={idx}>
@@ -118,7 +140,7 @@ function About() {
 							);
 						})}
 					</ul>
-					<ul className='tabBox'>
+					<ul className={Index === 3 ? 'tabBox on' : 'tabBox'}>
 						{Members3.map((data, idx) => {
 							return (
 								<li key={idx}>
