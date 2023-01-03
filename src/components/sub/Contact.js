@@ -5,12 +5,37 @@ import {
 	faPhoneAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useEffect, useRef } from 'react';
 import Layout from '../common/Layout';
 
 function Contact() {
+	const { kakao } = window;
+	const mapContainer = useRef(null);
+	const mapOption = {
+		center: new kakao.maps.LatLng(37.5284304, 126.9330781),
+		level: 3,
+	};
+	const marker = new kakao.maps.Marker({
+		position: mapOption.center,
+	});
+	const mapTypeControl = new kakao.maps.MapTypeControl();
+	const zoomControl = new kakao.maps.ZoomControl();
+
+	useEffect(() => {
+		const map = new kakao.maps.Map(mapContainer.current, mapOption);
+		marker.setMap(map);
+		map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+		map.setDraggable(false);
+		map.setZoomable(false);
+		window.onresize = () => {
+			map.setCenter(mapOption.center);
+		};
+	}, []);
+
 	return (
 		<Layout name={'CONTACT'} txt={'Contact Our Company'}>
-			<div id='map'></div>
+			<div id='map' ref={mapContainer}></div>
 			<div className='wrap'>
 				<div className='text'>
 					<h2>INFO</h2>
