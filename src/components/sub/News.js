@@ -52,6 +52,11 @@ function News() {
 		textarea.current.value = '';
 	};
 
+	const deletePost = (index) => {
+		if (!window.confirm('해당 게시글을 삭제하겠습니까?')) return;
+		setPosts(Posts.filter((_, idx) => idx !== index));
+	};
+
 	return (
 		<Layout name={'NEWS'} txt={'News Of Our Company'}>
 			<div className='inputBox'>
@@ -74,7 +79,7 @@ function News() {
 							</div>
 							<div className='btns'>
 								<button>EDIT</button>
-								<button>DELETE</button>
+								<button onClick={() => deletePost(idx)}>DELETE</button>
 							</div>
 						</article>
 					);
