@@ -38,7 +38,9 @@ function News() {
 	const input = useRef(null);
 	const textarea = useRef(null);
 	const [Posts, setPosts] = useState(dummyPosts);
+	const [Allowed, setAllowed] = useState(true);
 
+	// 글 작성 함수
 	const creatPost = () => {
 		if (!input.current.value.trim() || !textarea.current.value.trim()) {
 			return alert('제목과 본문을 모두 입력하세요');
@@ -47,14 +49,28 @@ function News() {
 		resetForm();
 	};
 
+	// 글 작성취소 함수
 	const resetForm = () => {
 		input.current.value = '';
 		textarea.current.value = '';
 	};
 
+	// 글 삭제 함수
 	const deletePost = (index) => {
 		if (!window.confirm('해당 게시글을 삭제하겠습니까?')) return;
 		setPosts(Posts.filter((_, idx) => idx !== index));
+	};
+
+	// 글 수정모드 변경함수
+	const enableUpdate = (index) => {
+		if (!Allowed) return;
+		setAllowed(false);
+		setPosts(
+			Posts.map((post, idx) => {
+				if (idx === index) post.enableUpdate = true;
+				return post;
+			})
+		);
 	};
 
 	return (
@@ -73,14 +89,35 @@ function News() {
 				{Posts.map((post, idx) => {
 					return (
 						<article key={idx}>
-							<div className='txt'>
-								<h2>{post.title}</h2>
-								<p>{post.content}</p>
-							</div>
-							<div className='btns'>
-								<button>EDIT</button>
-								<button onClick={() => deletePost(idx)}>DELETE</button>
-							</div>
+							{post.enableUpdate ? (
+								// 수정 모드
+								<>
+									<div className='txt'>
+										<h2>
+											<input type='text' defaultValue={post.title} />
+										</h2>
+										<p>
+											<textarea cols='30' rows='4' defaultValue={post.content} />
+										</p>
+									</div>
+									<div className='btns'>
+										<button>CANCEL</button>
+										<button>UPDATE</button>
+									</div>
+								</>
+							) : (
+								// 출력 모드
+								<>
+									<div className='txt'>
+										<h2>{post.title}</h2>
+										<p>{post.content}</p>
+									</div>
+									<div className='btns'>
+										<button onClick={() => enableUpdate(idx)}>EDIT</button>
+										<button onClick={() => deletePost(idx)}>DELETE</button>
+									</div>
+								</>
+							)}
 						</article>
 					);
 				})}
