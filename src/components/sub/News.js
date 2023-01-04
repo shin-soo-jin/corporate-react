@@ -1,3 +1,4 @@
+import { useRef, useState } from 'react';
 import Layout from '../common/Layout';
 
 function News() {
@@ -33,20 +34,32 @@ function News() {
 				"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. ",
 		},
 	];
+
+	const input = useRef(null);
+	const textarea = useRef(null);
+	const [Posts, setPosts] = useState(dummyPosts);
+
+	const creatPost = () => {
+		if (!input.current.value.trim() || !textarea.current.value.trim()) {
+			return alert('제목과 본문을 모두 입력하세요');
+		}
+		setPosts([{ title: input.current.value, content: textarea.current.value }, ...Posts]);
+	};
+
 	return (
 		<Layout name={'NEWS'} txt={'News Of Our Company'}>
 			<div className='inputBox'>
 				<div className='txt'>
-					<input type='text' placeholder='제목을 입력하세요' />
-					<textarea cols='30' rows='4' placeholder='본문을 입력하세요'></textarea>
+					<input type='text' placeholder='제목을 입력하세요' ref={input} />
+					<textarea cols='30' rows='4' placeholder='본문을 입력하세요' ref={textarea} />
 				</div>
 				<div className='btns'>
-					<button>WRITE</button>
 					<button>CANCEL</button>
+					<button onClick={creatPost}>WRITE</button>
 				</div>
 			</div>
 			<div className='showBox'>
-				{dummyPosts.map((post, idx) => {
+				{Posts.map((post, idx) => {
 					return (
 						<article key={idx}>
 							<div className='txt'>

@@ -20,6 +20,10 @@
 				height: 30px;
 				margin-right: 20px;
 				cursor: pointer;
+				&:last-child {
+					background: #000;
+					color: #fff;
+				}
 			}
 		}
 	}
