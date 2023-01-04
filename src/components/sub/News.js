@@ -44,6 +44,12 @@ function News() {
 			return alert('제목과 본문을 모두 입력하세요');
 		}
 		setPosts([{ title: input.current.value, content: textarea.current.value }, ...Posts]);
+		resetForm();
+	};
+
+	const resetForm = () => {
+		input.current.value = '';
+		textarea.current.value = '';
 	};
 
 	return (
@@ -54,7 +60,7 @@ function News() {
 					<textarea cols='30' rows='4' placeholder='본문을 입력하세요' ref={textarea} />
 				</div>
 				<div className='btns'>
-					<button>CANCEL</button>
+					<button onClick={resetForm}>CANCEL</button>
 					<button onClick={creatPost}>WRITE</button>
 				</div>
 			</div>
