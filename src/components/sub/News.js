@@ -1,4 +1,3 @@
-import { faL } from '@fortawesome/free-solid-svg-icons';
 import { useRef, useState } from 'react';
 import Layout from '../common/Layout';
 
@@ -38,6 +37,8 @@ function News() {
 
 	const input = useRef(null);
 	const textarea = useRef(null);
+	const inputEdit = useRef(null);
+	const textareaEdit = useRef(null);
 	const [Posts, setPosts] = useState(dummyPosts);
 	const [Allowed, setAllowed] = useState(true);
 
@@ -85,6 +86,24 @@ function News() {
 		);
 	};
 
+	// 글 수정 함수
+	const updatePost = (index) => {
+		if (!inputEdit.current.value.trim() || !textareaEdit.current.value.trim()) {
+			return alert('수정할 제목과 본문을 모두 입력하세요');
+		}
+		setPosts(
+			Posts.map((post, idx) => {
+				if (idx === index) {
+					post.title = inputEdit.current.value;
+					post.content = textareaEdit.current.value;
+					post.enableUpdate = false;
+				}
+				return post;
+			})
+		);
+		setAllowed(true);
+	};
+
 	return (
 		<Layout name={'NEWS'} txt={'News Of Our Company'}>
 			<div className='inputBox'>
@@ -106,15 +125,15 @@ function News() {
 								<>
 									<div className='txt'>
 										<h2>
-											<input type='text' defaultValue={post.title} />
+											<input type='text' defaultValue={post.title} ref={inputEdit} />
 										</h2>
 										<p>
-											<textarea cols='30' rows='4' defaultValue={post.content} />
+											<textarea cols='30' rows='4' defaultValue={post.content} ref={textareaEdit} />
 										</p>
 									</div>
 									<div className='btns'>
 										<button onClick={() => disableUpdate(idx)}>CANCEL</button>
-										<button>UPDATE</button>
+										<button onClick={() => updatePost(idx)}>UPDATE</button>
 									</div>
 								</>
 							) : (
