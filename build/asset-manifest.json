@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/corporate-react/static/css/main.00c30ffa.css",
+    "main.js": "/corporate-react/static/js/main.9747b2e7.js",
+    "index.html": "/corporate-react/index.html",
+    "main.00c30ffa.css.map": "/corporate-react/static/css/main.00c30ffa.css.map",
+    "main.9747b2e7.js.map": "/corporate-react/static/js/main.9747b2e7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.00c30ffa.css",
+    "static/js/main.9747b2e7.js"
+  ]
+}
