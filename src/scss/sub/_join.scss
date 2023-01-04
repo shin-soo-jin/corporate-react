@@ -18,6 +18,19 @@
 		label[for='agree'] {
 			margin-left: 5px;
 		}
+		span {
+			display: block;
+			margin-top: 5px;
+			font-size: 11px;
+			color: red;
+			i {
+				display: none;
+				margin-right: 10px;
+				&.on {
+					display: inline;
+				}
+			}
+		}
 	}
 	h3 {
 		margin-top: 60px;
@@ -53,6 +66,19 @@
 					height: 40px;
 					border: 1px solid #ccc;
 					text-indent: 15px;
+				}
+				span {
+					display: block;
+					margin-top: 5px;
+					font-size: 11px;
+					color: red;
+					i {
+						display: none;
+						margin-right: 10px;
+						&.on {
+							display: inline;
+						}
+					}
 				}
 			}
 		}
