@@ -1,3 +1,4 @@
+import { faL } from '@fortawesome/free-solid-svg-icons';
 import { useRef, useState } from 'react';
 import Layout from '../common/Layout';
 
@@ -61,13 +62,24 @@ function News() {
 		setPosts(Posts.filter((_, idx) => idx !== index));
 	};
 
-	// 글 수정모드 변경함수
+	// 글 수정모드 변경 함수
 	const enableUpdate = (index) => {
 		if (!Allowed) return;
 		setAllowed(false);
 		setPosts(
 			Posts.map((post, idx) => {
 				if (idx === index) post.enableUpdate = true;
+				return post;
+			})
+		);
+	};
+
+	// 글 출력모드 변경 함수
+	const disableUpdate = (index) => {
+		setAllowed(true);
+		setPosts(
+			Posts.map((post, idx) => {
+				if (idx === index) post.enableUpdate = false;
 				return post;
 			})
 		);
@@ -101,7 +113,7 @@ function News() {
 										</p>
 									</div>
 									<div className='btns'>
-										<button>CANCEL</button>
+										<button onClick={() => disableUpdate(idx)}>CANCEL</button>
 										<button>UPDATE</button>
 									</div>
 								</>
