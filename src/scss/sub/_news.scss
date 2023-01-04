@@ -1,0 +1,56 @@
+.NEWS {
+	.inputBox {
+		margin: 40px 0;
+		border: 1px solid #000;
+		padding: 30px;
+		.txt {
+			margin-bottom: 10px;
+			input[type='text'],
+			textarea {
+				width: 100%;
+				margin-bottom: 10px;
+				padding: 10px;
+				font-size: 14px;
+			}
+		}
+		.btns {
+			text-align: center;
+			button {
+				width: 150px;
+				height: 30px;
+				margin-right: 20px;
+				cursor: pointer;
+			}
+		}
+	}
+	.showBox {
+		article {
+			border-bottom: 1px solid #ddd;
+			padding: 30px 0;
+			display: flex;
+			justify-content: space-between;
+			.txt {
+				width: 80%;
+				h2 {
+					font-size: 24px;
+					font-weight: 500;
+					margin-bottom: 10px;
+				}
+				p {
+					color: #888;
+				}
+			}
+			.btns {
+				width: 15%;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				button {
+					width: 45%;
+					height: 30px;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}

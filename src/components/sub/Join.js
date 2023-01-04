@@ -1,9 +1,12 @@
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Layout from '../common/Layout';
 
 function Join() {
+	const history = useHistory();
+
 	const terms =
 		'Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci et iure omnis numquam? Corrupti distinctio mollitia voluptatem, hic totam, blanditiis dolor suscipit nesciunt modi dolore ipsa esse impedit tempore necessitatibus numquam aliquid unde sunt iusto laudantium sequi corporis error facilis incidunt? Labore incidunt omnis odit, asperiores alias ex debitis quae magnam nisi, delectus, ratione mollitia. Tenetur, similique quis? Dolorem amet accusamus ea, obcaecati hic, suscipit voluptas itaque ipsam praesentium officia laudantium tempore aliquid maxime? Accusantium doloremque consequatur ducimus debitis saepe velit quo ipsum iste voluptates? Facilis alias similique aperiam, perferendis illum est assumenda pariatur ipsa officia cumque voluptas quis eos quaerat eveniet accusantium exercitationem consequatur, eligendi, provident aut mollitia sint nam totam. Aliquid architecto mollitia exercitationem iusto alias delectus cum, quo harum cupiditate! Id voluptate facere, nostrum possimus quidem consectetur debitis illum neque sequi! Modi esse aspernatur doloremque dolores iure suscipit! Deserunt sunt vitae incidunt impedit fugiat ut repellat corrupti!';
 
@@ -20,6 +23,7 @@ function Join() {
 	};
 	const [Val, setVal] = useState(initVal);
 	const [Err, setErr] = useState({});
+	const [Submit, setSubmit] = useState(false);
 
 	const check = (value) => {
 		const errs = {};
@@ -77,9 +81,18 @@ function Join() {
 		setErr(check(Val));
 	};
 
+	useEffect(() => {
+		const len = Object.keys(Err).length;
+		if (len === 0 && Submit) {
+			alert('회원가입이 완료되었습니다.');
+			history.push('/');
+			window.scroll(0, 0);
+		}
+	}, [Err]);
+
 	return (
 		<Layout name={'JOIN'} txt={'Join Our Company'}>
-			<form action=''>
+			<form action='' onSubmit={handleSubmit}>
 				<legend className='hidden'>Terms of Use</legend>
 				<h2>
 					<label htmlFor='terms'>Terms of Use</label>
@@ -204,9 +217,9 @@ function Join() {
 									<option value=''>선택하세요</option>
 									<option value='010'>010</option>
 								</select>
-								-
+								<b> - </b>
 								<input type='text' name='phone2' id='phone2' onChange={handleChange} />
-								-
+								<b> - </b>
 								<input type='text' name='phone3' id='phone3' onChange={handleChange} />
 								<span className='err'>
 									<i className={!Err.phone1 ? '' : 'on'}>
@@ -225,7 +238,13 @@ function Join() {
 					</tbody>
 				</table>
 				<div className='joinBtn'>
-					<input type='submit' value='SIGN UP' onClick={handleSubmit} />
+					<input
+						type='submit'
+						value='SIGN UP'
+						onClick={() => {
+							setSubmit(true);
+						}}
+					/>
 				</div>
 			</form>
 		</Layout>
