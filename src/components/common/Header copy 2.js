@@ -1,21 +1,24 @@
+import { useRef, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons';
-import { NavLink } from 'react-router-dom';
-import { forwardRef, useImperativeHandle, useState } from 'react';
+import Menu from './Menu';
 
-const Menu = forwardRef((props, ref) => {
-	const [Open, setOpen] = useState(false);
+function Header(props) {
+	const menuMo = useRef(null);
 	const active = { color: '#4b84db' };
-
-	useImperativeHandle(ref, () => {
-		return { toggle: () => setOpen(!Open) };
-	});
+	const [Open, setOpen] = useState(false);
 
 	return (
-		<>
-			{Open && (
-				<div className='menuMo'>
-					<nav id='gnbMo'>
+		<header className={props.type}>
+			<div className='inner'>
+				<h1>
+					<NavLink exact to='/'>
+						B
+					</NavLink>
+				</h1>
+				<div className='menuWeb'>
+					<nav id='gnb'>
 						<ul>
 							<li>
 								<NavLink to='/about' activeStyle={active}>
@@ -57,9 +60,18 @@ const Menu = forwardRef((props, ref) => {
 						</li>
 					</ul>
 				</div>
-			)}
-		</>
+				<span
+					className={Open ? 'on btnCall' : 'btnCall'}
+					onClick={() => {
+						setOpen(!Open);
+					}}
+				>
+					<span>menu</span>
+				</span>
+				{Open && <Menu ref={menuMo} />}
+			</div>
+		</header>
 	);
-});
+}
 
-export default Menu;
+export default Header;

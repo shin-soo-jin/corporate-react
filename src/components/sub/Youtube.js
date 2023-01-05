@@ -8,8 +8,6 @@ function Youtube() {
 	const [Open, setOpen] = useState(false);
 	const [Index, setIndex] = useState(0);
 
-	console.log(Vids[Index]);
-
 	useEffect(() => {
 		const key = 'AIzaSyCaXRXk4IImstZdfY92MFZLzPLaz0VxlRc';
 		const playlistId = 'PL5lm99t4rEC4v0vphLBO7rm2f9mR_nMeY';

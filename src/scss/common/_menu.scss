@@ -1,13 +1,13 @@
 .menuMo {
+	display: none;
 	position: fixed;
 	top: 0;
 	right: 0;
-	width: 40%;
+	width: 50%;
 	height: 100vh;
 	padding: 80px 30px;
 	background: #082f6a;
 	z-index: 3;
-	transition: 0.5s;
 	#gnbMo {
 		ul {
 			li {
@@ -43,5 +43,17 @@
 				}
 			}
 		}
+	}
+}
+
+@media screen and (max-width: $tablet) {
+	.menuMo {
+		display: block;
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	.menuMo {
+		width: 70%;
 	}
 }
