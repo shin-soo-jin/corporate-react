@@ -1,0 +1,47 @@
+.menuMo {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 40%;
+	height: 100vh;
+	padding: 80px 30px;
+	background: #082f6a;
+	z-index: 3;
+	transition: 0.5s;
+	#gnbMo {
+		ul {
+			li {
+				a {
+					display: block;
+					padding: 20px;
+					border-bottom: 1px solid #3c6ab0;
+					text-align: center;
+					font-size: 16px;
+					font-weight: bold;
+					color: #fff;
+					transition: 0.3s;
+					&:hover {
+						color: #4b84db;
+					}
+				}
+			}
+		}
+	}
+	.util {
+		display: flex;
+		position: absolute;
+		top: 13px;
+		left: 3%;
+		li {
+			margin-left: 20px;
+			line-height: 60px;
+			a {
+				color: #fff;
+				transition: 0.3s;
+				&:hover {
+					color: #4b84db;
+				}
+			}
+		}
+	}
+}

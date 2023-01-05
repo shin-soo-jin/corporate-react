@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons';
+import Menu from './Menu';
 
 function Header(props) {
 	const active = { color: '#4b84db' };
@@ -55,7 +56,10 @@ function Header(props) {
 						</li>
 					</ul>
 				</div>
-				<FontAwesomeIcon icon={faBars} />
+				<span className='btnCall'>
+					<span>menu</span>
+				</span>
+				<Menu />
 			</div>
 		</header>
 	);
