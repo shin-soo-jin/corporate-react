@@ -1,10 +1,14 @@
+import { useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons';
 import Menu from './Menu';
 
 function Header(props) {
+	const menuMo = useRef(null);
 	const active = { color: '#4b84db' };
+	const [isOn, setisOn] = useState(false);
+
 	return (
 		<header className={props.type}>
 			<div className='inner'>
@@ -56,10 +60,16 @@ function Header(props) {
 						</li>
 					</ul>
 				</div>
-				<span className='btnCall'>
+				<span
+					className={isOn ? 'on btnCall' : 'btnCall'}
+					onClick={() => {
+						setisOn(!isOn);
+						menuMo.current.toggle();
+					}}
+				>
 					<span>menu</span>
 				</span>
-				<Menu />
+				<Menu ref={menuMo} />
 			</div>
 		</header>
 	);
