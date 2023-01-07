@@ -9,26 +9,31 @@ function Gallery() {
 	const masonryOptions = { transitionDuration: '0.5s' };
 	const input = useRef(null);
 	const frame = useRef(null);
+	const errMsg = useRef(null);
 	const [Items, setItems] = useState([]);
 	const [Loading, setLoading] = useState(true);
 
 	const getFilckr = async (option) => {
+		const baseURL = 'https://www.flickr.com/services/rest/?format=json&nojsoncallback=1';
 		const method_interest = 'flickr.interestingness.getList';
 		const method_search = 'flickr.photos.search';
+		const method_user = 'flickr.people.getPhotos';
 		const api_key = '90b16afc1c9a03f06cb7f099502e292c';
 		const per_page = 12;
 		let url = '';
 
 		if (option.type === 'interest')
-			url = `https://www.flickr.com/services/rest/?method=${method_interest}&api_key=${api_key}&per_page=${per_page}&format=json&nojsoncallback=1`;
+			url = `${baseURL}&method=${method_interest}&api_key=${api_key}&per_page=${per_page}`;
 		if (option.type === 'search')
-			url = `https://www.flickr.com/services/rest/?method=${method_search}&api_key=${api_key}&per_page=${per_page}&format=json&nojsoncallback=1&tags=${option.tag}&privacy_filter=1`;
+			url = `${baseURL}&method=${method_search}&api_key=${api_key}&per_page=${per_page}&tags=${option.tags}`;
+		if (option.type === 'user')
+			url = `${baseURL}&method=${method_user}&api_key=${api_key}&per_page=${per_page}&user_id=${option.user_id}`;
 
 		const result = await axios.get(url);
 		if (result.data.photos.photo.length === 0) {
 			frame.current.classList.add('on');
 			setLoading(false);
-			alert('검색 결과가 없습니다.');
+			return alert('검색 결과가 없습니다.');
 		}
 		setItems(result.data.photos.photo);
 
@@ -51,7 +56,13 @@ function Gallery() {
 		let tags = input.current.value.trim();
 		input.current.value = '';
 		if (!tags) return alert('검색어를 입력하지 않았습니다. 검색어를 입력하세요.');
-		getFilckr({ type: 'search', tag: tags });
+		getFilckr({ type: 'search', tags: tags });
+		frame.current.classList.remove('on');
+		setLoading(true);
+	};
+	const showUser = (e) => {
+		let user_id = e.target.innerText;
+		getFilckr({ type: 'user', user_id: user_id });
 		frame.current.classList.remove('on');
 		setLoading(true);
 	};
@@ -69,7 +80,6 @@ function Gallery() {
 					<FontAwesomeIcon icon={faMagnifyingGlass} />
 				</button>
 			</div>
-
 			<div className='wrap'>
 				<ul className='list' ref={frame}>
 					<Masonry elementType={'ul'} options={masonryOptions}>
@@ -85,13 +95,13 @@ function Gallery() {
 											/>
 										</div>
 										<span>
-											<p>${el.title}</p>
+											<p>{el.title}</p>
 											<img
 												src={`http://farm${el.farm}.staticflickr.com/${el.server}/buddyicons/${el.owner}.jpg`}
 												alt={el.owner}
 												className='profile'
 											/>
-											<strong>${el.owner}</strong>
+											<strong onClick={showUser}>{el.owner}</strong>
 										</span>
 									</div>
 								</li>
