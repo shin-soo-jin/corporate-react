@@ -1,15 +1,15 @@
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
+import axios from 'axios';
 import Layout from '../common/Layout';
 import Masonry from 'react-masonry-component';
 
 function Gallery() {
+	const my_id = '197333350@N05';
 	const masonryOptions = { transitionDuration: '0.5s' };
 	const input = useRef(null);
 	const frame = useRef(null);
-	const errMsg = useRef(null);
 	const [Items, setItems] = useState([]);
 	const [Loading, setLoading] = useState(true);
 
@@ -18,7 +18,7 @@ function Gallery() {
 		const method_interest = 'flickr.interestingness.getList';
 		const method_search = 'flickr.photos.search';
 		const method_user = 'flickr.people.getPhotos';
-		const api_key = '90b16afc1c9a03f06cb7f099502e292c';
+		const api_key = '351a57e95d2a68e2c23e344ae6c77508';
 		const per_page = 12;
 		let url = '';
 
@@ -66,20 +66,32 @@ function Gallery() {
 		frame.current.classList.remove('on');
 		setLoading(true);
 	};
+	const showMine = () => {
+		getFilckr({ type: 'user', user_id: my_id });
+		frame.current.classList.remove('on');
+		setLoading(true);
+	};
 
 	return (
 		<Layout name={'GALLERY'} txt={'Meet Gallery'}>
-			<div className='searchBox'>
-				<input
-					type='text'
-					placeholder='이미지 검색'
-					ref={input}
-					onKeyUp={(e) => e.key === 'Enter' && showSearch()}
-				/>
-				<button onClick={showSearch}>
-					<FontAwesomeIcon icon={faMagnifyingGlass} />
-				</button>
+			<div className='controls'>
+				<nav>
+					<button onClick={showMine}>My Gallery</button>
+					<button onClick={showInterest}>Interest</button>
+				</nav>
+				<div className='searchBox'>
+					<input
+						type='text'
+						placeholder='이미지 검색'
+						ref={input}
+						onKeyUp={(e) => e.key === 'Enter' && showSearch()}
+					/>
+					<button onClick={showSearch}>
+						<FontAwesomeIcon icon={faMagnifyingGlass} />
+					</button>
+				</div>
 			</div>
+
 			<div className='wrap'>
 				<ul className='list' ref={frame}>
 					<Masonry elementType={'ul'} options={masonryOptions}>

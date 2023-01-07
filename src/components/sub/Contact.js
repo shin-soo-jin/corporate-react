@@ -1,9 +1,4 @@
-import {
-	faClock,
-	faEnvelope,
-	faMapMarkerAlt,
-	faPhoneAlt,
-} from '@fortawesome/free-solid-svg-icons';
+import { faClock, faEnvelope, faMapMarkerAlt, faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useRef } from 'react';
 import Layout from '../common/Layout';
@@ -77,21 +72,11 @@ function Contact() {
 							PC
 						</label>
 						<label htmlFor='mobile'>
-							<input
-								type='checkbox'
-								name='category'
-								id='mobile'
-								value='mobile'
-							/>
+							<input type='checkbox' name='category' id='mobile' value='mobile' />
 							MOBILE
 						</label>
 						<label htmlFor='responsive'>
-							<input
-								type='checkbox'
-								name='category'
-								id='responsive'
-								value='responsive'
-							/>
+							<input type='checkbox' name='category' id='responsive' value='responsive' />
 							RESPONSIVE
 						</label>
 

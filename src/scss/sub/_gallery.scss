@@ -1,28 +1,41 @@
 .GALLERY {
 	.inner {
-		.searchBox {
-			padding: 40px 10px 30px 0;
-			text-align: right;
-			font-size: 0;
-			input {
-				width: 200px;
-				height: 40px;
-				padding: 10px;
-				font-size: 16px;
-				border: 1px solid #333;
+		.controls {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 40px 10px;
+			nav {
+				button {
+					width: 100px;
+					height: 40px;
+					font-size: 16px;
+					margin-right: 10px;
+					cursor: pointer;
+				}
 			}
-			button {
-				display: inline-block;
-				width: 40px;
-				height: 40px;
-				line-height: 40px;
-				text-align: center;
-				vertical-align: top;
-				border: 1px solid #333;
-				border-left: none;
-				font-size: 20px;
-				color: #333;
-				cursor: pointer;
+			.searchBox {
+				font-size: 0;
+				input {
+					width: 200px;
+					height: 40px;
+					padding: 10px;
+					font-size: 16px;
+					border: 1px solid #333;
+				}
+				button {
+					display: inline-block;
+					width: 40px;
+					height: 40px;
+					line-height: 40px;
+					text-align: center;
+					vertical-align: top;
+					border: 1px solid #333;
+					border-left: none;
+					font-size: 20px;
+					color: #333;
+					cursor: pointer;
+				}
 			}
 		}
 		.wrap {
