@@ -4,14 +4,17 @@ import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import Layout from '../common/Layout';
 import Masonry from 'react-masonry-component';
+import Modal from '../common/Modal';
 
 function Gallery() {
 	const my_id = '197333350@N05';
 	const masonryOptions = { transitionDuration: '0.5s' };
 	const input = useRef(null);
 	const frame = useRef(null);
+	const modal = useRef(null);
 	const [Items, setItems] = useState([]);
 	const [Loading, setLoading] = useState(true);
+	const [Index, setIndex] = useState(0);
 
 	const getFilckr = async (option) => {
 		const baseURL = 'https://www.flickr.com/services/rest/?format=json&nojsoncallback=1';
@@ -73,63 +76,78 @@ function Gallery() {
 	};
 
 	return (
-		<Layout name={'GALLERY'} txt={'Meet Gallery'}>
-			<div className='controls'>
-				<nav>
-					<button onClick={showMine}>My Gallery</button>
-					<button onClick={showInterest}>Interest</button>
-				</nav>
-				<div className='searchBox'>
-					<input
-						type='text'
-						placeholder='이미지 검색'
-						ref={input}
-						onKeyUp={(e) => e.key === 'Enter' && showSearch()}
-					/>
-					<button onClick={showSearch}>
-						<FontAwesomeIcon icon={faMagnifyingGlass} />
-					</button>
+		<>
+			<Layout name={'GALLERY'} txt={'Meet Gallery'}>
+				<div className='controls'>
+					<nav>
+						<button onClick={showMine}>My Gallery</button>
+						<button onClick={showInterest}>Interest</button>
+					</nav>
+					<div className='searchBox'>
+						<input
+							type='text'
+							placeholder='이미지 검색'
+							ref={input}
+							onKeyUp={(e) => e.key === 'Enter' && showSearch()}
+						/>
+						<button onClick={showSearch}>
+							<FontAwesomeIcon icon={faMagnifyingGlass} />
+						</button>
+					</div>
 				</div>
-			</div>
 
-			<div className='wrap'>
-				<ul className='list' ref={frame}>
-					<Masonry elementType={'ul'} options={masonryOptions}>
-						{Items.map((el, idx) => {
-							return (
-								<li className='item' key={idx}>
-									<div>
-										<div className='pic'>
-											<img
-												src={`https://live.staticflickr.com/${el.server}/${el.id}_${el.secret}_m.jpg`}
-												alt={el.title}
-												className='thumb'
-											/>
+				<div className='wrap'>
+					<ul className='list' ref={frame}>
+						<Masonry elementType={'ul'} options={masonryOptions}>
+							{Items.map((el, idx) => {
+								return (
+									<li className='item' key={idx}>
+										<div>
+											<div
+												className='pic'
+												onClick={() => {
+													modal.current.open();
+													setIndex(idx);
+												}}
+											>
+												<img
+													src={`https://live.staticflickr.com/${el.server}/${el.id}_${el.secret}_m.jpg`}
+													alt={el.title}
+													className='thumb'
+												/>
+											</div>
+											<span>
+												<p>{el.title}</p>
+												<img
+													src={`http://farm${el.farm}.staticflickr.com/${el.server}/buddyicons/${el.owner}.jpg`}
+													alt={el.owner}
+													className='profile'
+												/>
+												<strong onClick={showUser}>{el.owner}</strong>
+											</span>
 										</div>
-										<span>
-											<p>{el.title}</p>
-											<img
-												src={`http://farm${el.farm}.staticflickr.com/${el.server}/buddyicons/${el.owner}.jpg`}
-												alt={el.owner}
-												className='profile'
-											/>
-											<strong onClick={showUser}>{el.owner}</strong>
-										</span>
-									</div>
-								</li>
-							);
-						})}
-					</Masonry>
-				</ul>
-			</div>
-			{Loading && (
+									</li>
+								);
+							})}
+						</Masonry>
+					</ul>
+				</div>
+				{Loading && (
+					<img
+						src={`${process.env.PUBLIC_URL}/img/loading.gif`}
+						alt='로딩중 입니다'
+						className='loading'
+					/>
+				)}
+			</Layout>
+
+			<Modal ref={modal}>
 				<img
-					src={`${process.env.PUBLIC_URL}/img/loading.gif`}
-					alt='로딩중 입니다'
-					className='loading'
+					src={`https://live.staticflickr.com/${Items[Index]?.server}/${Items[Index]?.id}_${Items[Index]?.secret}_b.jpg`}
+					alt={Items[Index]?.owner}
 				/>
-			)}
-		</Layout>
+			</Modal>
+		</>
 	);
 }
 
