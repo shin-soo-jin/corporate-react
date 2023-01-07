@@ -133,6 +133,28 @@
 @media screen and (max-width: $mobile) {
 	.GALLERY {
 		.inner {
+			.controls {
+				flex-wrap: wrap;
+				nav {
+					width: 100%;
+					display: flex;
+					justify-content: space-between;
+					margin-bottom: 20px;
+					button {
+						width: 48%;
+						margin-right: 0px;
+					}
+				}
+				.searchBox {
+					width: 100%;
+					input {
+						width: 80%;
+					}
+					button {
+						width: 20%;
+					}
+				}
+			}
 			.wrap {
 				.list {
 					.item {

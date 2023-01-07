@@ -1,5 +1,6 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { AnimatePresence, motion } from 'framer-motion';
 import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 
 const Modal = forwardRef((props, ref) => {
@@ -16,9 +17,13 @@ const Modal = forwardRef((props, ref) => {
 	}, [Open]);
 
 	return (
-		<>
+		<AnimatePresence>
 			{Open && (
-				<aside>
+				<motion.aside
+					initial={{ opacity: 0, scale: 0 }}
+					animate={{ opacity: 1, scale: 1, transition: { duration: 0.5 } }}
+					exit={{ opacity: 0, transition: { duration: 0.5 } }}
+				>
 					<div className='con'>{props.children}</div>
 					<span
 						className='btnClose'
@@ -28,9 +33,9 @@ const Modal = forwardRef((props, ref) => {
 					>
 						<FontAwesomeIcon icon={faXmark} />
 					</span>
-				</aside>
+				</motion.aside>
 			)}
-		</>
+		</AnimatePresence>
 	);
 });
 
