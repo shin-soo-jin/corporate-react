@@ -1,0 +1,118 @@
+#contact {
+	padding: 80px 0;
+	.inner {
+		width: 1180px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		.text {
+			width: 30%;
+			h2 {
+				font-size: 20px;
+				margin-bottom: 40px;
+			}
+			ul {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				li {
+					width: 48%;
+					margin-bottom: 20px;
+					font-size: 14px;
+					i {
+						display: inline-block;
+						width: 25px;
+					}
+				}
+			}
+		}
+		form {
+			width: 67%;
+			fieldset {
+				border: none;
+				b {
+					font-size: 16px;
+					font-weight: bold;
+					color: #333;
+					margin-right: 40px;
+				}
+				label {
+					margin-right: 20px;
+					font-size: 16px;
+					color: #333;
+					input[type='checkbox'] {
+						margin-right: 10px;
+						margin-bottom: 10px;
+					}
+				}
+				input[type='text'] {
+					width: 100%;
+					height: 40px;
+					border: none;
+					border-bottom: 1px solid #333;
+					padding: 10px;
+					font-size: 16px;
+					margin-bottom: 10px;
+				}
+				textarea {
+					resize: none;
+					width: 100%;
+					height: 15vh;
+					border: none;
+					border-bottom: 1px solid #333;
+					padding: 10px;
+					font-size: 16px;
+					margin-bottom: 10px;
+				}
+				input[type='button'] {
+					@include button;
+					margin: 0 auto;
+					border: transparent;
+					letter-spacing: 1px;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $tablet) {
+	#contact {
+		.inner {
+			width: 95%;
+			.text {
+				ul {
+					li {
+						i {
+							width: 100%;
+						}
+					}
+				}
+			}
+			form {
+				fieldset {
+					b {
+						display: block;
+						margin-bottom: 10px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	#contact {
+		.inner {
+			flex-direction: column;
+			.text {
+				width: 100%;
+				text-align: center;
+				margin-bottom: 40px;
+			}
+			form {
+				width: 100%;
+			}
+		}
+	}
+}
