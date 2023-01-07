@@ -1,29 +1,37 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 
-function Modal(props) {
-	useEffect(() => {
-		document.body.style.overflow = 'hidden';
+const Modal = forwardRef((props, ref) => {
+	const [Open, setOpen] = useState(false);
 
-		return () => {
-			document.body.style.overflow = 'auto';
+	useImperativeHandle(ref, () => {
+		return {
+			open: () => setOpen(true),
 		};
-	}, []);
+	});
+
+	useEffect(() => {
+		Open ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'auto');
+	}, [Open]);
 
 	return (
-		<aside>
-			<div className='con'>{props.children}</div>
-			<span
-				className='btnClose'
-				onClick={() => {
-					props.setOpen(false);
-				}}
-			>
-				<FontAwesomeIcon icon={faXmark} />
-			</span>
-		</aside>
+		<>
+			{Open && (
+				<aside>
+					<div className='con'>{props.children}</div>
+					<span
+						className='btnClose'
+						onClick={() => {
+							setOpen(false);
+						}}
+					>
+						<FontAwesomeIcon icon={faXmark} />
+					</span>
+				</aside>
+			)}
+		</>
 	);
-}
+});
 
 export default Modal;

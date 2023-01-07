@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Layout from '../common/Layout';
 import Modal from '../common/Modal';
 
 function Youtube() {
+	const modal = useRef(null);
 	const [Vids, setVids] = useState([]);
-	const [Open, setOpen] = useState(false);
 	const [Index, setIndex] = useState(0);
 
 	useEffect(() => {
@@ -33,7 +33,7 @@ function Youtube() {
 								<div
 									className='pic'
 									onClick={() => {
-										setOpen(true);
+										modal.current.open();
 										setIndex(idx);
 									}}
 								>
@@ -49,14 +49,13 @@ function Youtube() {
 					})}
 				</div>
 			</Layout>
-			{Open && (
-				<Modal setOpen={setOpen}>
-					<iframe
-						title={Vids[Index].id}
-						src={`https://www.youtube.com/embed/${Vids[Index].snippet.resourceId.videoId}`}
-					></iframe>
-				</Modal>
-			)}
+
+			<Modal ref={modal}>
+				<iframe
+					title={Vids[Index]?.id}
+					src={`https://www.youtube.com/embed/${Vids[Index]?.snippet.resourceId.videoId}`}
+				></iframe>
+			</Modal>
 		</>
 	);
 }
