@@ -1,5 +1,6 @@
 import Header from '../common/Header';
 import About from './About';
+import Btns from './Btns';
 import Company from './Company';
 import Contact from './Contact';
 import News from './News';
@@ -16,6 +17,7 @@ function Main() {
 			<Work />
 			<News />
 			<Contact />
+			<Btns />
 		</main>
 	);
 }

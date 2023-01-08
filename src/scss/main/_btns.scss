@@ -1,0 +1,25 @@
+.scrollNavi {
+	position: fixed;
+	right: 2%;
+	top: 50%;
+	transform: translateY(-50%);
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	z-index: 2;
+
+	li {
+		width: 10px;
+		height: 10px;
+		background: rgba(255, 255, 255, 0.5);
+		border-radius: 50%;
+		transition: 0.5s;
+		cursor: pointer;
+
+		&.on {
+			height: 80px;
+			border-radius: 5px;
+			background: #4b84db;
+		}
+	}
+}

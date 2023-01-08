@@ -11,12 +11,13 @@ $mobile: 539px;
 @import './common/mixin';
 
 // main
-@import './main/m-visual';
-@import './main/m-about';
-@import './main/m-company';
-@import './main/m-contact';
-@import './main/m-news';
-@import './main/m-work';
+@import './main/visual';
+@import './main/about';
+@import './main/company';
+@import './main/contact';
+@import './main/news';
+@import './main/work';
+@import './main/btns';
 
 // sub
 @import './sub/about';
