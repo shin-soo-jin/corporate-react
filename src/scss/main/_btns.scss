@@ -5,21 +5,25 @@
 	transform: translateY(-50%);
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	gap: 25px;
 	z-index: 2;
 
 	li {
 		width: 10px;
 		height: 10px;
-		background: rgba(255, 255, 255, 0.5);
+		background: #ddd;
 		border-radius: 50%;
 		transition: 0.5s;
 		cursor: pointer;
 
+		&:hover {
+			background: #999;
+		}
+
 		&.on {
 			height: 80px;
 			border-radius: 5px;
-			background: #4b84db;
+			background: #333;
 		}
 	}
 }

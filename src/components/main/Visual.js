@@ -65,7 +65,7 @@ function Visual() {
 	}, []);
 
 	return (
-		<figure id='visual'>
+		<figure id='visual' className='scrollSection'>
 			<ul className='slider' ref={frameRef}>
 				<li className='on' style={{ backgroundImage: `url(${publicUrl}/img/visual1.jpg)` }} />
 				<li style={{ backgroundImage: `url(${publicUrl}/img/visual2.jpg)` }} />

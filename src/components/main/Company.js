@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Company() {
 	return (
-		<section id='company'>
+		<section id='company' className='scrollSection'>
 			<div className='inner'>
 				<div className='text'>
 					<h2>MEET OUR COMPANY</h2>

@@ -1,6 +1,10 @@
 function News() {
 	return (
-		<section id='news' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/news.jpg)` }}>
+		<section
+			id='news'
+			className='scrollSection'
+			style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/news.jpg)` }}
+		>
 			<div className='inner'>
 				<div className='text'>
 					<h2>NEWS OF OUR COMPANY</h2>

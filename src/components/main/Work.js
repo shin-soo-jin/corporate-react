@@ -2,7 +2,7 @@ import React from 'react';
 
 function Work() {
 	return (
-		<div id='work'>
+		<section id='work' className='scrollSection'>
 			<div className='inner'>
 				<h2 className='hidden'>WORK</h2>
 				<div className='wrap'>
@@ -51,7 +51,7 @@ function Work() {
 					</article>
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 }
 

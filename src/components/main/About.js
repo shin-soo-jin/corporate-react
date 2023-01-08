@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function About() {
 	return (
-		<section id='about'>
+		<section id='about' className='scrollSection'>
 			<div className='inner'>
 				<h2 className='hidden'>ABOUT</h2>
 				<div className='wrap'>
