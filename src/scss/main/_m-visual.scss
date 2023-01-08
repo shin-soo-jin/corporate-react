@@ -6,78 +6,118 @@
 		height: 100%;
 		position: relative;
 		z-index: -1;
-		ul {
-			width: 400%;
-			height: 100%;
-			li {
-				width: 25%;
-				height: 100%;
-				float: left;
-				background-repeat: no-repeat;
-				background-position: center center;
-				background-size: cover;
-				&::after {
-					content: '';
-					display: block;
-					width: 100%;
-					height: 100%;
-					background: rgba(0, 0, 0, 0.4);
-				}
-			}
-		}
-	}
-	.sliderPage {
-		position: absolute;
-		bottom: 5%;
-		left: 50%;
-		transform: translateX(-50%);
 		li {
-			display: inline-block;
-			width: 10px;
-			height: 10px;
-			background: rgba(255, 255, 255, 0.5);
-			border-radius: 50%;
-			margin: 0 10px;
-			text-indent: -99999px;
-			color: transparent;
-			cursor: pointer;
-			transform: scale(1);
-			transition: 0.3s;
-			&:hover {
-				transform: scale(1.2);
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0;
+			z-index: 1;
+			transition: opacity 1s;
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: cover;
+			&::after {
+				content: '';
+				display: block;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.4);
 			}
 			&.on {
-				background: #fff;
-				transform: scale(1.2);
+				opacity: 1;
+				z-index: 2;
 			}
-		}
-	}
-	.sliderBtn {
-		position: absolute;
-		top: 50%;
-		margin-top: -19px;
-		border: transparent;
-		background: transparent;
-		transform: scale(0.8);
-		transition: 0.3s;
-		&:hover {
-			transform: scale(1);
-		}
-		&.sliderNext {
-			right: 5%;
-		}
-		&.sliderPrev {
-			left: 5%;
 		}
 	}
 
 	.inner {
 		width: 1180px;
+		height: 100%;
 		margin: 0 auto;
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		.btns {
+			.sliderPage {
+				font-size: 0;
+				position: absolute;
+				bottom: 5%;
+				left: 50%;
+				transform: translateX(-50%);
+				li {
+					display: inline-block;
+					width: 10px;
+					height: 10px;
+					margin: 0 10px;
+					background: rgba(255, 255, 255, 0.5);
+					border-radius: 50%;
+					cursor: pointer;
+					transform: scale(1);
+					transition: 0.3s;
+					&:hover {
+						transform: scale(1.2);
+					}
+					&.on {
+						background: #fff;
+						border-radius: 60px;
+						transform: scale(1.2);
+					}
+				}
+			}
+
+			.sliderRollingBtn {
+				font-size: 0;
+				position: absolute;
+				bottom: 5%;
+				right: 0%;
+				transform: translateY(5px);
+				svg {
+					font-size: 20px;
+					cursor: pointer;
+					margin: 0 10px;
+					transition: 0.3s;
+					&:hover {
+						transform: scale(1.2);
+					}
+					path {
+						fill: rgba(255, 255, 255, 0.5);
+					}
+					&.on {
+						transform: scale(1.2);
+						path {
+							fill: #fff;
+						}
+					}
+				}
+			}
+
+			.sliderBtn {
+				position: absolute;
+				top: 50%;
+				margin-top: -19px;
+				border: transparent;
+				background: transparent;
+				transform: scale(0.8);
+				transition: 0.3s;
+				cursor: pointer;
+				&:hover {
+					transform: scale(1);
+				}
+				&.sliderNext {
+					right: -5%;
+				}
+				&.sliderPrev {
+					left: -5%;
+				}
+			}
+		}
 		.text {
 			position: absolute;
 			top: 30%;
-			left: auto;
+			left: 0;
 			h2 {
 				font-size: 16px;
 				font-weight: bold;
@@ -102,6 +142,16 @@
 	#visual {
 		.inner {
 			width: 95%;
+			.btns {
+				.sliderBtn {
+					&.sliderNext {
+						right: 5%;
+					}
+					&.sliderPrev {
+						left: 5%;
+					}
+				}
+			}
 			.text {
 				left: 50%;
 				transform: translateX(-50%);

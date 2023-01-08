@@ -1,30 +1,110 @@
+import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useEffect, useRef } from 'react';
+
 function Visual() {
-	const imgSrc = process.env.PUBLIC_URL;
+	const publicUrl = process.env.PUBLIC_URL;
+	const frameRef = useRef(null);
+	const pageRef = useRef(null);
+	const btnStartRef = useRef(null);
+	const btnStopRef = useRef(null);
+	const pageNumRef = useRef(4);
+
+	const interval = 5000;
+	let num = 0;
+	let timer = null;
+
+	const activation = (index) => {
+		const frames = frameRef.current.children;
+		const pages = pageRef.current.children;
+
+		for (const frame of frames) frame.classList.remove('on');
+		for (const page of pages) page.classList.remove('on');
+		frames[index].classList.add('on');
+		pages[index].classList.add('on');
+
+		num = index;
+	};
+
+	const nextBtn = () => {
+		const frames = frameRef.current.children;
+		let len = frames.length - 1;
+
+		num < len ? num++ : (num = 0);
+		activation(num);
+	};
+
+	const prevBtn = () => {
+		const frames = frameRef.current.children;
+		let len = frames.length - 1;
+
+		num === 0 ? (num = len) : num--;
+		activation(num);
+	};
+
+	const startRolling = () => {
+		timer = setInterval(nextBtn, interval);
+
+		btnStartRef.current.classList.add('on');
+		btnStopRef.current.classList.remove('on');
+	};
+
+	const stopRolling = () => {
+		clearInterval(timer);
+
+		btnStartRef.current.classList.remove('on');
+		btnStopRef.current.classList.add('on');
+	};
+
+	useEffect(() => {
+		startRolling();
+
+		return () => {
+			activation(0);
+		};
+	}, []);
+
 	return (
 		<figure id='visual'>
-			<div className='slider'>
-				<ul>
-					<li style={{ backgroundImage: `url(${imgSrc}/img/visual1.jpg)` }} />
-					<li style={{ backgroundImage: `url(${imgSrc}/img/visual2.jpg)` }} />
-					<li style={{ backgroundImage: `url(${imgSrc}/img/visual3.jpg)` }} />
-					<li style={{ backgroundImage: `url(${imgSrc}/img/visual4.jpg)` }} />
-				</ul>
-			</div>
-			<ul className='sliderPage'>
-				<li href='#' className='on'>
-					1
-				</li>
-				<li href='#'>2</li>
-				<li href='#'>3</li>
-				<li href='#'>4</li>
+			<ul className='slider' ref={frameRef}>
+				<li className='on' style={{ backgroundImage: `url(${publicUrl}/img/visual1.jpg)` }} />
+				<li style={{ backgroundImage: `url(${publicUrl}/img/visual2.jpg)` }} />
+				<li style={{ backgroundImage: `url(${publicUrl}/img/visual3.jpg)` }} />
+				<li style={{ backgroundImage: `url(${publicUrl}/img/visual4.jpg)` }} />
 			</ul>
-			<button className='sliderBtn sliderNext'>
-				<img src={`${imgSrc}/img/next.png`} alt='다음 슬라이드 버튼' />
-			</button>
-			<button className='sliderBtn sliderPrev'>
-				<img src={`${imgSrc}/img/prev.png`} alt='이전 슬라이드 버튼' />
-			</button>
+
 			<div className='inner'>
+				<div className='btns'>
+					<ul className='sliderPage' ref={pageRef}>
+						{Array(pageNumRef.current)
+							.fill()
+							.map((_, idx) => {
+								let isOn = '';
+								idx === 0 && (isOn = 'on');
+								return (
+									<li
+										key={idx}
+										className={isOn}
+										onClick={() => {
+											activation(idx);
+										}}
+									/>
+								);
+							})}
+					</ul>
+
+					<button className='sliderBtn sliderNext' onClick={nextBtn}>
+						<img src={`${publicUrl}/img/next.png`} alt='다음 슬라이드 버튼' />
+					</button>
+					<button className='sliderBtn sliderPrev' onClick={prevBtn}>
+						<img src={`${publicUrl}/img/prev.png`} alt='이전 슬라이드 버튼' />
+					</button>
+					<span className='sliderRollingBtn'>
+						<FontAwesomeIcon icon={faPlay} ref={btnStartRef} onClick={startRolling} />
+						<FontAwesomeIcon icon={faPause} ref={btnStopRef} onClick={stopRolling} />
+					</span>
+				</div>
+
 				<div className='text'>
 					<h2>WELCOME TO YOUR NEW WEBSITE</h2>
 					<p>
