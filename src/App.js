@@ -25,7 +25,6 @@ function App() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		console.log('start');
 		dispatch({ type: types.YOUTUBE.start });
 	}, [dispatch]);
 

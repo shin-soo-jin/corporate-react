@@ -1,34 +1,42 @@
-import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useRef } from 'react';
+import { useSelector } from 'react-redux';
+import Modal from '../common/Modal';
 
 function Company() {
+	const modal = useRef(null);
+	const vid = useSelector((store) => store.youtubeReducer.youtube);
+	const idx = 0;
+
 	return (
-		<section id='company' className='scrollSection'>
-			<div className='inner'>
-				<div className='text'>
-					<h2>MEET OUR COMPANY</h2>
-					<p>
-						Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur fugiat tenetur ex
-						exercitationem alias quos veritatis debitis error modi facilis tempora repellat
-						repudiandae illo amet corporis, repellendus officiis minima inventore?
-					</p>
-					<a href='#' className='btn'>
-						SEE OUR LATEST WORK
-					</a>
-				</div>
-				<div className='vid'>
-					<video src={`${process.env.PUBLIC_URL}/img/company.mp4`} loop></video>
-					<a href='#' className='vidBtn'>
-						<i>
+		<>
+			<section id='company' className='scrollSection'>
+				<div className='inner'>
+					<div className='text'>
+						<h2>MEET OUR COMPANY</h2>
+						<p>
+							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur fugiat tenetur
+							ex exercitationem alias quos veritatis debitis error modi facilis tempora repellat
+							repudiandae illo amet corporis, repellendus officiis minima inventore?
+						</p>
+						<button className='btn'>SEE OUR LATEST WORK</button>
+					</div>
+					<div className='vid' onClick={() => modal.current.open()}>
+						<img alt={vid[idx]?.id} src={`${vid[idx]?.snippet.thumbnails.maxres.url}`}></img>
+						<button className='vidBtn'>
 							<FontAwesomeIcon icon={faPlay} />
-						</i>
-						<i>
-							<FontAwesomeIcon icon={faPause} />
-						</i>
-					</a>
+						</button>
+					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+			<Modal ref={modal}>
+				<iframe
+					title={vid[idx]?.id}
+					src={`https://www.youtube.com/embed/${vid[idx]?.snippet.resourceId.videoId}`}
+				></iframe>
+			</Modal>
+		</>
 	);
 }
 
