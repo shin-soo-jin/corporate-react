@@ -9,7 +9,7 @@ export const getYoutube = async () => {
 	return await axios.get(url);
 };
 
-export const getFilckr = async (option) => {
+export const getFlickr = async (option) => {
 	const baseURL = 'https://www.flickr.com/services/rest/?format=json&nojsoncallback=1';
 	const method_interest = 'flickr.interestingness.getList';
 	const method_search = 'flickr.photos.search';
