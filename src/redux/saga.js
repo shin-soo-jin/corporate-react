@@ -1,5 +1,5 @@
 import { takeLatest, all, put, fork, call } from 'redux-saga/effects';
-import { getYoutube } from './api';
+import { getYoutube, getFlickr } from './api';
 import * as types from './actionType';
 
 function* callYoutube() {
@@ -14,6 +14,18 @@ function* returnYoutube() {
 	}
 }
 
+function* callFlickr() {
+	yield takeLatest(types.FLICKR.start, returnFlickr);
+}
+function* returnFlickr() {
+	try {
+		const response = yield call(getFlickr);
+		yield put({ type: types.FLICKR.sucess, payload: response.data.photos.photo });
+	} catch (err) {
+		yield put({ type: types.FLICKR.fail, payload: err });
+	}
+}
+
 export default function* rootSaga() {
-	yield all([fork(callYoutube)]);
+	yield all([fork(callYoutube), fork(callFlickr)]);
 }
