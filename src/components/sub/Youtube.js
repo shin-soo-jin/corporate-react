@@ -1,23 +1,12 @@
-import axios from 'axios';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 import Layout from '../common/Layout';
 import Modal from '../common/Modal';
 
 function Youtube() {
 	const modal = useRef(null);
-	const [Vids, setVids] = useState([]);
 	const [Index, setIndex] = useState(0);
-
-	useEffect(() => {
-		const key = 'AIzaSyDNF6ER_FjS5SUokp336zPZpztBATERgqU';
-		const playlistId = 'PLJMGVKPzkm8wzgPYetuzATsT2fbnH9mn5';
-		const maxResults = 12;
-		const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&key=${key}&playlistId=${playlistId}&maxResults=${maxResults}`;
-
-		axios.get(url).then((json) => {
-			setVids(json.data.items);
-		});
-	}, []);
+	const Vids = useSelector((store) => store.youtube.data);
 
 	return (
 		<>

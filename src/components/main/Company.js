@@ -1,7 +1,10 @@
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useSelector } from 'react-redux';
 
 function Company() {
+	const vid = useSelector((store) => store.youtube.data);
+	console.log(vid);
 	return (
 		<section id='company' className='scrollSection'>
 			<div className='inner'>
@@ -17,6 +20,7 @@ function Company() {
 					</a>
 				</div>
 				<div className='vid'>
+					<p>{vid[0]?.snippet.title}</p>
 					<video src={`${process.env.PUBLIC_URL}/img/company.mp4`} loop></video>
 					<a href='#' className='vidBtn'>
 						<i>

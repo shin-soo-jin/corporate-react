@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 
 // common
@@ -15,10 +17,17 @@ import Join from './components/sub/Join';
 import News from './components/sub/News';
 import Search from './components/sub/Search';
 import Youtube from './components/sub/Youtube';
+import { fetchYoutube } from './redux/youtubeSlice';
 
 import './scss/style.scss';
 
 function App() {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(fetchYoutube());
+	}, [dispatch]);
+
 	return (
 		<>
 			<Switch>
