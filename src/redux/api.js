@@ -23,7 +23,7 @@ export const getFlickr = async (option) => {
 	if (option.type === 'search')
 		url = `${baseURL}&method=${method_search}&api_key=${api_key}&per_page=${per_page}&tags=${option.tags}`;
 	if (option.type === 'user')
-		url = `${baseURL}&method=${method_user}&api_key=${api_key}&per_page=${per_page}&user_id=${option.user_id}`;
+		url = `${baseURL}&method=${method_user}&api_key=${api_key}&per_page=${per_page}&user_id=${option.user}`;
 
 	return await axios.get(url);
 };
