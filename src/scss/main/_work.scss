@@ -36,11 +36,13 @@
 						line-height: 1.6;
 						margin-bottom: 20px;
 					}
-					a {
+					button {
 						display: block;
 						font-size: 12px;
 						font-weight: bold;
 						color: #4b84db;
+						background: transparent;
+						border: transparent;
 					}
 				}
 				&::after {

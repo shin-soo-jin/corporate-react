@@ -5,8 +5,6 @@ function Work() {
 	const Items = useSelector((store) => store.flickrReducer.flickr);
 	const num = 0;
 
-	console.log(Items);
-
 	return (
 		<section id='work' className='scrollSection'>
 			<div className='inner'>
@@ -26,7 +24,7 @@ function Work() {
 								ex assumenda possimus id? Accusamus error excepturi eos libero debitis. Doloremque
 								commodi repellendus, veritatis laboriosam esse ratione voluptas.
 							</p>
-							<a href='#'>READ MORE</a>
+							<button>READ MORE</button>
 						</div>
 					</article>
 					<article>
@@ -41,7 +39,7 @@ function Work() {
 								ex assumenda possimus id? Accusamus error excepturi eos libero debitis. Doloremque
 								commodi repellendus, veritatis laboriosam esse ratione voluptas.
 							</p>
-							<a href='#'>READ MORE</a>
+							<button>READ MORE</button>
 						</div>
 					</article>
 					<article>
@@ -55,7 +53,7 @@ function Work() {
 								ex assumenda possimus id? Accusamus error excepturi eos libero debitis. Doloremque
 								commodi repellendus, veritatis laboriosam esse ratione voluptas.
 							</p>
-							<a href='#'>READ MORE</a>
+							<button>READ MORE</button>
 						</div>
 					</article>
 				</div>
