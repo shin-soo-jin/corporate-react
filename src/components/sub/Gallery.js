@@ -53,7 +53,7 @@ function Gallery() {
 
 	useEffect(() => {
 		dispatch({ type: types.FLICKR.start, Opt });
-	});
+	}, [Opt, dispatch]);
 
 	return (
 		<>
