@@ -46,7 +46,7 @@ function Gallery() {
 
 	useEffect(() => {
 		setTimeout(() => {
-			frame.current.classList.add('on');
+			frame.current?.classList.add('on');
 			setLoading(false);
 		}, 500);
 	}, [Items]);
@@ -102,6 +102,12 @@ function Gallery() {
 													src={`http://farm${el.farm}.staticflickr.com/${el.server}/buddyicons/${el.owner}.jpg`}
 													alt={el.owner}
 													className='profile'
+													onError={(e) =>
+														e.target.setAttribute(
+															'src',
+															'https://www.flickr.com/images/buddyicon.gif'
+														)
+													}
 												/>
 												<strong onClick={showUser}>{el.owner}</strong>
 											</span>
