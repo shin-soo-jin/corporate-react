@@ -52,16 +52,14 @@ function Visual() {
 	const stopRolling = () => {
 		clearInterval(timer);
 
-		btnStartRef.current.classList.remove('on');
-		btnStopRef.current.classList.add('on');
+		btnStartRef.current?.classList.remove('on');
+		btnStopRef.current?.classList.add('on');
 	};
 
 	useEffect(() => {
 		startRolling();
 
-		return () => {
-			activation(0);
-		};
+		return () => stopRolling();
 	}, []);
 
 	return (
