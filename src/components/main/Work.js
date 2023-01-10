@@ -1,6 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 function Work() {
+	const Items = useSelector((store) => store.flickrReducer.flickr);
+	const num = 0;
+
+	console.log(Items);
+
 	return (
 		<section id='work' className='scrollSection'>
 			<div className='inner'>
@@ -8,7 +14,10 @@ function Work() {
 				<div className='wrap'>
 					<article>
 						<div className='pic'>
-							<img src={`${process.env.PUBLIC_URL}/img/work1.jpg`} alt='회의실 사진' />
+							<img
+								src={`https://live.staticflickr.com/${Items[num]?.server}/${Items[num]?.id}_${Items[num]?.secret}_b.jpg`}
+								alt={Items.title}
+							/>
 						</div>
 						<div className='text'>
 							<h3>OUR MISSION STATEMENT</h3>
