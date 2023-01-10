@@ -52,11 +52,6 @@ function Header(props) {
 					</nav>
 					<ul className='util'>
 						<li>
-							<NavLink to='/search' activeStyle={active}>
-								<FontAwesomeIcon icon={faMagnifyingGlass} />
-							</NavLink>
-						</li>
-						<li>
 							<NavLink to='/join' activeStyle={active}>
 								<FontAwesomeIcon icon={faUser} />
 							</NavLink>
@@ -116,11 +111,6 @@ function Header(props) {
 								</ul>
 							</nav>
 							<ul className='util'>
-								<li>
-									<NavLink to='/search' activeStyle={active}>
-										<FontAwesomeIcon icon={faMagnifyingGlass} />
-									</NavLink>
-								</li>
 								<li>
 									<NavLink to='/join' activeStyle={active}>
 										<FontAwesomeIcon icon={faUser} />
