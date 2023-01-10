@@ -1,57 +1,26 @@
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useRef, useState } from 'react';
-import axios from 'axios';
 import Layout from '../common/Layout';
 import Masonry from 'react-masonry-component';
 import Modal from '../common/Modal';
+import { useDispatch, useSelector } from 'react-redux';
+import * as types from '../../redux/actionType';
 
 function Gallery() {
+	const dispatch = useDispatch();
 	const my_id = '197333350@N05';
 	const masonryOptions = { transitionDuration: '0.5s' };
 	const input = useRef(null);
 	const frame = useRef(null);
 	const modal = useRef(null);
-	const [Items, setItems] = useState([]);
 	const [Loading, setLoading] = useState(true);
 	const [Index, setIndex] = useState(0);
-
-	const getFilckr = async (option) => {
-		const baseURL = 'https://www.flickr.com/services/rest/?format=json&nojsoncallback=1';
-		const method_interest = 'flickr.interestingness.getList';
-		const method_search = 'flickr.photos.search';
-		const method_user = 'flickr.people.getPhotos';
-		const api_key = '351a57e95d2a68e2c23e344ae6c77508';
-		const per_page = 12;
-		let url = '';
-
-		if (option.type === 'interest')
-			url = `${baseURL}&method=${method_interest}&api_key=${api_key}&per_page=${per_page}`;
-		if (option.type === 'search')
-			url = `${baseURL}&method=${method_search}&api_key=${api_key}&per_page=${per_page}&tags=${option.tags}`;
-		if (option.type === 'user')
-			url = `${baseURL}&method=${method_user}&api_key=${api_key}&per_page=${per_page}&user_id=${option.user_id}`;
-
-		const result = await axios.get(url);
-		if (result.data.photos.photo.length === 0) {
-			frame.current.classList.add('on');
-			setLoading(false);
-			return alert('검색 결과가 없습니다.');
-		}
-		setItems(result.data.photos.photo);
-
-		setTimeout(() => {
-			frame.current.classList.add('on');
-			setLoading(false);
-		}, 500);
-	};
-
-	useEffect(() => {
-		showInterest();
-	}, []);
+	const [Opt, setOpt] = useState({ type: 'user', user: my_id });
+	const Items = useSelector((store) => store.flickrReducer.flickr);
 
 	const showInterest = () => {
-		getFilckr({ type: 'interest' });
+		setOpt({ type: 'interest' });
 		frame.current.classList.remove('on');
 		setLoading(true);
 	};
@@ -59,21 +28,32 @@ function Gallery() {
 		let tags = input.current.value.trim();
 		input.current.value = '';
 		if (!tags) return alert('검색어를 입력하지 않았습니다. 검색어를 입력하세요.');
-		getFilckr({ type: 'search', tags: tags });
+		setOpt({ type: 'search', tags: tags });
 		frame.current.classList.remove('on');
 		setLoading(true);
 	};
 	const showUser = (e) => {
 		let user_id = e.target.innerText;
-		getFilckr({ type: 'user', user_id: user_id });
+		setOpt({ type: 'user', user_id: user_id });
 		frame.current.classList.remove('on');
 		setLoading(true);
 	};
 	const showMine = () => {
-		getFilckr({ type: 'user', user_id: my_id });
+		setOpt({ type: 'user', user_id: my_id });
 		frame.current.classList.remove('on');
 		setLoading(true);
 	};
+
+	useEffect(() => {
+		setTimeout(() => {
+			frame.current.classList.add('on');
+			setLoading(false);
+		}, 500);
+	}, [Items]);
+
+	useEffect(() => {
+		dispatch({ type: types.FLICKR.start, Opt });
+	});
 
 	return (
 		<>
