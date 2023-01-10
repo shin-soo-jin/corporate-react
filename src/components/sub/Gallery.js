@@ -34,12 +34,12 @@ function Gallery() {
 	};
 	const showUser = (e) => {
 		let user_id = e.target.innerText;
-		setOpt({ type: 'user', user_id: user_id });
+		setOpt({ type: 'user', user: user_id });
 		frame.current.classList.remove('on');
 		setLoading(true);
 	};
 	const showMine = () => {
-		setOpt({ type: 'user', user_id: my_id });
+		setOpt({ type: 'user', user: my_id });
 		frame.current.classList.remove('on');
 		setLoading(true);
 	};
