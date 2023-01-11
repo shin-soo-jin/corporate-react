@@ -1,6 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
-import { faTwitter, faFacebookF, faPinterestP, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import {
+	faTwitter,
+	faFacebookF,
+	faPinterestP,
+	faLinkedinIn,
+} from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom';
 
 function Footer() {
 	return (
@@ -11,23 +16,23 @@ function Footer() {
 						B
 					</h2>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores adipisci, velit possimus quisquam dicta
-						eligendi maxime debitis eius sequi incidunt officia ut corrupti deleniti ea rerum dolorem accusantium
-						voluptates nemo?
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores adipisci, velit
+						possimus quisquam dicta eligendi maxime debitis eius sequi incidunt officia ut corrupti
+						deleniti ea rerum dolorem accusantium voluptates nemo?
 					</p>
 					<div className='sns'>
-						<a href='#'>
+						<Link to='#'>
 							<FontAwesomeIcon icon={faTwitter} />
-						</a>
-						<a href='#'>
+						</Link>
+						<Link to='#'>
 							<FontAwesomeIcon icon={faFacebookF} />
-						</a>
-						<a href='#'>
+						</Link>
+						<Link to='#'>
 							<FontAwesomeIcon icon={faPinterestP} />
-						</a>
-						<a href='#'>
+						</Link>
+						<Link to='#'>
 							<FontAwesomeIcon icon={faLinkedinIn} />
-						</a>
+						</Link>
 					</div>
 				</div>
 				<div className='link'>
@@ -37,42 +42,19 @@ function Footer() {
 					</p>
 					<ul>
 						<li>
-							<a href='#'>Contact our marketing team</a>
+							<Link to='#'>Contact our marketing team</Link>
 						</li>
 						<li>
-							<a href='#'>See our clients</a>
+							<Link to='#'>See our clients</Link>
 						</li>
 						<li>
-							<a href='#'>Sign up for Newsletter</a>
+							<Link to='#'>Sign up for Newsletter</Link>
 						</li>
 						<li>
-							<a href='#'>Copyright information</a>
+							<Link to='#'>Copyright information</Link>
 						</li>
 						<li>
-							<a href='#'>Legal Disclaimer</a>
-						</li>
-					</ul>
-				</div>
-				<div className='link'>
-					<p>
-						<strong>ADDITIONAL LINKS</strong>
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, assumenda!
-					</p>
-					<ul>
-						<li>
-							<a href='#'>Contact our marketing team</a>
-						</li>
-						<li>
-							<a href='#'>See our clients</a>
-						</li>
-						<li>
-							<a href='#'>Sign up for Newsletter</a>
-						</li>
-						<li>
-							<a href='#'>Copyright information</a>
-						</li>
-						<li>
-							<a href='#'>Legal Disclaimer</a>
+							<Link to='#'>Legal Disclaimer</Link>
 						</li>
 					</ul>
 				</div>
@@ -83,28 +65,47 @@ function Footer() {
 					</p>
 					<ul>
 						<li>
-							<a href='#'>Contact our marketing team</a>
+							<Link to='#'>Contact our marketing team</Link>
 						</li>
 						<li>
-							<a href='#'>See our clients</a>
+							<Link to='#'>See our clients</Link>
 						</li>
 						<li>
-							<a href='#'>Sign up for Newsletter</a>
+							<Link to='#'>Sign up for Newsletter</Link>
 						</li>
 						<li>
-							<a href='#'>Copyright information</a>
+							<Link to='#'>Copyright information</Link>
 						</li>
 						<li>
-							<a href='#'>Legal Disclaimer</a>
+							<Link to='#'>Legal Disclaimer</Link>
+						</li>
+					</ul>
+				</div>
+				<div className='link'>
+					<p>
+						<strong>ADDITIONAL LINKS</strong>
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, assumenda!
+					</p>
+					<ul>
+						<li>
+							<Link to='#'>Contact our marketing team</Link>
+						</li>
+						<li>
+							<Link to='#'>See our clients</Link>
+						</li>
+						<li>
+							<Link to='#'>Sign up for Newsletter</Link>
+						</li>
+						<li>
+							<Link to='#'>Copyright information</Link>
+						</li>
+						<li>
+							<Link to='#'>Legal Disclaimer</Link>
 						</li>
 					</ul>
 				</div>
 			</div>
 			<p className='copy'>Copyright &copy; B All Rights Reserved.</p>
-			<a href='#' className='btnTop'>
-				<FontAwesomeIcon icon={faArrowUp} />
-				<span>TOP</span>
-			</a>
 		</footer>
 	);
 }

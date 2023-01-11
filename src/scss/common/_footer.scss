@@ -1,5 +1,4 @@
 footer {
-	position: relative;
 	background: #111;
 	.inner {
 		width: 1180px;
@@ -76,33 +75,6 @@ footer {
 		background: #333;
 		text-align: center;
 		color: #777;
-	}
-	.btnTop {
-		position: absolute;
-		bottom: 3%;
-		right: 3%;
-		width: 60px;
-		height: 60px;
-		border: 3px solid #fff;
-		border-radius: 50%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		color: #fff;
-		font-size: 20px;
-		span {
-			text-indent: -9999px;
-			color: transparent;
-			opacity: 0;
-		}
-		.fa-arrow-up {
-			transition: 0.3s;
-		}
-		&:hover {
-			.fa-arrow-up {
-				transform: translateY(-15%);
-			}
-		}
 	}
 }
 

@@ -1,3 +1,5 @@
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useRef } from 'react';
 import Anime from '../../asset/anime';
 
@@ -6,6 +8,7 @@ function Btns() {
 	const btnsRef = useRef(null);
 	const posRef = useRef([]);
 	const speed = useRef(500);
+	const btnTopRef = useRef(null);
 
 	const getPos = () => {
 		posRef.current = [];
@@ -27,6 +30,10 @@ function Btns() {
 				sections[idx].classList.add('on');
 			}
 		});
+
+		scroll >= posRef.current[4]
+			? btnTopRef.current.classList.add('on')
+			: btnTopRef.current.classList.remove('on');
 	};
 
 	useEffect(() => {
@@ -42,27 +49,39 @@ function Btns() {
 	}, []);
 
 	return (
-		<ul className='scrollNavi' ref={btnsRef}>
-			{Array(numRef.current)
-				.fill()
-				.map((_, idx) => {
-					let isOn = '';
-					idx === 0 && (isOn = 'on');
-					return (
-						<li
-							key={idx}
-							className={isOn}
-							onClick={() => {
-								new Anime(window, {
-									prop: 'scroll',
-									value: posRef.current[idx],
-									duration: speed.current,
-								});
-							}}
-						></li>
-					);
-				})}
-		</ul>
+		<>
+			<ul className='scrollNavi' ref={btnsRef}>
+				{Array(numRef.current)
+					.fill()
+					.map((_, idx) => {
+						let isOn = '';
+						idx === 0 && (isOn = 'on');
+						return (
+							<li
+								key={idx}
+								className={isOn}
+								onClick={() => {
+									new Anime(window, {
+										prop: 'scroll',
+										value: posRef.current[idx],
+										duration: speed.current,
+									});
+								}}
+							></li>
+						);
+					})}
+			</ul>
+			<button
+				className='btnTop'
+				ref={btnTopRef}
+				onClick={() => {
+					window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+				}}
+			>
+				<FontAwesomeIcon icon={faArrowUp} />
+				<span>TOP</span>
+			</button>
+		</>
 	);
 }
 
