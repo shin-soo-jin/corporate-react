@@ -7,36 +7,73 @@ function Youtube() {
 	const Vids = useSelector((store) => store.youtubeReducer.youtube);
 	const modal = useRef(null);
 	const [Index, setIndex] = useState(0);
+	const num = 4;
 
 	return (
 		<>
 			<Layout name={'YOUTUBE'} txt={'Meet YouTube'}>
-				<div className='vidList'>
-					{Vids.map((data, idx) => {
-						const tit = data.snippet.title;
-						const owner = data.snippet.videoOwnerChannelTitle;
-						const desc = data.snippet.description;
+				<article className='txt'>
+					<h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, sed.</h2>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat minima rem velit quas
+						quidem illum nesciunt aliquam, impedit dolorum est aspernatur deleniti iusto enim
+						ducimus nam ut adipisci! Ex, minus?
+					</p>
+				</article>
+				<article className='vidList'>
+					<ul>
+						{Vids.map((data, idx) => {
+							const tit = data.snippet.title;
+							const owner = data.snippet.videoOwnerChannelTitle;
+							const desc = data.snippet.description;
+							if (idx >= 4) return null;
+							return (
+								<li key={data.id}>
+									<div
+										className='pic'
+										onClick={() => {
+											modal.current.open();
+											setIndex(idx);
+										}}
+									>
+										<img src={data.snippet.thumbnails.maxres.url} alt={data.snippet.title} />
+									</div>
+								</li>
+							);
+						})}
+					</ul>
+				</article>
 
-						return (
-							<article key={data.id}>
-								<div
-									className='pic'
-									onClick={() => {
-										modal.current.open();
-										setIndex(idx);
-									}}
-								>
-									<img src={data.snippet.thumbnails.maxres.url} alt={data.snippet.title} />
-								</div>
-								<div className='text'>
-									<h2>{tit.length > 30 ? tit.substr(0, 30) + '...' : tit}</h2>
-									<span>{owner}</span>
-									<em>{desc.length > 100 ? desc.substr(0, 25) + '...' : desc}</em>
-								</div>
-							</article>
-						);
-					})}
-				</div>
+				<article className='video'>
+					<div
+						className='vid'
+						onClick={() => {
+							modal.current.open();
+							setIndex(num);
+						}}
+					>
+						<img
+							alt={`${Vids[num]?.snippet.title}`}
+							src={`${Vids[num]?.snippet.thumbnails.maxres.url}`}
+						/>
+					</div>
+					<div className='text'>
+						<h2>{`${Vids[num]?.snippet.title}`}</h2>
+						<p>{`${
+							Vids[num]?.snippet.description.length > 300
+								? Vids[num]?.snippet.description.substr(0, 300) + '...'
+								: Vids[num]?.snippet.description
+						}`}</p>
+						<button
+							onClick={() => {
+								modal.current.open();
+								setIndex(num);
+							}}
+						>
+							button
+						</button>
+					</div>
+				</article>
 			</Layout>
 
 			<Modal ref={modal}>
