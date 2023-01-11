@@ -23,9 +23,6 @@ function Youtube() {
 				<article className='vidList'>
 					<ul>
 						{Vids.map((data, idx) => {
-							const tit = data.snippet.title;
-							const owner = data.snippet.videoOwnerChannelTitle;
-							const desc = data.snippet.description;
 							if (idx >= 4) return null;
 							return (
 								<li key={data.id}>

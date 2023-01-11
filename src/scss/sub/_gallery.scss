@@ -1,117 +1,144 @@
 .GALLERY {
 	.inner {
-		.controls {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			padding: 40px 10px;
-			nav {
-				button {
-					width: 100px;
-					height: 40px;
-					font-size: 16px;
-					margin-right: 10px;
-					cursor: pointer;
-				}
-			}
-			.searchBox {
-				font-size: 0;
-				input {
-					width: 200px;
-					height: 40px;
-					padding: 10px;
-					font-size: 16px;
-					border: 1px solid #333;
-				}
-				button {
-					display: inline-block;
-					width: 40px;
-					height: 40px;
-					line-height: 40px;
-					text-align: center;
-					vertical-align: top;
-					border: 1px solid #333;
-					border-left: none;
-					font-size: 20px;
-					color: #333;
-					cursor: pointer;
-				}
+		.txtTop {
+			padding: 80px 0;
+			text-align: center;
+			h2 {
+				margin-bottom: 10px;
 			}
 		}
 		.wrap {
-			.list {
-				font-size: 0;
-				transform: translateY(200px);
-				opacity: 0;
-				transition: opacity 0.5s, transform 0.5s;
-				&.on {
-					transform: translateY(0px);
-					opacity: 1;
+			padding: 0 0 80px;
+			.controls {
+				padding: 0 0 40px;
+				position: relative;
+				nav {
+					text-align: center;
+					button {
+						width: 100px;
+						height: 40px;
+						font-size: 16px;
+						margin: 0 10px;
+						cursor: pointer;
+					}
 				}
-				&::after {
-					content: '';
-					display: block;
-					clear: both;
+				.searchBox {
+					position: absolute;
+					right: 0;
+					top: 0;
+					input {
+						width: 200px;
+						height: 40px;
+						padding: 10px;
+						font-size: 16px;
+						border: 1px solid #333;
+					}
+					button {
+						display: inline-block;
+						width: 40px;
+						height: 40px;
+						line-height: 40px;
+						text-align: center;
+						vertical-align: top;
+						border: 1px solid #333;
+						border-left: none;
+						font-size: 20px;
+						color: #333;
+						cursor: pointer;
+					}
 				}
-				.item {
-					float: left;
-					width: calc(100% / 3);
-					padding: 10px;
-					div {
-						position: relative;
-						&:hover {
-							span {
-								opacity: 1;
+			}
+			.imgList {
+				.list {
+					font-size: 0;
+					transform: translateY(200px);
+					opacity: 0;
+					transition: opacity 0.5s, transform 0.5s;
+					&.on {
+						transform: translateY(0px);
+						opacity: 1;
+					}
+					&::after {
+						content: '';
+						display: block;
+						clear: both;
+					}
+					.item {
+						float: left;
+						width: calc(100% / 3);
+						padding: 10px;
+						div {
+							position: relative;
+							&:hover {
+								span {
+									opacity: 1;
+								}
 							}
-						}
-						.pic {
-							width: 100%;
-							> img {
+							.pic {
 								width: 100%;
+								> img {
+									width: 100%;
+								}
 							}
-						}
-						span {
-							display: block;
-							width: 100%;
-							padding: 5px;
-							background: rgba(0, 0, 0, 0.4);
-							position: absolute;
-							bottom: 0;
-							left: 0;
-							opacity: 0;
-							transition: 0.5s;
-							p {
-								font-size: 14px;
-								font-weight: bold;
-								color: #fff;
-								margin-bottom: 10px;
-							}
-							> img {
-								width: 20px;
-								height: 20px;
-								border-radius: 50%;
-								margin-right: 5px;
-							}
-							strong {
-								font-size: 10px;
-								font-weight: normal;
-								color: #eee;
-								vertical-align: top;
-								line-height: 20px;
-								cursor: pointer;
+							span {
+								display: block;
+								width: 100%;
+								padding: 5px;
+								background: rgba(0, 0, 0, 0.4);
+								position: absolute;
+								bottom: 0;
+								left: 0;
+								opacity: 0;
+								transition: 0.5s;
+								p {
+									font-size: 14px;
+									font-weight: bold;
+									color: #fff;
+									margin-bottom: 10px;
+								}
+								> img {
+									width: 20px;
+									height: 20px;
+									border-radius: 50%;
+									margin-right: 5px;
+								}
+								strong {
+									font-size: 10px;
+									font-weight: normal;
+									color: #eee;
+									vertical-align: top;
+									line-height: 20px;
+									cursor: pointer;
+								}
 							}
 						}
 					}
 				}
 			}
+			.loading {
+				width: 100px;
+				position: fixed;
+				top: 70%;
+				left: 50%;
+				transform: translateX(-50%);
+				transition: 1s;
+			}
 		}
-		.loading {
-			width: 100px;
-			position: fixed;
-			top: 70%;
-			left: 50%;
-			transform: translateX(-50%);
-			transition: 1s;
+		.txtBottom {
+			padding: 80px 0;
+			h2 {
+				text-align: center;
+				margin-bottom: 20px;
+			}
+			p {
+				&:nth-of-type(1) {
+					text-align: center;
+					margin-bottom: 40px;
+				}
+				&:nth-of-type(2) {
+					margin-bottom: 20px;
+				}
+			}
 		}
 	}
 }
