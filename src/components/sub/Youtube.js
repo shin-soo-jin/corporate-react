@@ -12,6 +12,40 @@ function Youtube() {
 	return (
 		<>
 			<Layout name={'YOUTUBE'} txt={'Meet YouTube'}>
+				<article className='txt'>
+					<div className='inner'>
+						<h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, sed.</h2>
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat minima rem velit quas
+							quidem illum nesciunt aliquam, impedit dolorum est aspernatur deleniti iusto enim
+							ducimus nam ut adipisci! Ex, minus?
+						</p>
+					</div>
+				</article>
+
+				<div className='inner'>
+					<article className='vidList'>
+						<ul>
+							{Vids.map((data, idx) => {
+								if (idx >= 8) return null;
+								return (
+									<li key={data.id}>
+										<div
+											className='pic'
+											onClick={() => {
+												modal.current.open();
+												setIndex(idx);
+											}}
+										>
+											<img src={data.snippet.thumbnails.maxres.url} alt={data.snippet.title} />
+										</div>
+									</li>
+								);
+							})}
+						</ul>
+					</article>
+				</div>
+
 				<article className='video'>
 					<div className='inner'>
 						<div
@@ -42,40 +76,6 @@ function Youtube() {
 								button
 							</button>
 						</div>
-					</div>
-				</article>
-
-				<div className='inner'>
-					<article className='vidList'>
-						<ul>
-							{Vids.map((data, idx) => {
-								if (idx >= 8) return null;
-								return (
-									<li key={data.id}>
-										<div
-											className='pic'
-											onClick={() => {
-												modal.current.open();
-												setIndex(idx);
-											}}
-										>
-											<img src={data.snippet.thumbnails.maxres.url} alt={data.snippet.title} />
-										</div>
-									</li>
-								);
-							})}
-						</ul>
-					</article>
-				</div>
-
-				<article className='txt'>
-					<div className='inner'>
-						<h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, sed.</h2>
-						<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat minima rem velit quas
-							quidem illum nesciunt aliquam, impedit dolorum est aspernatur deleniti iusto enim
-							ducimus nam ut adipisci! Ex, minus?
-						</p>
 					</div>
 				</article>
 			</Layout>

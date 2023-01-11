@@ -39,8 +39,8 @@
 						height: 2px;
 						background: gray;
 						position: absolute;
-						top: 100%;
-						left: 0%;
+						bottom: 0;
+						left: 0;
 					}
 					&.on {
 						&::after {

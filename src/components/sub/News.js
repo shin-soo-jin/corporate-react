@@ -20,8 +20,12 @@ function News() {
 	return (
 		<Layout name={'NEWS'} txt={'News Of Our Company'}>
 			<div className='inner'>
+				<article className='tit'>
+					<h2>Lorem ipsum dolor sit amet consectetur.</h2>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, possimus?</p>
+				</article>
 				<article className='con'>
-					<h2 className='hidden'>이벤트,뉴스,자주하는질문</h2>
+					<h2 className='hidden'>뉴스페이지컨텐츠</h2>
 					<ul>
 						<li className={IndexState === 1 ? 'on' : ''} onClick={() => setIndexState(1)}>
 							커뮤니티

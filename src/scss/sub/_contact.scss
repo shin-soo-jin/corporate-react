@@ -1,55 +1,117 @@
 .CONTACT {
-	#map {
-		width: 100%;
-		height: 500px;
-		margin: 80px 0;
-		background: #000;
-	}
-	.wrap {
-		&::after {
-			content: '';
-			display: block;
-			clear: both;
-		}
-		.text {
-			width: 25%;
-			float: left;
+	margin-bottom: 0;
+	.inner {
+		.tit {
+			padding: 100px 0;
 			h2 {
-				font-size: 24px;
-				font-weight: bold;
-				margin-bottom: 20px;
+				text-align: center;
+				margin-bottom: 10px;
+			}
+			> p {
+				text-align: center;
+				padding-bottom: 50px;
+				margin-bottom: 50px;
+				position: relative;
+				&::after {
+					content: '';
+					display: block;
+					width: 25%;
+					height: 1px;
+					background: #aaa;
+					position: absolute;
+					bottom: 0;
+					left: 50%;
+					transform: translateX(-50%);
+				}
 			}
 			ul {
+				display: flex;
+				gap: 20px;
 				li {
-					margin-bottom: 20px;
 					font-size: 16px;
-					font-weight: bold;
-					letter-spacing: 1px;
-					i {
-						display: inline-block;
-						width: 50px;
-						height: 50px;
-						border: 1px solid #ccc;
-						border-radius: 50%;
-						text-align: center;
-						line-height: 50px;
-						font-size: 20px;
-						color: #3c6ab0;
-						margin-right: 10px;
+					strong {
+						margin-left: 10px;
+					}
+					p {
+						margin-top: 10px;
 					}
 				}
 			}
 		}
-
-		form {
-			float: left;
-			width: 75%;
-			fieldset {
-				legend {
-					font-size: 24px;
-					font-weight: bold;
-					margin-bottom: 20px;
+		.mapCon {
+			padding: 0 0 100px;
+			h2 {
+				font-size: 20px;
+				font-weight: normal;
+				padding: 20px 0;
+				svg {
+					margin-right: 10px;
 				}
+				text-align: center;
+			}
+			#map {
+				width: 100%;
+				height: 500px;
+				background: #ccc;
+			}
+			ul {
+				margin: 40px 0;
+				border: 1px solid #ccc;
+				display: flex;
+				li {
+					width: calc(100% / 3);
+					padding: 10px 0;
+					text-align: center;
+					font-size: 16px;
+					color: #333;
+					border-right: 1px solid #ccc;
+					position: relative;
+					cursor: pointer;
+					&:last-of-type {
+						border-right: none;
+					}
+					&::before {
+						opacity: 0;
+						content: '';
+						display: block;
+						position: absolute;
+						top: -1px;
+						left: 0;
+						width: 100%;
+						height: 2px;
+						background: #3c6ab0;
+					}
+					&:hover {
+						font-weight: bold;
+						color: #3c6ab0;
+						&::before {
+							opacity: 1;
+						}
+					}
+					&.on {
+						font-weight: bold;
+						color: #3c6ab0;
+						&::before {
+							opacity: 1;
+						}
+					}
+				}
+			}
+		}
+	}
+	.contactCon {
+		background: #fafafa;
+		padding: 100px 0;
+		h2 {
+			text-align: center;
+			margin-bottom: 10px;
+		}
+		p {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+		form {
+			fieldset {
 				b {
 					font-size: 16px;
 					font-weight: bold;
@@ -66,42 +128,35 @@
 						margin-bottom: 20px;
 					}
 				}
-				input[type='text'] {
-					display: block;
-					width: 100%;
-					height: 40px;
-					border: none;
-					border-bottom: 1px solid #333;
-					text-indent: 10px;
-					font-size: 16px;
+
+				.wrap {
+					display: flex;
+					justify-content: space-between;
 					margin-bottom: 20px;
+					input[type='text'] {
+						display: block;
+						width: 49%;
+						height: 40px;
+						border: none;
+						border-bottom: 1px solid #333;
+						background: transparent;
+						padding: 10px;
+						font-size: 16px;
+					}
 				}
 				textarea {
 					width: 100%;
-					height: 200px;
 					border: none;
 					border-bottom: 1px solid #333;
-					text-indent: 10px;
+					background: transparent;
+					padding: 10px;
 					font-size: 16px;
-					margin-bottom: 20px;
+					margin-bottom: 40px;
 				}
-				input[type='button'] {
-					display: block;
-					width: 20%;
-					height: 40px;
-					margin: 0 auto;
-					border: 1px solid #3c6ab0;
-					background: #3c6ab0;
-					color: #fff;
+				input[type='submit'] {
+					@include button;
 					font-size: 16px;
-					font-weight: bold;
-					letter-spacing: 1px;
-					cursor: pointer;
-					transition: 0.3s;
-					&:hover {
-						background: #fff;
-						color: #3c6ab0;
-					}
+					float: right;
 				}
 			}
 		}

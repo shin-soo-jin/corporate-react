@@ -1,4 +1,4 @@
-import { faClock, faEnvelope, faMapMarkerAlt, faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useRef } from 'react';
 import Layout from '../common/Layout';
@@ -31,41 +31,46 @@ function Contact() {
 	return (
 		<Layout name={'CONTACT'} txt={'Contact Our Company'}>
 			<div className='inner'>
-				<div id='map' ref={mapContainer}></div>
-				<div className='wrap'>
-					<div className='text'>
-						<h2>INFO</h2>
-						<ul>
-							<li>
-								<i>
-									<FontAwesomeIcon icon={faPhoneAlt} />
-								</i>
-								070-1234-5678
-							</li>
-							<li>
-								<i>
-									<FontAwesomeIcon icon={faClock} />
-								</i>
-								9AM - 6PM
-							</li>
-							<li>
-								<i>
-									<FontAwesomeIcon icon={faMapMarkerAlt} />
-								</i>
-								SEOUL, KOREA
-							</li>
-							<li>
-								<i>
-									<FontAwesomeIcon icon={faEnvelope} />
-								</i>
-								B@B.com
-							</li>
-						</ul>
-					</div>
+				<article className='tit'>
+					<h2>Come and visit us</h2>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, dignissimos?</p>
 
+					<ul>
+						<li>
+							<FontAwesomeIcon icon={faPhoneAlt} />
+							<strong>Lorem ipsum dolor sit amet.</strong>
+							<p>
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, corporis cumque
+								libero assumenda iusto perspiciatis?
+							</p>
+						</li>
+						<li>
+							<FontAwesomeIcon icon={faClock} />
+							<strong>Lorem ipsum dolor sit amet.</strong>
+							<p>
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, corporis cumque
+								libero assumenda iusto perspiciatis?
+							</p>
+						</li>
+					</ul>
+				</article>
+				<article className='mapCon'>
+					<h2 className='hidden'>지도</h2>
+					<div id='map' ref={mapContainer}></div>
+					<ul>
+						<li>서울</li>
+						<li>인천</li>
+						<li>경기</li>
+					</ul>
+				</article>
+			</div>
+			<article className='contactCon'>
+				<div className='inner'>
+					<h2>Contact us</h2>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, sint?</p>
 					<form action=''>
 						<fieldset>
-							<legend>CONTACT OUR COMPANY</legend>
+							<legend className='hidden'>Contact us</legend>
 
 							<b>CATEGORY</b>
 							<label htmlFor='pc'>
@@ -81,15 +86,17 @@ function Contact() {
 								RESPONSIVE
 							</label>
 
-							<label htmlFor='name' className='hidden'>
-								NAME
-							</label>
-							<input type='text' name='name' id='name' placeholder='NAME' />
+							<div className='wrap'>
+								<label htmlFor='name' className='hidden'>
+									NAME
+								</label>
+								<input type='text' name='name' id='name' placeholder='NAME' />
 
-							<label htmlFor='email' className='hidden'>
-								E-MAIL
-							</label>
-							<input type='text' name='email' id='email' placeholder='E-MAIL' />
+								<label htmlFor='email' className='hidden'>
+									E-MAIL
+								</label>
+								<input type='text' name='email' id='email' placeholder='E-MAIL' />
+							</div>
 
 							<label htmlFor='message' className='hidden'>
 								MESSAGE
@@ -98,15 +105,15 @@ function Contact() {
 								name='message'
 								id='message'
 								cols='30'
-								rows='10'
+								rows='5'
 								placeholder='MESSAGE'
 							></textarea>
 
-							<input type='button' value='SEND' />
+							<input type='submit' value='SEND' />
 						</fieldset>
 					</form>
 				</div>
-			</div>
+			</article>
 		</Layout>
 	);
 }

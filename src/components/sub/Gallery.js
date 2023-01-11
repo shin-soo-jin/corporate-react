@@ -59,12 +59,12 @@ function Gallery() {
 	return (
 		<>
 			<Layout name={'GALLERY'} txt={'Meet Gallery'}>
-				{/* <article className='tit'>
+				<article className='tit'>
 					<div className='inner'>
 						<h2>Lorem ipsum dolor sit.</h2>
 						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt, in.</p>
 					</div>
-				</article> */}
+				</article>
 				<div className='inner'>
 					<article className='wrap'>
 						<div className='controls'>
