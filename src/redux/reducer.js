@@ -27,5 +27,18 @@ const flickrReducer = (state = { flickr: [] }, action) => {
 	}
 };
 
-const reducers = combineReducers({ youtubeReducer, flickrReducer });
+const menuReducer = (state = { open: false }, action) => {
+	switch (action.type) {
+		case types.MENU.open:
+			return { ...state, open: true };
+		case types.MENU.close:
+			return { ...state, open: false };
+		case types.MENU.toggle:
+			return { ...state, open: !state.open };
+		default:
+			return state;
+	}
+};
+
+const reducers = combineReducers({ youtubeReducer, flickrReducer, menuReducer });
 export default reducers;

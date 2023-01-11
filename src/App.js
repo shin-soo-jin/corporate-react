@@ -6,6 +6,7 @@ import * as types from './redux/actionType';
 // common
 import Footer from './components/common/Footer';
 import Header from './components/common/Header';
+import Menu from './components/common/Menu';
 
 // main
 import Main from './components/main/Main';
@@ -26,6 +27,7 @@ function App() {
 	useEffect(() => {
 		dispatch({ type: types.YOUTUBE.start });
 		dispatch({ type: types.FLICKR.start, Opt: { type: 'user', user: '197333350@N05' } });
+		dispatch({ type: types.MENU.close });
 	}, [dispatch]);
 
 	return (
@@ -34,6 +36,7 @@ function App() {
 				<Route exact path='/' component={Main} />
 				<Route path='/' render={() => <Header type={'sub'} />} />
 			</Switch>
+			<Menu />
 
 			<Route path='/about' component={About} />
 			<Route path='/contact' component={Contact} />

@@ -1,28 +1,28 @@
 import { NavLink } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import * as types from '../../redux/actionType';
 
-function Header(props) {
+function Menu() {
 	const active = { color: '#4b84db' };
 	const dispatch = useDispatch();
 	const menu = useSelector((store) => store.menuReducer.open);
 
 	return (
-		<header className={props.type}>
-			<div className='inner'>
-				<h1
+		<AnimatePresence>
+			{menu && (
+				<motion.div
+					className='menuMo'
+					initial={{ x: '100%' }}
+					animate={{ x: '0%', transition: { duration: 0.5 } }}
+					exit={{ x: '100%', transition: { duration: 0.5 } }}
 					onClick={() => {
 						dispatch({ type: types.MENU.close });
 					}}
 				>
-					<NavLink exact to='/'>
-						B
-					</NavLink>
-				</h1>
-				<div className='menuWeb'>
-					<nav id='gnb'>
+					<nav id='gnbMo'>
 						<ul>
 							<li>
 								<NavLink to='/about' activeStyle={active}>
@@ -58,19 +58,10 @@ function Header(props) {
 							</NavLink>
 						</li>
 					</ul>
-				</div>
-
-				<span
-					className={menu ? 'on btnCall' : 'btnCall'}
-					onClick={() => {
-						dispatch({ type: types.MENU.toggle });
-					}}
-				>
-					<span>menu</span>
-				</span>
-			</div>
-		</header>
+				</motion.div>
+			)}
+		</AnimatePresence>
 	);
 }
 
-export default Header;
+export default Menu;
