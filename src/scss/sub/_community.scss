@@ -1,0 +1,75 @@
+.community {
+	display: none;
+	&.on {
+		display: block;
+	}
+	.inputBox {
+		margin-bottom: 40px;
+		background: #ccc;
+		.txt {
+			padding: 20px;
+			input[type='text'],
+			textarea {
+				width: 100%;
+				padding: 10px;
+				font-size: 14px;
+			}
+			input[type='text'] {
+				margin-bottom: 10px;
+			}
+		}
+		.btns {
+			text-align: center;
+			border-top: 1px solid #eee;
+			padding: 20px;
+			button {
+				width: 200px;
+				height: 40px;
+				margin: 0 10px;
+				cursor: pointer;
+			}
+		}
+	}
+
+	.showBox {
+		article {
+			position: relative;
+			border-bottom: 1px solid #ddd;
+			padding: 30px;
+			.txt {
+				width: 100%;
+				h2 {
+					font-size: 24px;
+					font-weight: 500;
+					margin-bottom: 10px;
+				}
+				p {
+					color: #888;
+				}
+				input[type='text'],
+				textarea {
+					width: 100%;
+					padding: 10px;
+					border: 1px solid #ccc;
+					background: #eee;
+				}
+			}
+			.btns {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				button {
+					border: transparent;
+					background: transparent;
+					font-size: 18px;
+					padding: 10px;
+					margin-left: 10px;
+					cursor: pointer;
+					&:hover {
+						color: orange;
+					}
+				}
+			}
+		}
+	}
+}
