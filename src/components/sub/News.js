@@ -19,24 +19,21 @@ function News() {
 
 	return (
 		<Layout name={'NEWS'} txt={'News Of Our Company'}>
-			<article className='tit'>
-				<h2>Lorem ipsum dolor sit amet consectetur.</h2>
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, possimus?</p>
-			</article>
-
-			<article className='con'>
-				<h2 className='hidden'>이벤트,뉴스,자주하는질문</h2>
-				<ul>
-					<li className={IndexState === 1 ? 'on' : ''} onClick={() => setIndexState(1)}>
-						커뮤니티
-					</li>
-					<li className={IndexState === 2 ? 'on' : ''} onClick={() => setIndexState(2)}>
-						공지사항
-					</li>
-				</ul>
-				<Community ref={communityRef} />
-				<Notice ref={noticeRef} />
-			</article>
+			<div className='inner'>
+				<article className='con'>
+					<h2 className='hidden'>이벤트,뉴스,자주하는질문</h2>
+					<ul>
+						<li className={IndexState === 1 ? 'on' : ''} onClick={() => setIndexState(1)}>
+							커뮤니티
+						</li>
+						<li className={IndexState === 2 ? 'on' : ''} onClick={() => setIndexState(2)}>
+							공지사항
+						</li>
+					</ul>
+					<Community ref={communityRef} />
+					<Notice ref={noticeRef} />
+				</article>
+			</div>
 		</Layout>
 	);
 }

@@ -59,94 +59,100 @@ function Gallery() {
 	return (
 		<>
 			<Layout name={'GALLERY'} txt={'Meet Gallery'}>
-				<article className='txtTop'>
-					<h2>Lorem ipsum dolor sit.</h2>
-					<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt, in.</p>
-				</article>
-				<article className='wrap'>
-					<div className='controls'>
-						<nav>
-							<button onClick={showMine}>My Gallery</button>
-							<button onClick={showInterest}>Interest</button>
-						</nav>
-						<div className='searchBox'>
-							<input
-								type='text'
-								placeholder='이미지 검색'
-								ref={input}
-								onKeyUp={(e) => e.key === 'Enter' && showSearch()}
-							/>
-							<button onClick={showSearch}>
-								<FontAwesomeIcon icon={faMagnifyingGlass} />
-							</button>
+				{/* <article className='tit'>
+					<div className='inner'>
+						<h2>Lorem ipsum dolor sit.</h2>
+						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt, in.</p>
+					</div>
+				</article> */}
+				<div className='inner'>
+					<article className='wrap'>
+						<div className='controls'>
+							<nav>
+								<button onClick={showMine}>My Gallery</button>
+								<button onClick={showInterest}>Interest</button>
+							</nav>
+							<div className='searchBox'>
+								<input
+									type='text'
+									placeholder='이미지 검색'
+									ref={input}
+									onKeyUp={(e) => e.key === 'Enter' && showSearch()}
+								/>
+								<button onClick={showSearch}>
+									<FontAwesomeIcon icon={faMagnifyingGlass} />
+								</button>
+							</div>
 						</div>
-					</div>
 
-					<div className='imgList'>
-						<ul className='list' ref={frame}>
-							<Masonry elementType={'ul'} options={masonryOptions}>
-								{Items.map((el, idx) => {
-									if (idx >= 9) return null;
-									return (
-										<li className='item' key={idx}>
-											<div>
-												<div
-													className='pic'
-													onClick={() => {
-														modal.current.open();
-														setIndex(idx);
-													}}
-												>
-													<img
-														src={`https://live.staticflickr.com/${el.server}/${el.id}_${el.secret}_m.jpg`}
-														alt={el.title}
-														className='thumb'
-													/>
+						<div className='imgList'>
+							<ul className='list' ref={frame}>
+								<Masonry elementType={'ul'} options={masonryOptions}>
+									{Items.map((el, idx) => {
+										if (idx >= 9) return null;
+										return (
+											<li className='item' key={idx}>
+												<div>
+													<div
+														className='pic'
+														onClick={() => {
+															modal.current.open();
+															setIndex(idx);
+														}}
+													>
+														<img
+															src={`https://live.staticflickr.com/${el.server}/${el.id}_${el.secret}_m.jpg`}
+															alt={el.title}
+															className='thumb'
+														/>
+													</div>
+													<span>
+														<p>{el.title}</p>
+														<img
+															src={`http://farm${el.farm}.staticflickr.com/${el.server}/buddyicons/${el.owner}.jpg`}
+															alt={el.owner}
+															className='profile'
+															onError={(e) =>
+																e.target.setAttribute(
+																	'src',
+																	'https://www.flickr.com/images/buddyicon.gif'
+																)
+															}
+														/>
+														<strong onClick={showUser}>{el.owner}</strong>
+													</span>
 												</div>
-												<span>
-													<p>{el.title}</p>
-													<img
-														src={`http://farm${el.farm}.staticflickr.com/${el.server}/buddyicons/${el.owner}.jpg`}
-														alt={el.owner}
-														className='profile'
-														onError={(e) =>
-															e.target.setAttribute(
-																'src',
-																'https://www.flickr.com/images/buddyicon.gif'
-															)
-														}
-													/>
-													<strong onClick={showUser}>{el.owner}</strong>
-												</span>
-											</div>
-										</li>
-									);
-								})}
-							</Masonry>
-						</ul>
+											</li>
+										);
+									})}
+								</Masonry>
+							</ul>
+						</div>
+						{Loading && (
+							<img
+								src={`${process.env.PUBLIC_URL}/img/loading.gif`}
+								alt='로딩중 입니다'
+								className='loading'
+							/>
+						)}
+					</article>
+				</div>
+				<article className='text'>
+					<div className='inner'>
+						<h2>Lorem, ipsum.</h2>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, natus?</p>
+						<p>
+							Lorem ipsum dolor, sit amet consectetur adipisicing elit. In laborum recusandae
+							assumenda, excepturi, nostrum id aperiam ratione corporis, necessitatibus nihil
+							ducimus expedita. Alias molestiae, nesciunt repellendus labore esse modi explicabo.
+						</p>
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, quas. Ab sed quas
+							alias eaque, et nostrum deleniti velit error aliquid aspernatur cum autem maiores
+							laborum ratione recusandae nemo! Exercitationem nulla voluptate deleniti. Consectetur
+							nostrum, veniam velit obcaecati doloremque quaerat?
+						</p>
 					</div>
-					{Loading && (
-						<img
-							src={`${process.env.PUBLIC_URL}/img/loading.gif`}
-							alt='로딩중 입니다'
-							className='loading'
-						/>
-					)}
-				</article>
-				<article className='txtBottom'>
-					<h2>Lorem, ipsum.</h2>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, natus?</p>
-					<p>
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. In laborum recusandae
-						assumenda, excepturi, nostrum id aperiam ratione corporis, necessitatibus nihil ducimus
-						expedita. Alias molestiae, nesciunt repellendus labore esse modi explicabo.
-					</p>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, quas. Ab sed quas
-						alias eaque, et nostrum deleniti velit error aliquid aspernatur cum autem maiores
-						laborum ratione recusandae nemo! Exercitationem nulla voluptate deleniti. Consectetur
-						nostrum, veniam velit obcaecati doloremque quaerat?
-					</p>
 				</article>
 			</Layout>
 

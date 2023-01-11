@@ -1,30 +1,36 @@
 .GALLERY {
+	margin-bottom: 0;
+	// .tit {
+	// 	.inner {
+	// 		padding: 100px 0 0;
+	// 		text-align: center;
+	// 		h2 {
+	// 			margin-bottom: 10px;
+	// 		}
+	// 	}
+	// }
 	.inner {
-		.txtTop {
-			padding: 80px 0;
-			text-align: center;
-			h2 {
-				margin-bottom: 10px;
-			}
-		}
 		.wrap {
-			padding: 0 0 80px;
+			padding: 100px 0;
 			.controls {
-				padding: 0 0 40px;
+				margin-bottom: 60px;
 				position: relative;
 				nav {
 					text-align: center;
 					button {
-						width: 100px;
+						width: 150px;
 						height: 40px;
 						font-size: 16px;
 						margin: 0 10px;
+						border: transparent;
+						background: #333;
+						color: #fff;
 						cursor: pointer;
 					}
 				}
 				.searchBox {
 					position: absolute;
-					right: 0;
+					right: 10px;
 					top: 0;
 					input {
 						width: 200px;
@@ -44,6 +50,7 @@
 						border-left: none;
 						font-size: 20px;
 						color: #333;
+						background: transparent;
 						cursor: pointer;
 					}
 				}
@@ -124,8 +131,11 @@
 				transition: 1s;
 			}
 		}
-		.txtBottom {
-			padding: 80px 0;
+	}
+	.text {
+		background: #fafafa;
+		padding: 100px 0;
+		.inner {
 			h2 {
 				text-align: center;
 				margin-bottom: 20px;

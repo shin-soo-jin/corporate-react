@@ -1,4 +1,5 @@
 function Layout(props) {
+	const publicUrl = process.env.PUBLIC_URL;
 	return (
 		<section className={`content ${props.name}`}>
 			<figure></figure>
@@ -6,8 +7,8 @@ function Layout(props) {
 				<h1>
 					{props.name} <span>{props.txt}</span>
 				</h1>
-				{props.children}
 			</div>
+			{props.children}
 		</section>
 	);
 }

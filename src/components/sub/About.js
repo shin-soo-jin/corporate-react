@@ -25,141 +25,129 @@ function About() {
 
 	return (
 		<Layout name={'ABOUT'} txt={'About Our Company'}>
-			<article className='value'>
-				<h2>OUR CORE VALUE</h2>
-				<div className='wrap'>
-					<div>
-						<FontAwesomeIcon icon={faLifeRing} />
-						<p>
-							<strong>STRATEGY</strong>
-							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores
-							iusto assumenda repudiandae voluptate magni itaque blanditiis
-							iste, quod aspernatur molestiae.
-						</p>
+			<div className='inner'>
+				<article className='value'>
+					<h2>OUR CORE VALUE</h2>
+					<div className='wrap'>
+						<div>
+							<FontAwesomeIcon icon={faLifeRing} />
+							<p>
+								<strong>STRATEGY</strong>
+								Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores iusto assumenda
+								repudiandae voluptate magni itaque blanditiis iste, quod aspernatur molestiae.
+							</p>
+						</div>
+						<div>
+							<FontAwesomeIcon icon={faMessage} />
+							<p>
+								<strong>COMMUNICATION</strong>
+								Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores iusto assumenda
+								repudiandae voluptate magni itaque blanditiis iste, quod aspernatur molestiae.
+							</p>
+						</div>
+						<div>
+							<FontAwesomeIcon icon={faHourglass} />
+							<p>
+								<strong>TIME MANAGEMENT</strong>
+								Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores iusto assumenda
+								repudiandae voluptate magni itaque blanditiis iste, quod aspernatur molestiae.
+							</p>
+						</div>
+						<div>
+							<FontAwesomeIcon icon={faLightbulb} />
+							<p>
+								<strong>INNOVATION</strong>
+								Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores iusto assumenda
+								repudiandae voluptate magni itaque blanditiis iste, quod aspernatur molestiae.
+							</p>
+						</div>
 					</div>
-					<div>
-						<FontAwesomeIcon icon={faMessage} />
-						<p>
-							<strong>COMMUNICATION</strong>
-							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores
-							iusto assumenda repudiandae voluptate magni itaque blanditiis
-							iste, quod aspernatur molestiae.
-						</p>
-					</div>
-					<div>
-						<FontAwesomeIcon icon={faHourglass} />
-						<p>
-							<strong>TIME MANAGEMENT</strong>
-							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores
-							iusto assumenda repudiandae voluptate magni itaque blanditiis
-							iste, quod aspernatur molestiae.
-						</p>
-					</div>
-					<div>
-						<FontAwesomeIcon icon={faLightbulb} />
-						<p>
-							<strong>INNOVATION</strong>
-							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores
-							iusto assumenda repudiandae voluptate magni itaque blanditiis
-							iste, quod aspernatur molestiae.
-						</p>
-					</div>
-				</div>
-			</article>
+				</article>
 
-			<article className='member'>
-				<div className='text'>
-					<h2>OUR TEAM</h2>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
-						similique, veniam, nesciunt voluptates laborum amet ipsam,
-						consequuntur cupiditate eum provident inventore recusandae officia
-						assumenda quaerat tempora laudantium ea enim. Facere?
-					</p>
-				</div>
-				<div className='team'>
-					<ul className='tabBtn'>
-						<li
-							className={Index === 1 ? 'on' : ''}
-							onClick={() => {
-								setIndex(1);
-							}}
-						>
-							TEAM1
-						</li>
-						<li
-							className={Index === 2 ? 'on' : ''}
-							onClick={() => {
-								setIndex(2);
-							}}
-						>
-							TEAM2
-						</li>
-						<li
-							className={Index === 3 ? 'on' : ''}
-							onClick={() => {
-								setIndex(3);
-							}}
-						>
-							TEAM3
-						</li>
-					</ul>
-					<ul className={Index === 1 ? 'tabBox on' : 'tabBox'}>
-						{Members1.map((data, idx) => {
-							return (
-								<li key={idx}>
-									<div className='pic'>
-										<img
-											src={`${process.env.PUBLIC_URL}/img/${data.pic}`}
-											alt='{data.name}'
-										/>
-									</div>
-									<p>
-										<strong>{data.name}</strong>
-										{data.position}
-									</p>
-								</li>
-							);
-						})}
-					</ul>
-					<ul className={Index === 2 ? 'tabBox on' : 'tabBox'}>
-						{Members2.map((data, idx) => {
-							return (
-								<li key={idx}>
-									<div className='pic'>
-										<img
-											src={`${process.env.PUBLIC_URL}/img/${data.pic}`}
-											alt='{data.name}'
-										/>
-									</div>
-									<p>
-										<strong>{data.name}</strong>
-										{data.position}
-									</p>
-								</li>
-							);
-						})}
-					</ul>
-					<ul className={Index === 3 ? 'tabBox on' : 'tabBox'}>
-						{Members3.map((data, idx) => {
-							return (
-								<li key={idx}>
-									<div className='pic'>
-										<img
-											src={`${process.env.PUBLIC_URL}/img/${data.pic}`}
-											alt='{data.name}'
-										/>
-									</div>
-									<p>
-										<strong>{data.name}</strong>
-										{data.position}
-									</p>
-								</li>
-							);
-						})}
-					</ul>
-				</div>
-			</article>
+				<article className='member'>
+					<div className='text'>
+						<h2>OUR TEAM</h2>
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga similique, veniam,
+							nesciunt voluptates laborum amet ipsam, consequuntur cupiditate eum provident
+							inventore recusandae officia assumenda quaerat tempora laudantium ea enim. Facere?
+						</p>
+					</div>
+					<div className='team'>
+						<ul className='tabBtn'>
+							<li
+								className={Index === 1 ? 'on' : ''}
+								onClick={() => {
+									setIndex(1);
+								}}
+							>
+								TEAM1
+							</li>
+							<li
+								className={Index === 2 ? 'on' : ''}
+								onClick={() => {
+									setIndex(2);
+								}}
+							>
+								TEAM2
+							</li>
+							<li
+								className={Index === 3 ? 'on' : ''}
+								onClick={() => {
+									setIndex(3);
+								}}
+							>
+								TEAM3
+							</li>
+						</ul>
+						<ul className={Index === 1 ? 'tabBox on' : 'tabBox'}>
+							{Members1.map((data, idx) => {
+								return (
+									<li key={idx}>
+										<div className='pic'>
+											<img src={`${process.env.PUBLIC_URL}/img/${data.pic}`} alt='{data.name}' />
+										</div>
+										<p>
+											<strong>{data.name}</strong>
+											{data.position}
+										</p>
+									</li>
+								);
+							})}
+						</ul>
+						<ul className={Index === 2 ? 'tabBox on' : 'tabBox'}>
+							{Members2.map((data, idx) => {
+								return (
+									<li key={idx}>
+										<div className='pic'>
+											<img src={`${process.env.PUBLIC_URL}/img/${data.pic}`} alt='{data.name}' />
+										</div>
+										<p>
+											<strong>{data.name}</strong>
+											{data.position}
+										</p>
+									</li>
+								);
+							})}
+						</ul>
+						<ul className={Index === 3 ? 'tabBox on' : 'tabBox'}>
+							{Members3.map((data, idx) => {
+								return (
+									<li key={idx}>
+										<div className='pic'>
+											<img src={`${process.env.PUBLIC_URL}/img/${data.pic}`} alt='{data.name}' />
+										</div>
+										<p>
+											<strong>{data.name}</strong>
+											{data.position}
+										</p>
+									</li>
+								);
+							})}
+						</ul>
+					</div>
+				</article>
+			</div>
 		</Layout>
 	);
 }

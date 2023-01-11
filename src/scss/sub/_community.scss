@@ -5,14 +5,15 @@
 	}
 	.inputBox {
 		margin-bottom: 40px;
-		background: #ccc;
+		padding: 20px;
+		border: 1px solid #aaa;
 		.txt {
-			padding: 20px;
 			input[type='text'],
 			textarea {
 				width: 100%;
 				padding: 10px;
 				font-size: 14px;
+				border: 1px solid #bbb;
 			}
 			input[type='text'] {
 				margin-bottom: 10px;
@@ -20,28 +21,43 @@
 		}
 		.btns {
 			text-align: center;
-			border-top: 1px solid #eee;
 			padding: 20px;
 			button {
 				width: 200px;
 				height: 40px;
 				margin: 0 10px;
+				color: #fff;
+				font-size: 16px;
+				border: transparent;
 				cursor: pointer;
+				transition: 0.3s;
+				&:first-of-type {
+					border: 1px solid #bbb;
+					background: #fff;
+					color: #333;
+				}
+				&:last-of-type {
+					background: #333;
+					color: #fff;
+				}
 			}
 		}
 	}
 
 	.showBox {
 		article {
-			position: relative;
 			border-bottom: 1px solid #ddd;
 			padding: 30px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
 			.txt {
-				width: 100%;
+				width: 90%;
 				h2 {
 					font-size: 24px;
 					font-weight: 500;
 					margin-bottom: 10px;
+					color: #333;
 				}
 				p {
 					color: #888;
@@ -55,18 +71,21 @@
 				}
 			}
 			.btns {
-				position: absolute;
-				top: 10px;
-				right: 10px;
 				button {
 					border: transparent;
 					background: transparent;
+					margin-left: 10px;
 					font-size: 18px;
 					padding: 10px;
-					margin-left: 10px;
+					color: #333;
 					cursor: pointer;
 					&:hover {
-						color: orange;
+						&:first-of-type {
+							color: #3b77cf;
+						}
+						&:last-of-type {
+							color: #a00000;
+						}
 					}
 				}
 			}

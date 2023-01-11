@@ -27,3 +27,15 @@ fieldset {
 textarea {
 	resize: none;
 }
+
+.inner {
+	width: 1180px;
+	margin: 0 auto;
+	position: relative;
+}
+
+@media screen and (max-width: $tablet) {
+	.inner {
+		width: 95%;
+	}
+}

@@ -109,10 +109,10 @@ const Community = forwardRef((props, ref) => {
 									</div>
 									<div className='btns'>
 										<button onClick={() => disableUpdate(idx)}>
-											<FontAwesomeIcon icon={faXmark} />
+											<FontAwesomeIcon icon={faCheck} />
 										</button>
 										<button onClick={() => updatePost(idx)}>
-											<FontAwesomeIcon icon={faCheck} />
+											<FontAwesomeIcon icon={faXmark} />
 										</button>
 									</div>
 								</>

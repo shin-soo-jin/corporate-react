@@ -88,165 +88,173 @@ function Join() {
 			history.push('/');
 			window.scroll(0, 0);
 		}
-	}, [Err]);
+	}, [Err, Submit, history]);
 
 	return (
 		<Layout name={'JOIN'} txt={'Join Our Company'}>
-			<form action='' onSubmit={handleSubmit}>
-				<legend className='hidden'>Terms of Use</legend>
-				<h2>
-					<label htmlFor='terms'>Terms of Use</label>
-				</h2>
-				<textarea name='terms' id='terms' cols='30' rows='10' value={terms} readOnly />
-				<div className='agree'>
-					<input type='checkbox' name='agree' id='agree' onChange={handleCheck} />
-					<label htmlFor='agree'>Agree</label>
+			<div className='inner'>
+				<form action='' onSubmit={handleSubmit}>
+					<legend className='hidden'>Terms of Use</legend>
+					<h2>
+						<label htmlFor='terms'>Terms of Use</label>
+					</h2>
+					<textarea name='terms' id='terms' cols='30' rows='10' value={terms} readOnly />
+					<div className='agree'>
+						<input type='checkbox' name='agree' id='agree' onChange={handleCheck} />
+						<label htmlFor='agree'>Agree</label>
 
-					<span className='err'>
-						<i className={!Err.agree ? '' : 'on'}>
-							<FontAwesomeIcon icon={faInfoCircle} />
-						</i>
-						{Err.agree}
-					</span>
-				</div>
+						<span className='err'>
+							<i className={!Err.agree ? '' : 'on'}>
+								<FontAwesomeIcon icon={faInfoCircle} />
+							</i>
+							{Err.agree}
+						</span>
+					</div>
 
-				<h2>User Information</h2>
-				<table>
-					<caption className='hidden'>User Information</caption>
-					<tbody>
-						{/* name */}
-						<tr>
-							<th scope='row'>
-								<label htmlFor='name'>NAME</label>
-							</th>
-							<td>
-								<input type='text' name='name' id='name' value={Val.name} onChange={handleChange} />
-								<span className='err'>
-									<i className={!Err.name ? '' : 'on'}>
-										<FontAwesomeIcon icon={faInfoCircle} />
-									</i>
-									{Err.name}
-								</span>
-							</td>
-						</tr>
-						{/* id */}
-						<tr>
-							<th scope='row'>
-								<label htmlFor='id'>ID</label>
-							</th>
-							<td>
-								<input type='text' name='id' id='id' value={Val.id} onChange={handleChange} />
-								<span className='err'>
-									<i className={!Err.id ? '' : 'on'}>
-										<FontAwesomeIcon icon={faInfoCircle} />
-									</i>
-									{Err.id}
-								</span>
-							</td>
-						</tr>
-						{/* password */}
-						<tr>
-							<th scope='row'>
-								<label htmlFor='pwd1'>PASSWORD</label>
-							</th>
-							<td>
-								<input
-									type='password'
-									name='pwd1'
-									id='pwd1'
-									value={Val.pwd1}
-									onChange={handleChange}
-								/>
-								<span className='err'>
-									<i className={!Err.pwd1 ? '' : 'on'}>
-										<FontAwesomeIcon icon={faInfoCircle} />
-									</i>
-									{Err.pwd1}
-								</span>
-							</td>
-						</tr>
-						{/* confirm password */}
-						<tr>
-							<th scope='row'>
-								<label htmlFor='pwd2'>CONFIRM PASSWORD</label>
-							</th>
-							<td>
-								<input
-									type='password'
-									name='pwd2'
-									id='pwd2'
-									value={Val.pwd2}
-									onChange={handleChange}
-								/>
-								<span className='err'>
-									<i className={!Err.pwd2 ? '' : 'on'}>
-										<FontAwesomeIcon icon={faInfoCircle} />
-									</i>
-									{Err.pwd2}
-								</span>
-							</td>
-						</tr>
-						{/* email */}
-						<tr>
-							<th scope='row'>
-								<label htmlFor='email'>E-MAIL</label>
-							</th>
-							<td>
-								<input
-									type='text'
-									name='email'
-									id='email'
-									value={Val.email}
-									onChange={handleChange}
-								/>
-								<span className='err'>
-									<i className={!Err.email ? '' : 'on'}>
-										<FontAwesomeIcon icon={faInfoCircle} />
-									</i>
-									{Err.email}
-								</span>
-							</td>
-						</tr>
-						{/* phone number */}
-						<tr>
-							<th scope='row'>
-								<label htmlFor='phone1'>PHONE NUMBER</label>
-							</th>
-							<td>
-								<select name='phone1' id='phone1' onChange={handleSelect}>
-									<option value=''>선택하세요</option>
-									<option value='010'>010</option>
-								</select>
-								<b> - </b>
-								<input type='text' name='phone2' id='phone2' onChange={handleChange} />
-								<b> - </b>
-								<input type='text' name='phone3' id='phone3' onChange={handleChange} />
-								<span className='err'>
-									<i className={!Err.phone1 ? '' : 'on'}>
-										<FontAwesomeIcon icon={faInfoCircle} />
-									</i>
-									{Err.phone1}
-								</span>
-								<span className='err'>
-									<i className={!Err.phone2 ? '' : 'on'}>
-										<FontAwesomeIcon icon={faInfoCircle} />
-									</i>
-									{Err.phone2}
-								</span>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<div className='joinBtn'>
-					<input
-						type='submit'
-						value='SIGN UP'
-						onClick={() => {
-							setSubmit(true);
-						}}
-					/>
-				</div>
-			</form>
+					<h2>User Information</h2>
+					<table>
+						<caption className='hidden'>User Information</caption>
+						<tbody>
+							{/* name */}
+							<tr>
+								<th scope='row'>
+									<label htmlFor='name'>NAME</label>
+								</th>
+								<td>
+									<input
+										type='text'
+										name='name'
+										id='name'
+										value={Val.name}
+										onChange={handleChange}
+									/>
+									<span className='err'>
+										<i className={!Err.name ? '' : 'on'}>
+											<FontAwesomeIcon icon={faInfoCircle} />
+										</i>
+										{Err.name}
+									</span>
+								</td>
+							</tr>
+							{/* id */}
+							<tr>
+								<th scope='row'>
+									<label htmlFor='id'>ID</label>
+								</th>
+								<td>
+									<input type='text' name='id' id='id' value={Val.id} onChange={handleChange} />
+									<span className='err'>
+										<i className={!Err.id ? '' : 'on'}>
+											<FontAwesomeIcon icon={faInfoCircle} />
+										</i>
+										{Err.id}
+									</span>
+								</td>
+							</tr>
+							{/* password */}
+							<tr>
+								<th scope='row'>
+									<label htmlFor='pwd1'>PASSWORD</label>
+								</th>
+								<td>
+									<input
+										type='password'
+										name='pwd1'
+										id='pwd1'
+										value={Val.pwd1}
+										onChange={handleChange}
+									/>
+									<span className='err'>
+										<i className={!Err.pwd1 ? '' : 'on'}>
+											<FontAwesomeIcon icon={faInfoCircle} />
+										</i>
+										{Err.pwd1}
+									</span>
+								</td>
+							</tr>
+							{/* confirm password */}
+							<tr>
+								<th scope='row'>
+									<label htmlFor='pwd2'>CONFIRM PASSWORD</label>
+								</th>
+								<td>
+									<input
+										type='password'
+										name='pwd2'
+										id='pwd2'
+										value={Val.pwd2}
+										onChange={handleChange}
+									/>
+									<span className='err'>
+										<i className={!Err.pwd2 ? '' : 'on'}>
+											<FontAwesomeIcon icon={faInfoCircle} />
+										</i>
+										{Err.pwd2}
+									</span>
+								</td>
+							</tr>
+							{/* email */}
+							<tr>
+								<th scope='row'>
+									<label htmlFor='email'>E-MAIL</label>
+								</th>
+								<td>
+									<input
+										type='text'
+										name='email'
+										id='email'
+										value={Val.email}
+										onChange={handleChange}
+									/>
+									<span className='err'>
+										<i className={!Err.email ? '' : 'on'}>
+											<FontAwesomeIcon icon={faInfoCircle} />
+										</i>
+										{Err.email}
+									</span>
+								</td>
+							</tr>
+							{/* phone number */}
+							<tr>
+								<th scope='row'>
+									<label htmlFor='phone1'>PHONE NUMBER</label>
+								</th>
+								<td>
+									<select name='phone1' id='phone1' onChange={handleSelect}>
+										<option value=''>선택하세요</option>
+										<option value='010'>010</option>
+									</select>
+									<b> - </b>
+									<input type='text' name='phone2' id='phone2' onChange={handleChange} />
+									<b> - </b>
+									<input type='text' name='phone3' id='phone3' onChange={handleChange} />
+									<span className='err'>
+										<i className={!Err.phone1 ? '' : 'on'}>
+											<FontAwesomeIcon icon={faInfoCircle} />
+										</i>
+										{Err.phone1}
+									</span>
+									<span className='err'>
+										<i className={!Err.phone2 ? '' : 'on'}>
+											<FontAwesomeIcon icon={faInfoCircle} />
+										</i>
+										{Err.phone2}
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div className='joinBtn'>
+						<input
+							type='submit'
+							value='SIGN UP'
+							onClick={() => {
+								setSubmit(true);
+							}}
+						/>
+					</div>
+				</form>
+			</div>
 		</Layout>
 	);
 }
