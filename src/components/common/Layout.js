@@ -32,6 +32,10 @@ function Layout(props) {
 					</ul>
 				</div>
 			</nav>
+			<article className='tit'>
+				<h2>{props.tit}</h2>
+				<p>{props.titTxt}</p>
+			</article>
 			{props.children}
 		</section>
 	);

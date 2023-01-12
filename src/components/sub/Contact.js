@@ -29,13 +29,14 @@ function Contact() {
 	}, []);
 
 	return (
-		<Layout name={'CONTACT'} txt={'Contact Our Company'}>
+		<Layout
+			name={'CONTACT'}
+			txt={'Contact Our Company'}
+			link={'/contact'}
+			tit={'Come and visit us'}
+			titTxt={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, dignissimos?'}
+		>
 			<div className='inner'>
-				<article className='tit'>
-					<h2>Come and visit us</h2>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, dignissimos?</p>
-				</article>
-
 				<article className='mapCon'>
 					<h2 className='hidden'>지도</h2>
 					<div id='map' ref={mapContainer}></div>

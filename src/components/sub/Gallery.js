@@ -58,13 +58,13 @@ function Gallery() {
 
 	return (
 		<>
-			<Layout name={'GALLERY'} txt={'Meet Gallery'}>
-				<article className='tit'>
-					<div className='inner'>
-						<h2>Lorem ipsum dolor sit.</h2>
-						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt, in.</p>
-					</div>
-				</article>
+			<Layout
+				name={'GALLERY'}
+				txt={'Meet Gallery'}
+				link={'/gallery'}
+				tit={'Lorem ipsum dolor sit.'}
+				titTxt={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt, in.'}
+			>
 				<div className='inner'>
 					<article className='wrap'>
 						<div className='controls'>

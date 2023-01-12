@@ -11,14 +11,13 @@ function Youtube() {
 
 	return (
 		<>
-			<Layout name={'YOUTUBE'} txt={'Meet YouTube'} link={'/youtube'}>
-				<article className='txt'>
-					<div className='inner'>
-						<h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, dolores.</p>
-					</div>
-				</article>
-
+			<Layout
+				name={'YOUTUBE'}
+				txt={'Meet YouTube'}
+				link={'/youtube'}
+				tit={'Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
+				titTxt={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, dolores'}
+			>
 				<div className='inner'>
 					<article className='vidList'>
 						<ul>

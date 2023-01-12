@@ -55,6 +55,13 @@
 			}
 		}
 	}
+	.tit {
+		padding: 100px 0;
+		text-align: center;
+		h2 {
+			margin-bottom: 10px;
+		}
+	}
 }
 
 @media screen and (max-width: $tablet) {

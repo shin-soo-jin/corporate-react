@@ -11,143 +11,96 @@ import { useEffect, useState } from 'react';
 
 function About() {
 	const [Members1, setMembers1] = useState([]);
-	const [Members2, setMembers2] = useState([]);
-	const [Members3, setMembers3] = useState([]);
-	const [Index, setIndex] = useState(1);
 
 	useEffect(() => {
 		axios.get(`${process.env.PUBLIC_URL}/DB/members.json`).then((json) => {
 			setMembers1(json.data.team1);
-			setMembers2(json.data.team2);
-			setMembers3(json.data.team3);
 		});
 	}, []);
 
 	return (
-		<Layout name={'ABOUT'} txt={'About Our Company'} link={'/about'}>
+		<Layout
+			name={'ABOUT'}
+			txt={'About Our Company'}
+			link={'/about'}
+			tit={'Lorem ipsum dolor sit.'}
+			titTxt={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, quidem?'}
+		>
 			<div className='inner'>
 				<article className='value'>
-					<h2>OUR CORE VALUE</h2>
-					<div className='wrap'>
-						<div>
-							<FontAwesomeIcon icon={faLifeRing} />
-							<p>
-								<strong>STRATEGY</strong>
-								Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores iusto assumenda
-								repudiandae voluptate magni itaque blanditiis iste, quod aspernatur molestiae.
-							</p>
-						</div>
-						<div>
-							<FontAwesomeIcon icon={faMessage} />
-							<p>
-								<strong>COMMUNICATION</strong>
-								Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores iusto assumenda
-								repudiandae voluptate magni itaque blanditiis iste, quod aspernatur molestiae.
-							</p>
-						</div>
-						<div>
-							<FontAwesomeIcon icon={faHourglass} />
-							<p>
-								<strong>TIME MANAGEMENT</strong>
-								Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores iusto assumenda
-								repudiandae voluptate magni itaque blanditiis iste, quod aspernatur molestiae.
-							</p>
-						</div>
-						<div>
-							<FontAwesomeIcon icon={faLightbulb} />
-							<p>
-								<strong>INNOVATION</strong>
-								Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores iusto assumenda
-								repudiandae voluptate magni itaque blanditiis iste, quod aspernatur molestiae.
-							</p>
-						</div>
-					</div>
-				</article>
-
-				<article className='member'>
-					<div className='text'>
-						<h2>OUR TEAM</h2>
+					<h2 className='hidden'>our core vlaue</h2>
+					<div>
+						<FontAwesomeIcon icon={faLifeRing} />
+						<strong>STRATEGY</strong>
 						<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga similique, veniam,
-							nesciunt voluptates laborum amet ipsam, consequuntur cupiditate eum provident
-							inventore recusandae officia assumenda quaerat tempora laudantium ea enim. Facere?
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur tenetur, illo
+							delectus ducimus quisquam dolor error quas nesciunt impedit ipsum.
 						</p>
 					</div>
-					<div className='team'>
-						<ul className='tabBtn'>
-							<li
-								className={Index === 1 ? 'on' : ''}
-								onClick={() => {
-									setIndex(1);
-								}}
-							>
-								TEAM1
-							</li>
-							<li
-								className={Index === 2 ? 'on' : ''}
-								onClick={() => {
-									setIndex(2);
-								}}
-							>
-								TEAM2
-							</li>
-							<li
-								className={Index === 3 ? 'on' : ''}
-								onClick={() => {
-									setIndex(3);
-								}}
-							>
-								TEAM3
-							</li>
-						</ul>
-						<ul className={Index === 1 ? 'tabBox on' : 'tabBox'}>
-							{Members1.map((data, idx) => {
-								return (
-									<li key={idx}>
-										<div className='pic'>
-											<img src={`${process.env.PUBLIC_URL}/img/${data.pic}`} alt='{data.name}' />
-										</div>
-										<p>
-											<strong>{data.name}</strong>
-											{data.position}
-										</p>
-									</li>
-								);
-							})}
-						</ul>
-						<ul className={Index === 2 ? 'tabBox on' : 'tabBox'}>
-							{Members2.map((data, idx) => {
-								return (
-									<li key={idx}>
-										<div className='pic'>
-											<img src={`${process.env.PUBLIC_URL}/img/${data.pic}`} alt='{data.name}' />
-										</div>
-										<p>
-											<strong>{data.name}</strong>
-											{data.position}
-										</p>
-									</li>
-								);
-							})}
-						</ul>
-						<ul className={Index === 3 ? 'tabBox on' : 'tabBox'}>
-							{Members3.map((data, idx) => {
-								return (
-									<li key={idx}>
-										<div className='pic'>
-											<img src={`${process.env.PUBLIC_URL}/img/${data.pic}`} alt='{data.name}' />
-										</div>
-										<p>
-											<strong>{data.name}</strong>
-											{data.position}
-										</p>
-									</li>
-								);
-							})}
-						</ul>
+					<div>
+						<FontAwesomeIcon icon={faMessage} />
+						<strong>COMMUNICATION</strong>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt hic reiciendis
+							expedita repudiandae labore suscipit ullam amet ea in? Officia!
+						</p>
+					</div>
+					<div>
+						<FontAwesomeIcon icon={faHourglass} />
+						<strong>TIME MANAGEMENT</strong>
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa maiores praesentium
+							quasi sed hic. Maiores consequatur architecto nemo similique voluptatem?
+						</p>
+					</div>
+					<div>
+						<FontAwesomeIcon icon={faLightbulb} />
+						<strong>INNOVATION</strong>
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione quasi quis corrupti
+							officiis repellendus a saepe, repudiandae deserunt laboriosam obcaecati?
+						</p>
 					</div>
 				</article>
 			</div>
+
+			<article className='member'>
+				<h2 className='hidden'>our member</h2>
+				<ul>
+					{Members1.map((data, idx) => {
+						return (
+							<li key={idx}>
+								<div className='pic'>
+									<img src={`${process.env.PUBLIC_URL}/img/${data.pic}`} alt='{data.name}' />
+								</div>
+								<p>
+									<strong>{data.name}</strong>
+									{data.position}
+								</p>
+							</li>
+						);
+					})}
+				</ul>
+			</article>
+
+			<article className='txt'>
+				<div className='inner'>
+					<div className='left'>
+						<span>about us</span>
+						<h2>We believe bold ideas can be a force for good.</h2>
+						<p>We work directly for our clients and put client’s interests first.</p>
+					</div>
+					<div className='right'>
+						<p>
+							Every project is unique, with its own set of requirements. We get under the skin of
+							the problem. Define the challenge. And bring together the right people and the right
+							elements to create meaningful brand experiences.
+						</p>
+						<p className='sign'>sign</p>
+						<span>CEO</span>
+					</div>
+				</div>
+			</article>
 		</Layout>
 	);
 }
