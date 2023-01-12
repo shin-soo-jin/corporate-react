@@ -24,7 +24,7 @@ function About() {
 	}, []);
 
 	return (
-		<Layout name={'ABOUT'} txt={'About Our Company'}>
+		<Layout name={'ABOUT'} txt={'About Our Company'} link={'/about'}>
 			<div className='inner'>
 				<article className='value'>
 					<h2>OUR CORE VALUE</h2>

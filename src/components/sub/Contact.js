@@ -34,8 +34,17 @@ function Contact() {
 				<article className='tit'>
 					<h2>Come and visit us</h2>
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, dignissimos?</p>
+				</article>
 
-					<ul>
+				<article className='mapCon'>
+					<h2 className='hidden'>지도</h2>
+					<div id='map' ref={mapContainer}></div>
+					<ul className='mapPlace'>
+						<li>서울</li>
+						<li>인천</li>
+						<li>경기</li>
+					</ul>
+					<ul className='info'>
 						<li>
 							<FontAwesomeIcon icon={faPhoneAlt} />
 							<strong>Lorem ipsum dolor sit amet.</strong>
@@ -52,15 +61,6 @@ function Contact() {
 								libero assumenda iusto perspiciatis?
 							</p>
 						</li>
-					</ul>
-				</article>
-				<article className='mapCon'>
-					<h2 className='hidden'>지도</h2>
-					<div id='map' ref={mapContainer}></div>
-					<ul>
-						<li>서울</li>
-						<li>인천</li>
-						<li>경기</li>
 					</ul>
 				</article>
 			</div>

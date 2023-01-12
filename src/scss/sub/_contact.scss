@@ -7,37 +7,12 @@
 				text-align: center;
 				margin-bottom: 10px;
 			}
-			> p {
+			p {
 				text-align: center;
-				padding-bottom: 50px;
-				margin-bottom: 50px;
 				position: relative;
-				&::after {
-					content: '';
-					display: block;
-					width: 25%;
-					height: 1px;
-					background: #aaa;
-					position: absolute;
-					bottom: 0;
-					left: 50%;
-					transform: translateX(-50%);
-				}
-			}
-			ul {
-				display: flex;
-				gap: 20px;
-				li {
-					font-size: 16px;
-					strong {
-						margin-left: 10px;
-					}
-					p {
-						margin-top: 10px;
-					}
-				}
 			}
 		}
+
 		.mapCon {
 			padding: 0 0 100px;
 			h2 {
@@ -54,8 +29,8 @@
 				height: 500px;
 				background: #ccc;
 			}
-			ul {
-				margin: 40px 0;
+			.mapPlace {
+				margin: 50px 0;
 				border: 1px solid #ccc;
 				display: flex;
 				li {
@@ -94,6 +69,20 @@
 						&::before {
 							opacity: 1;
 						}
+					}
+				}
+			}
+			.info {
+				padding: 50px 0 0;
+				display: flex;
+				gap: 20px;
+				li {
+					font-size: 16px;
+					strong {
+						margin-left: 10px;
+					}
+					p {
+						margin-top: 10px;
 					}
 				}
 			}

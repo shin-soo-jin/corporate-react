@@ -7,19 +7,15 @@ function Youtube() {
 	const Vids = useSelector((store) => store.youtubeReducer.youtube);
 	const modal = useRef(null);
 	const [Index, setIndex] = useState(0);
-	const num = 8;
+	const num = 6;
 
 	return (
 		<>
-			<Layout name={'YOUTUBE'} txt={'Meet YouTube'}>
+			<Layout name={'YOUTUBE'} txt={'Meet YouTube'} link={'/youtube'}>
 				<article className='txt'>
 					<div className='inner'>
-						<h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, sed.</h2>
-						<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat minima rem velit quas
-							quidem illum nesciunt aliquam, impedit dolorum est aspernatur deleniti iusto enim
-							ducimus nam ut adipisci! Ex, minus?
-						</p>
+						<h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, dolores.</p>
 					</div>
 				</article>
 
@@ -27,7 +23,7 @@ function Youtube() {
 					<article className='vidList'>
 						<ul>
 							{Vids.map((data, idx) => {
-								if (idx >= 8) return null;
+								if (idx >= num) return null;
 								return (
 									<li key={data.id}>
 										<div
