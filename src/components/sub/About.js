@@ -22,7 +22,7 @@ function About() {
 		<Layout
 			name={'ABOUT'}
 			txt={'About Our Company'}
-			link={'/about'}
+			link={'about'}
 			tit={'Lorem ipsum dolor sit.'}
 			titTxt={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, quidem?'}
 		>

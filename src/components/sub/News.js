@@ -21,7 +21,7 @@ function News() {
 		<Layout
 			name={'NEWS'}
 			txt={'News Of Our Company'}
-			link-={'/news'}
+			link={'news'}
 			tit={'Lorem ipsum dolor sit amet consectetur.'}
 			titTxt={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, possimus?'}
 		>

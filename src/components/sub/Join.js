@@ -91,7 +91,7 @@ function Join() {
 	}, [Err, Submit, history]);
 
 	return (
-		<Layout name={'JOIN'} txt={'Join Our Company'}>
+		<Layout name={'JOIN'} txt={'Join Our Company'} link={'join'}>
 			<div className='inner'>
 				<form action='' onSubmit={handleSubmit}>
 					<legend className='hidden'>Terms of Use</legend>

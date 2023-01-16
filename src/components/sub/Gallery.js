@@ -61,7 +61,7 @@ function Gallery() {
 			<Layout
 				name={'GALLERY'}
 				txt={'Meet Gallery'}
-				link={'/gallery'}
+				link={'gallery'}
 				tit={'Lorem ipsum dolor sit.'}
 				titTxt={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt, in.'}
 			>

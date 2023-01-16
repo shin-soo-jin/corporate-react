@@ -32,7 +32,7 @@ function Contact() {
 		<Layout
 			name={'CONTACT'}
 			txt={'Contact Our Company'}
-			link={'/contact'}
+			link={'contact'}
 			tit={'Come and visit us'}
 			titTxt={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, dignissimos?'}
 		>

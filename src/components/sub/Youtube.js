@@ -14,7 +14,7 @@ function Youtube() {
 			<Layout
 				name={'YOUTUBE'}
 				txt={'Meet YouTube'}
-				link={'/youtube'}
+				link={'youtube'}
 				tit={'Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
 				titTxt={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, dolores'}
 			>
