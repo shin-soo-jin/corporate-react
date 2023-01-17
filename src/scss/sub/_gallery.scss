@@ -1,22 +1,18 @@
 .GALLERY {
 	margin-bottom: 0;
-	.inner {
-		.wrap {
-			padding: 0 0 100px;
+	.images {
+		padding: 0 0 100px;
+		.inner {
 			.controls {
 				margin-bottom: 60px;
 				position: relative;
 				nav {
 					text-align: center;
 					button {
-						width: 150px;
-						height: 40px;
-						font-size: 16px;
-						margin: 0 10px;
-						border: transparent;
-						background: #333;
-						color: #fff;
-						cursor: pointer;
+						@include button($color: #333, $background: #fff, $fontWeight: normal);
+						border: 1px solid #333;
+						display: inline-block;
+						margin-right: 10px;
 					}
 				}
 				.searchBox {
@@ -41,13 +37,13 @@
 						border-left: none;
 						font-size: 20px;
 						color: #333;
-						background: transparent;
+						background: #fff;
 						cursor: pointer;
 					}
 				}
 			}
 			.imgList {
-				.list {
+				> ul {
 					font-size: 0;
 					transform: translateY(200px);
 					opacity: 0;
@@ -57,11 +53,9 @@
 						opacity: 1;
 					}
 					&::after {
-						content: '';
-						display: block;
-						clear: both;
+						@include clear;
 					}
-					.item {
+					li {
 						float: left;
 						width: calc(100% / 3);
 						padding: 10px;
@@ -130,9 +124,12 @@
 			h2 {
 				text-align: center;
 				margin-bottom: 20px;
+				color: #222;
 			}
 			p {
+				color: #666;
 				&:nth-of-type(1) {
+					color: #222;
 					text-align: center;
 					margin-bottom: 40px;
 				}
@@ -146,11 +143,35 @@
 
 @media screen and (max-width: $tablet) {
 	.GALLERY {
-		.inner {
-			.wrap {
-				.list {
-					.item {
-						width: calc(100% / 2);
+		.images {
+			.inner {
+				.controls {
+					nav {
+						text-align: left;
+						margin-left: 10px;
+						button {
+							width: 20%;
+						}
+					}
+					.searchBox {
+						top: 2.5px;
+					}
+				}
+				.imgList {
+					> ul {
+						li {
+							width: calc(100% / 2);
+						}
+					}
+				}
+			}
+		}
+		.text {
+			.inner {
+				p {
+					&:nth-of-type(2),
+					&:nth-of-type(3) {
+						font-size: 14px;
 					}
 				}
 			}
@@ -160,35 +181,42 @@
 
 @media screen and (max-width: $mobile) {
 	.GALLERY {
-		.inner {
-			.controls {
-				flex-wrap: wrap;
-				nav {
-					width: 100%;
-					display: flex;
-					justify-content: space-between;
-					margin-bottom: 20px;
-					button {
-						width: 48%;
-						margin-right: 0px;
+		.images {
+			.inner {
+				.controls {
+					nav {
+						margin-left: 0;
+						button {
+							width: calc((100% - 10px) / 2);
+							margin-right: 10px;
+							margin-bottom: 10px;
+							&:nth-of-type(2) {
+								margin-right: 0px;
+							}
+						}
+					}
+					.searchBox {
+						position: static;
+						input {
+							width: 90%;
+						}
+						button {
+							width: 10%;
+						}
 					}
 				}
-				.searchBox {
-					width: 100%;
-					input {
-						width: 80%;
-					}
-					button {
-						width: 20%;
+				.imgList {
+					> ul {
+						li {
+							width: 100%;
+						}
 					}
 				}
 			}
-			.wrap {
-				.list {
-					.item {
-						width: calc(100%);
-					}
-				}
+		}
+		.text {
+			.inner {
+				padding: 0 20px;
 			}
 		}
 	}

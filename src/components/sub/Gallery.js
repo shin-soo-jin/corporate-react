@@ -65,8 +65,8 @@ function Gallery() {
 				tit={'Lorem ipsum dolor sit.'}
 				titTxt={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt, in.'}
 			>
-				<div className='inner'>
-					<article className='wrap'>
+				<article className='images'>
+					<div className='inner'>
 						<div className='controls'>
 							<nav>
 								<button onClick={showMine}>My Gallery</button>
@@ -86,12 +86,12 @@ function Gallery() {
 						</div>
 
 						<div className='imgList'>
-							<ul className='list' ref={frame}>
+							<ul ref={frame}>
 								<Masonry elementType={'ul'} options={masonryOptions}>
 									{Items.map((el, idx) => {
 										if (idx >= 9) return null;
 										return (
-											<li className='item' key={idx}>
+											<li key={idx}>
 												<div>
 													<div
 														className='pic'
@@ -135,8 +135,8 @@ function Gallery() {
 								className='loading'
 							/>
 						)}
-					</article>
-				</div>
+					</div>
+				</article>
 				<article className='text'>
 					<div className='inner'>
 						<h2>Lorem, ipsum.</h2>
