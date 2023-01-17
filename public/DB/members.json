@@ -2,23 +2,23 @@
   "team1": [
     {
       "name": "James",
-      "position": "co-founder, mobile apps production",
+      "position": "co-founder",
       "pic": "member1.jpg"
     },
     {
-      "name": "Jane",
-      "position": " co-founder, web apps development",
+      "name": "Amy",
+      "position": "co-founder",
       "pic": "member2.jpg"
     },
     {
-      "name": "Charles",
+      "name": "Jane",
       "position": "designer",
       "pic": "member3.jpg"
     },
     {
       "name": "Noah",
       "position": "developer",
-      "pic": "member1.jpg"
+      "pic": "member4.jpg"
     }
   ]
 }

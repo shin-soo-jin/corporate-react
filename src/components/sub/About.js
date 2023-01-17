@@ -26,43 +26,51 @@ function About() {
 			tit={'Lorem ipsum dolor sit.'}
 			titTxt={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, quidem?'}
 		>
-			<div className='inner'>
-				<article className='value'>
-					<h2 className='hidden'>our core vlaue</h2>
+			<article className='value'>
+				<h2 className='hidden'>our core vlaue</h2>
+				<div className='inner'>
 					<div>
-						<FontAwesomeIcon icon={faLifeRing} />
-						<strong>STRATEGY</strong>
+						<i>
+							<FontAwesomeIcon icon={faLifeRing} />
+						</i>
 						<p>
+							<strong>STRATEGY</strong>
 							Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur tenetur, illo
 							delectus ducimus quisquam dolor error quas nesciunt impedit ipsum.
 						</p>
 					</div>
 					<div>
-						<FontAwesomeIcon icon={faMessage} />
-						<strong>COMMUNICATION</strong>
+						<i>
+							<FontAwesomeIcon icon={faMessage} />
+						</i>
 						<p>
+							<strong>COMMUNICATION</strong>
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt hic reiciendis
 							expedita repudiandae labore suscipit ullam amet ea in? Officia!
 						</p>
 					</div>
 					<div>
-						<FontAwesomeIcon icon={faHourglass} />
-						<strong>TIME MANAGEMENT</strong>
+						<i>
+							<FontAwesomeIcon icon={faHourglass} />
+						</i>
 						<p>
+							<strong>TIME MANAGEMENT</strong>
 							Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa maiores praesentium
 							quasi sed hic. Maiores consequatur architecto nemo similique voluptatem?
 						</p>
 					</div>
 					<div>
-						<FontAwesomeIcon icon={faLightbulb} />
-						<strong>INNOVATION</strong>
+						<i>
+							<FontAwesomeIcon icon={faLightbulb} />
+						</i>
 						<p>
+							<strong>INNOVATION</strong>
 							Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione quasi quis corrupti
 							officiis repellendus a saepe, repudiandae deserunt laboriosam obcaecati?
 						</p>
 					</div>
-				</article>
-			</div>
+				</div>
+			</article>
 
 			<article className='member'>
 				<h2 className='hidden'>our member</h2>
