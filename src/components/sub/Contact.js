@@ -36,8 +36,8 @@ function Contact() {
 			tit={'Come and visit us'}
 			titTxt={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, dignissimos?'}
 		>
-			<div className='inner'>
-				<article className='mapCon'>
+			<article className='mapCon'>
+				<div className='inner'>
 					<h2 className='hidden'>지도</h2>
 					<div id='map' ref={mapContainer}></div>
 					<ul className='mapPlace'>
@@ -63,11 +63,11 @@ function Contact() {
 							</p>
 						</li>
 					</ul>
-				</article>
-			</div>
+				</div>
+			</article>
 			<article className='contactCon'>
 				<div className='inner'>
-					<h2>Contact us</h2>
+					<h2>Lorem, ipsum.</h2>
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, sint?</p>
 					<form action=''>
 						<fieldset>
@@ -88,27 +88,31 @@ function Contact() {
 							</label>
 
 							<div className='wrap'>
-								<label htmlFor='name' className='hidden'>
-									NAME
-								</label>
-								<input type='text' name='name' id='name' placeholder='NAME' />
+								<div className='left'>
+									<label htmlFor='name' className='hidden'>
+										NAME
+									</label>
+									<input type='text' name='name' id='name' placeholder='NAME' />
 
-								<label htmlFor='email' className='hidden'>
-									E-MAIL
-								</label>
-								<input type='text' name='email' id='email' placeholder='E-MAIL' />
+									<label htmlFor='email' className='hidden'>
+										E-MAIL
+									</label>
+									<input type='text' name='email' id='email' placeholder='E-MAIL' />
+								</div>
+
+								<div className='right'>
+									<label htmlFor='message' className='hidden'>
+										MESSAGE
+									</label>
+									<textarea
+										name='message'
+										id='message'
+										cols='30'
+										rows='5'
+										placeholder='MESSAGE'
+									></textarea>
+								</div>
 							</div>
-
-							<label htmlFor='message' className='hidden'>
-								MESSAGE
-							</label>
-							<textarea
-								name='message'
-								id='message'
-								cols='30'
-								rows='5'
-								placeholder='MESSAGE'
-							></textarea>
 
 							<input type='submit' value='SEND' />
 						</fieldset>
