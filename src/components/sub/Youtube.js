@@ -18,29 +18,6 @@ function Youtube() {
 				tit={'Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
 				titTxt={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, dolores'}
 			>
-				<div className='inner'>
-					<article className='vidList'>
-						<ul>
-							{Vids.map((data, idx) => {
-								if (idx >= num) return null;
-								return (
-									<li key={data.id}>
-										<div
-											className='pic'
-											onClick={() => {
-												modal.current.open();
-												setIndex(idx);
-											}}
-										>
-											<img src={data.snippet.thumbnails.maxres.url} alt={data.snippet.title} />
-										</div>
-									</li>
-								);
-							})}
-						</ul>
-					</article>
-				</div>
-
 				<article className='video'>
 					<div className='inner'>
 						<div
@@ -71,6 +48,29 @@ function Youtube() {
 								button
 							</button>
 						</div>
+					</div>
+				</article>
+
+				<article className='vidList'>
+					<div className='inner'>
+						<ul>
+							{Vids.map((data, idx) => {
+								if (idx >= num) return null;
+								return (
+									<li key={data.id}>
+										<div
+											className='pic'
+											onClick={() => {
+												modal.current.open();
+												setIndex(idx);
+											}}
+										>
+											<img src={data.snippet.thumbnails.maxres.url} alt={data.snippet.title} />
+										</div>
+									</li>
+								);
+							})}
+						</ul>
 					</div>
 				</article>
 			</Layout>
