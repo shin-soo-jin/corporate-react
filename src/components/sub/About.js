@@ -91,7 +91,7 @@ function About() {
 				</ul>
 			</article>
 
-			<article className='txt'>
+			<article className='ceo'>
 				<div className='inner'>
 					<div className='left'>
 						<span>about us</span>

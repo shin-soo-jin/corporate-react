@@ -33,8 +33,10 @@ function Layout(props) {
 				</div>
 			</nav>
 			<article className='tit'>
-				<h2>{props.tit}</h2>
-				<p>{props.titTxt}</p>
+				<div className='inner'>
+					<h2>{props.tit}</h2>
+					<p>{props.titTxt}</p>
+				</div>
 			</article>
 			{props.children}
 		</section>
