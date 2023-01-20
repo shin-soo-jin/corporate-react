@@ -1,6 +1,6 @@
 import { faClock, faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Layout from '../common/Layout';
 
 function Contact() {
@@ -32,32 +32,32 @@ function Contact() {
 		draggable: false,
 	};
 
-	const markerPosition = mapOption.current.center;
-	const marker = useMemo(
-		() =>
-			new kakao.maps.Marker({
-				position: markerPosition,
-			}),
-		[kakao, markerPosition]
-	);
-	const mapTypeControl = useMemo(() => new kakao.maps.MapTypeControl(), [kakao]);
-	const zoomControl = useMemo(() => new kakao.maps.ZoomControl(), [kakao]);
-
-	const setCenter = () => {
-		mapInstance.current.setCenter(mapOption.current.center);
-	};
-
 	useEffect(() => {
+		const { kakao } = window;
+
 		mapContainer.current.innerHTML = '';
 		mapInstance.current = new kakao.maps.Map(mapContainer.current, mapOption.current);
+
+		const marker = new kakao.maps.Marker({
+			position: mapOption.current.center,
+		});
 		marker.setMap(mapInstance.current);
+
+		const mapTypeControl = new kakao.maps.MapTypeControl();
 		mapInstance.current.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+
+		const zoomControl = new kakao.maps.ZoomControl();
 		mapInstance.current.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+		const setCenter = () => {
+			mapInstance.current.setCenter(mapOption.current.center);
+		};
+
 		window.addEventListener('resize', setCenter);
 		return () => {
 			window.removeEventListener('resize', setCenter);
 		};
-	}, [Index, kakao, marker, mapTypeControl, zoomControl]);
+	}, [Index]);
 
 	return (
 		<Layout
