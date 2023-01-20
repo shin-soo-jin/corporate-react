@@ -9,9 +9,10 @@ function Layout(props) {
 				/* style={{
 					backgroundImage: `url(${process.env.PUBLIC_URL}/img/${props.backgroundImageUrl})`,
 				}} */
-				style={{
+				/* 				style={{
 					background: `url(${process.env.PUBLIC_URL}/img/visual1.jpg) no-repeat 0 0/cover`,
-				}}
+				}} */
+				style={{ backgrund: '#eee' }}
 			>
 				<div className='inner'>
 					<h1>{props.name}</h1>

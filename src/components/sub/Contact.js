@@ -1,32 +1,58 @@
 import { faClock, faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Layout from '../common/Layout';
 
 function Contact() {
 	const { kakao } = window;
 	const mapContainer = useRef(null);
-	const mapOption = {
-		center: new kakao.maps.LatLng(37.5284304, 126.9330781),
+	const mapInstance = useRef(null);
+	const mapOption = useRef(null);
+	const mapList = useRef(null);
+	const [Index, setIndex] = useState(0);
+
+	mapList.current = [
+		{
+			title: '서울',
+			latlng: new kakao.maps.LatLng(37.5668332121221, 126.97864942648738),
+		},
+		{
+			title: '경기',
+			latlng: new kakao.maps.LatLng(37.289016962605636, 127.05345726064418),
+		},
+		{
+			title: '인천',
+			latlng: new kakao.maps.LatLng(37.4560179806656, 126.70525801702745),
+		},
+	];
+
+	mapOption.current = {
+		center: mapList.current[Index].latlng,
 		level: 3,
+		draggable: false,
 	};
+
 	const marker = new kakao.maps.Marker({
-		position: mapOption.center,
+		position: mapOption.current.center,
 	});
 	const mapTypeControl = new kakao.maps.MapTypeControl();
 	const zoomControl = new kakao.maps.ZoomControl();
 
+	const setCenter = () => {
+		mapInstance.current.setCenter(mapOption.current.center);
+	};
+
 	useEffect(() => {
-		const map = new kakao.maps.Map(mapContainer.current, mapOption);
-		marker.setMap(map);
-		map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-		map.setDraggable(false);
-		map.setZoomable(false);
-		window.onresize = () => {
-			map.setCenter(mapOption.center);
+		mapContainer.current.innerHTML = '';
+		mapInstance.current = new kakao.maps.Map(mapContainer.current, mapOption.current);
+		marker.setMap(mapInstance.current);
+		mapInstance.current.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+		mapInstance.current.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+		window.addEventListener('resize', setCenter);
+		return () => {
+			window.removeEventListener('resize', setCenter);
 		};
-	}, []);
+	}, [Index]);
 
 	return (
 		<Layout
@@ -40,10 +66,16 @@ function Contact() {
 				<div className='inner'>
 					<h2 className='hidden'>지도</h2>
 					<div id='map' ref={mapContainer}></div>
-					<ul className='mapPlace'>
-						<li>서울</li>
-						<li>인천</li>
-						<li>경기</li>
+					<ul className='mapList'>
+						{mapList.current.map((el, idx) => {
+							let isOn = '';
+							idx === Index && (isOn = 'on');
+							return (
+								<li key={idx} className={isOn} onClick={() => setIndex(idx)}>
+									{el.title}
+								</li>
+							);
+						})}
 					</ul>
 					<ul className='info'>
 						<li>
