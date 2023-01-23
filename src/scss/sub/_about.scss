@@ -1,23 +1,123 @@
 @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
 
 .ABOUT {
-	.member {
+	margin-bottom: 100px;
+	.aboutus {
+		.inner {
+			display: flex;
+			align-items: center;
+			gap: 20px;
+			.text {
+				width: 50%;
+				padding-right: 50px;
+				h2 {
+					margin-bottom: 50px;
+					font-size: 40px;
+					line-height: 120%;
+				}
+				p {
+					font-size: 18px;
+					line-height: 150%;
+				}
+			}
+			.pic {
+				width: 50%;
+				height: 50vh;
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+			}
+		}
+	}
+	.team {
+		padding: 100px 0;
 		.inner {
 			h2 {
 				font-size: 40px;
 				line-height: 120%;
-				margin-bottom: 100px;
+				margin-bottom: 50px;
 			}
-		}
-		ul {
-			display: flex;
-			flex-wrap: wrap;
-			position: relative;
-			li {
-				width: calc(100% / 4);
-				height: 50vh;
+			ul {
+				display: flex;
+				flex-wrap: wrap;
 				position: relative;
-				&:nth-of-type(11) {
+				li {
+					width: calc(100% / 4);
+					height: 50vh;
+					position: relative;
+					overflow: hidden;
+					&:nth-of-type(1) {
+						margin-right: calc(100% / 4);
+					}
+
+					.pic {
+						width: 100%;
+						height: 100%;
+						overflow: hidden;
+						filter: grayscale(1);
+						transition: 0.5s;
+						img {
+							width: 100%;
+							height: 100%;
+							object-fit: cover;
+						}
+						&::after {
+							content: '';
+							display: block;
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							background: rgba(0, 0, 0, 0.5);
+							opacity: 0;
+							transition: 0.5s;
+						}
+					}
+					.info {
+						position: absolute;
+						bottom: 0%;
+						left: 10%;
+						color: #fff;
+						opacity: 0;
+						transition: 0.5s;
+						h3 {
+							font-size: 30px;
+							font-weight: normal;
+							line-height: 100%;
+						}
+						p {
+							margin: 15px 0;
+						}
+						.sns {
+							button {
+								border: transparent;
+								background: #fff;
+								padding: 10px 15px;
+								cursor: pointer;
+								color: #333;
+								&:hover {
+									color: $color2;
+								}
+							}
+						}
+					}
+					&:hover {
+						.pic {
+							&::after {
+								opacity: 1;
+							}
+						}
+						.info {
+							opacity: 1;
+							bottom: 10%;
+						}
+					}
+				}
+				.jobs,
+				.leadership {
 					padding: 100px 50px;
 					display: flex;
 					flex-direction: column;
@@ -37,9 +137,10 @@
 						}
 					}
 					p {
-						color: #000;
 						font-size: 30px;
 					}
+				}
+				.jobs {
 					button {
 						@include button($background: #fff, $color: $color2);
 						border: 1px solid $color2;
@@ -68,112 +169,13 @@
 						}
 					}
 				}
-				&:nth-of-type(12) {
-					img {
-						width: 100%;
-						height: 100%;
-						object-fit: cover;
-						filter: grayscale(1);
-						transition: 0.5s;
-					}
-				}
-				.pic {
-					width: 100%;
-					height: 100%;
-					overflow: hidden;
-					filter: grayscale(1);
-					transition: 0.5s;
-					img {
-						width: 100%;
-						height: 100%;
-						object-fit: cover;
-					}
-					&::after {
-						content: '';
-						display: block;
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-						background: rgba(0, 0, 0, 0.5);
-						opacity: 0;
-						transition: 0.5s;
-					}
-				}
-				.info {
+				.leadership {
 					position: absolute;
-					bottom: 0%;
-					left: 10%;
-					color: #fff;
-					opacity: 0;
-					transition: 0.5s;
-					h3 {
-						font-size: 30px;
-						font-weight: normal;
-						line-height: 100%;
-					}
-					p {
-						margin: 15px 0;
-					}
-					.sns {
-						button {
-							border: transparent;
-							background: #fff;
-							padding: 10px 15px;
-							cursor: pointer;
-							color: #333;
-							&:hover {
-								color: $color2;
-							}
-						}
-					}
-				}
-				&:hover {
-					.pic {
-						&::after {
-							opacity: 1;
-						}
-					}
-					.info {
-						opacity: 1;
-						bottom: 10%;
-					}
-				}
-			}
-		}
-	}
-	.ceo {
-		padding: 100px 0;
-		.inner {
-			display: flex;
-			gap: 20px;
-			justify-content: space-between;
-			.left {
-				width: 50%;
-				h2 {
-					margin: 20px 0;
-					font-size: 40px;
-					line-height: 120%;
-				}
-				p {
-					font-size: 18px;
-				}
-			}
-			.right {
-				width: 50%;
-				p {
-					font-size: 18px;
-					margin-bottom: 20px;
-				}
-				span {
-					display: block;
-					text-align: right;
-					.sign {
-						display: inline-block;
-						font-size: 100px;
-						font-family: 'Sacramento', cursive;
-						margin-left: 20px;
+					top: 0;
+					left: calc(100% / 4);
+					background: rgba($color: $color2, $alpha: 0.3);
+					span {
+						font-size: 12px;
 					}
 				}
 			}
@@ -183,40 +185,51 @@
 
 @media screen and (max-width: $tablet) {
 	.ABOUT {
-		.member {
+		margin-bottom: 0;
+		.aboutus {
+			.inner {
+				.text {
+					padding-right: 0;
+					h2 {
+						font-size: 34px;
+						margin-bottom: 5vw;
+					}
+					p {
+						font-size: 16px;
+					}
+				}
+				.pic {
+					height: 70vh;
+				}
+			}
+		}
+		.team {
 			.inner {
 				h2 {
 					font-size: 34px;
 				}
-			}
-
-			ul {
-				li {
-					width: calc(100% / 2);
-					height: 100vh;
-					&:nth-of-type(11) {
-						padding: 20vh 10vw;
+				ul {
+					li {
+						width: calc(100% / 2);
+					}
+					.jobs,
+					.leadership {
+						padding: 10vh 5vw;
+						h3 {
+							font-size: 14px;
+						}
+						p {
+							font-size: 24px;
+						}
+					}
+					.jobs {
 						button {
 							width: 60%;
 						}
 					}
-				}
-			}
-		}
-	}
-	.ceo {
-		.inner {
-			.left {
-				h2 {
-					font-size: 34px;
-				}
-				p {
-					font-size: 16px;
-				}
-			}
-			.right {
-				p {
-					font-size: 16px;
+					.leadership {
+						left: calc(100% / 2);
+					}
 				}
 			}
 		}
@@ -225,47 +238,52 @@
 
 @media screen and (max-width: $mobile) {
 	.ABOUT {
-		.member {
+		.aboutus {
+			.inner {
+				display: flex;
+				flex-wrap: wrap;
+				.text {
+					width: 100%;
+					h2 {
+						font-size: 30px;
+					}
+					p {
+						font-size: 14px;
+					}
+				}
+				.pic {
+					width: 100%;
+					height: 50vh;
+				}
+			}
+		}
+		.team {
 			.inner {
 				h2 {
 					font-size: 30px;
 				}
-			}
-			ul {
-				li {
-					width: 100%;
-					height: 50vh;
-					&:nth-of-type(11) {
-						padding: 5vh 10vw;
+
+				ul {
+					li {
+						width: 100%;
+						&:nth-of-type(1) {
+							margin-right: 0;
+							margin-bottom: 50vh;
+						}
+						.info {
+							bottom: -40%;
+						}
+					}
+					.jobs,
+					.leadership {
+						padding: 10vh 10vw;
 						button {
 							width: 60%;
 						}
 					}
-					.info {
-						bottom: -40%;
-					}
-				}
-			}
-		}
-		.ceo {
-			.inner {
-				flex-direction: column;
-				.left {
-					width: 100%;
-					margin-bottom: 20px;
-					h2 {
-						font-size: 30px;
-					}
-				}
-				.right {
-					width: 100%;
-					span {
-						display: block;
-						text-align: right;
-						.sign {
-							line-height: 100%;
-							text-align: right;
-						}
+					.leadership {
+						left: 0;
+						top: 50vh;
 					}
 				}
 			}

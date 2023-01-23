@@ -10,11 +10,11 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 function About() {
-	const [Members1, setMembers1] = useState([]);
+	const [Members, setMembers] = useState([]);
 
 	useEffect(() => {
 		axios.get(`${process.env.PUBLIC_URL}/DB/members.json`).then((json) => {
-			setMembers1(json.data.team1);
+			setMembers(json.data.team);
 		});
 	}, []);
 
@@ -26,7 +26,7 @@ function About() {
 			tit={'Lorem ipsum dolor sit.'}
 			titTxt={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, quidem?'}
 		>
-			{/* <article className='value'>
+			<article className='value'>
 				<div className='inner'>
 					<div className='text'>
 						<h2>We help and solve your business problem</h2>
@@ -75,7 +75,7 @@ function About() {
 						</div>
 					</div>
 				</div>
-			</article> */}
+			</article>
 
 			<article className='member'>
 				<div className='inner'>
@@ -88,7 +88,7 @@ function About() {
 						</p>
 					</div>
 					<ul>
-						{Members1.map((data, idx) => {
+						{Members.map((data, idx) => {
 							return (
 								<li key={idx}>
 									<div className='pic'>

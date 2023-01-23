@@ -6,13 +6,13 @@
       "pic": "member01.jpg"
     },
     {
-      "name": "Olivia",
+      "name": "Isabella",
       "position": "MANAGER",
       "pic": "member02.jpg"
     },
     {
-      "name": "Gael",
-      "position": "ANIMATOR",
+      "name": "James",
+      "position": "MANAGER",
       "pic": "member03.jpg"
     },
     {
@@ -21,34 +21,14 @@
       "pic": "member04.jpg"
     },
     {
-      "name": "James",
-      "position": "MANAGER",
+      "name": "Gael",
+      "position": "DEVELOPER",
       "pic": "member05.jpg"
     },
     {
-      "name": "Isabella",
+      "name": "Jane",
       "position": "DESIGNER",
       "pic": "member06.jpg"
-    },
-    {
-      "name": "Lina",
-      "position": "DEVELOPER",
-      "pic": "member07.jpg"
-    },
-    {
-      "name": "Derek",
-      "position": "ENGINEER",
-      "pic": "member08.jpg"
-    },
-    {
-      "name": "Henry",
-      "position": "ENGINEER",
-      "pic": "member09.jpg"
-    },
-    {
-      "name": "Michael",
-      "position": "ANIMATOR",
-      "pic": "member10.jpg"
     }
   ]
 }
