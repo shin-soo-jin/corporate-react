@@ -1,5 +1,4 @@
 .YOUTUBE {
-	margin-bottom: 0;
 	.video {
 		width: 100%;
 		padding-bottom: 100px;
@@ -7,9 +6,10 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+			gap: 20px;
 			.vid {
-				width: 48%;
-				height: 380px;
+				width: 50%;
+				height: 50vh;
 				overflow: hidden;
 				cursor: pointer;
 				img {
@@ -20,67 +20,90 @@
 				}
 				&:hover {
 					img {
-						transform: scale(1.1);
+						transform: scale(1.05);
 					}
 				}
 			}
 			.text {
-				width: 48%;
-				h2 {
-					margin-bottom: 20px;
+				width: 50%;
+				h3 {
+					font-size: $h3Fz;
+				}
+				p {
+					margin: 50px 0;
+					font-size: 18px;
+					color: #555;
 				}
 				button {
-					@include button();
-					margin-top: 40px;
+					@include button($background: #fff, $color: $color2);
+					border: 1px solid $color2;
 				}
 			}
 		}
 	}
 
 	.vidList {
+		background: #f5f5f5;
 		width: 100%;
-		padding-bottom: 100px;
+		padding: 100px 0;
 		.inner {
+			h3 {
+				font-size: $h3Fz;
+				margin-bottom: 50px;
+			}
 			ul {
 				display: flex;
 				flex-wrap: wrap;
 				justify-content: space-between;
 				gap: 20px;
 				li {
-					width: calc((100% - 40px) / 3);
+					width: calc((100% - 20px) / 2);
+					height: 50vh;
+					position: relative;
+					cursor: pointer;
+					overflow: hidden;
+
 					.pic {
 						width: 100%;
-						height: 400px;
-						overflow: hidden;
-						cursor: pointer;
+						height: 100%;
+						transition: 0.5s;
+						&::after {
+							content: '';
+							display: block;
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							background: rgba(0, 0, 0, 0.5);
+							opacity: 0;
+							transition: opacity 0.5s;
+						}
 						img {
 							width: 100%;
 							height: 100%;
 							object-fit: cover;
-							transition: 0.5s;
-						}
-						&:hover {
-							img {
-								transform: scale(1.1);
-							}
 						}
 					}
-					.text {
-						padding: 5px;
-						background: #fff;
-						h2 {
-							font-size: 14px;
-							color: #333;
-							margin-bottom: 5px;
+					.btnVids {
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+						opacity: 0;
+						transition: 0.5s;
+						font-size: 40px;
+						color: #fff;
+					}
+					&:hover {
+						.pic {
+							transform: scale(1.05);
+							&::after {
+								opacity: 1;
+							}
 						}
-						span {
-							margin-right: 20px;
-							font-size: 12px;
-							color: #666;
-						}
-						em {
-							font-size: 12px;
-							color: #999;
+						.btnVids {
+							opacity: 1;
 						}
 					}
 				}
@@ -94,29 +117,22 @@
 		.video {
 			.inner {
 				.vid {
-					height: 300px;
+					height: 80vh;
 				}
 				.text {
-					font-size: 14px;
-					h2 {
-						font-size: 20px;
-						margin-bottom: 10px;
+					h3 {
+						font-size: $h3FzTab;
 					}
-					button {
-						margin-top: 20px;
+					p {
+						font-size: 16px;
 					}
 				}
 			}
 		}
 		.vidList {
 			.inner {
-				ul {
-					li {
-						width: calc((100% - 20px) / 2);
-						.pic {
-							height: 250px;
-						}
-					}
+				h3 {
+					font-size: $h3FzTab;
 				}
 			}
 		}
@@ -128,26 +144,32 @@
 		.video {
 			.inner {
 				flex-direction: column;
-				gap: 20px;
 				.vid {
 					width: 100%;
+					height: 50vh;
 				}
 				.text {
 					width: 100%;
+					h3 {
+						font-size: $h3FzMo;
+					}
+					p {
+						margin: 20px 0;
+					}
 					button {
-						margin: 20px auto 0;
+						margin: 0 auto;
 					}
 				}
 			}
 		}
 		.vidList {
 			.inner {
+				h3 {
+					font-size: $h3FzMo;
+				}
 				ul {
 					li {
 						width: 100%;
-						.pic {
-							height: 250px;
-						}
 					}
 				}
 			}

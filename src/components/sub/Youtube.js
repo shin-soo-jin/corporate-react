@@ -1,3 +1,5 @@
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Layout from '../common/Layout';
@@ -33,7 +35,11 @@ function Youtube() {
 							/>
 						</div>
 						<div className='text'>
-							<h2>{`${Vids[num]?.snippet.title}`}</h2>
+							<h3>{`${
+								Vids[num]?.snippet.title.length > 20
+									? Vids[num]?.snippet.title.substr(0, 20) + '...'
+									: Vids[num]?.snippet.title
+							}`}</h3>
 							<p>{`${
 								Vids[num]?.snippet.description.length > 300
 									? Vids[num]?.snippet.description.substr(0, 300) + '...'
@@ -53,6 +59,8 @@ function Youtube() {
 
 				<article className='vidList'>
 					<div className='inner'>
+						<span>Things to see</span>
+						<h3>The best place to spend your day</h3>
 						<ul>
 							{Vids.map((data, idx) => {
 								if (idx >= num) return null;
@@ -66,6 +74,9 @@ function Youtube() {
 											}}
 										>
 											<img src={data.snippet.thumbnails.maxres.url} alt={data.snippet.title} />
+										</div>
+										<div className='btnVids'>
+											<FontAwesomeIcon icon={faPlay} />
 										</div>
 									</li>
 								);
