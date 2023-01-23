@@ -1,123 +1,156 @@
 @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
 
 .ABOUT {
-	margin-bottom: 0;
-	.value {
-		padding: 0 0 100px;
+	.member {
 		.inner {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-between;
-			gap: 20px;
-			div {
-				display: flex;
-				justify-content: space-evenly;
-				align-items: center;
-				width: 580px;
-				padding: 30px 0;
-				&:nth-of-type(1),
-				&:nth-of-type(4) {
-					background: rgba(60, 106, 176, 0.3);
-				}
-				&:nth-of-type(2),
-				&:nth-of-type(3) {
-					background: rgba(60, 106, 176, 0.1);
-				}
-
-				i {
-					width: 20%;
-					text-align: center;
-					font-size: 50px;
-					font-weight: normal;
-					color: #3c6ab0;
-				}
-				p {
-					width: 60%;
-					text-align: left;
-					color: #666;
-					strong {
-						display: block;
-						font-size: 20px;
-						color: #333;
-						margin-bottom: 10px;
-					}
-				}
+			h2 {
+				font-size: 40px;
+				line-height: 120%;
+				margin-bottom: 100px;
 			}
 		}
-	}
-
-	.member {
 		ul {
 			display: flex;
+			flex-wrap: wrap;
+			position: relative;
 			li {
-				width: 25%;
-				text-align: center;
+				width: calc(100% / 4);
+				height: 50vh;
 				position: relative;
-				overflow: hidden;
-				cursor: pointer;
-
+				&:nth-of-type(11) {
+					padding: 100px 50px;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					h3 {
+						font-size: 16px;
+						font-weight: normal;
+						&::before {
+							content: '';
+							display: inline-block;
+							width: 20px;
+							height: 2px;
+							background: $color2;
+							transform: rotate(-30deg);
+							margin-right: 20px;
+							vertical-align: middle;
+						}
+					}
+					p {
+						color: #000;
+						font-size: 30px;
+					}
+					button {
+						@include button($background: #fff, $color: $color2);
+						border: 1px solid $color2;
+						transition: 0.5s;
+						position: relative;
+						overflow: hidden;
+						&::before {
+							content: '';
+							display: block;
+							position: absolute;
+							bottom: -110%;
+							right: -50%;
+							width: 100%;
+							height: 100%;
+							background: $color2;
+							z-index: -1;
+							transform: rotate(-30deg);
+							transition: 0.5s;
+						}
+						&:hover {
+							background: transparent;
+							&::before {
+								width: 180%;
+								height: 350%;
+							}
+						}
+					}
+				}
+				&:nth-of-type(12) {
+					img {
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+						filter: grayscale(1);
+						transition: 0.5s;
+					}
+				}
 				.pic {
 					width: 100%;
-					height: 550px;
+					height: 100%;
 					overflow: hidden;
+					filter: grayscale(1);
+					transition: 0.5s;
 					img {
 						width: 100%;
 						height: 100%;
 						object-fit: cover;
 					}
-				}
-
-				p {
-					opacity: 0;
-					position: absolute;
-					bottom: 30%;
-					left: 50%;
-					transform: translateX(-50%);
-					font-size: 16px;
-					color: #fff;
-					opacity: 0.8;
-					transition: 0.5s;
-					strong {
-						font-size: 18px;
+					&::after {
+						content: '';
 						display: block;
-					}
-				}
-
-				&::before {
-					content: '';
-					display: block;
-					width: 100%;
-					height: 100%;
-					background: rgba(0, 0, 0, 0.4);
-					position: absolute;
-					left: 0;
-					top: 0;
-					transition: 0.5s;
-				}
-
-				&:hover {
-					p {
-						bottom: 0%;
-						color: #333;
-					}
-					&::before {
-						top: -100%;
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						background: rgba(0, 0, 0, 0.5);
 						opacity: 0;
+						transition: 0.5s;
+					}
+				}
+				.info {
+					position: absolute;
+					bottom: 0%;
+					left: 10%;
+					color: #fff;
+					opacity: 0;
+					transition: 0.5s;
+					h3 {
+						font-size: 30px;
+						font-weight: normal;
+						line-height: 100%;
+					}
+					p {
+						margin: 15px 0;
+					}
+					.sns {
+						button {
+							border: transparent;
+							background: #fff;
+							padding: 10px 15px;
+							cursor: pointer;
+							color: #333;
+							&:hover {
+								color: $color2;
+							}
+						}
+					}
+				}
+				&:hover {
+					.pic {
+						&::after {
+							opacity: 1;
+						}
+					}
+					.info {
+						opacity: 1;
+						bottom: 10%;
 					}
 				}
 			}
 		}
 	}
-
 	.ceo {
-		background: #f5f5f5;
 		padding: 100px 0;
 		.inner {
 			display: flex;
+			gap: 20px;
 			justify-content: space-between;
-			align-items: center;
 			.left {
-				width: 48%;
+				width: 50%;
 				h2 {
 					margin: 20px 0;
 					font-size: 40px;
@@ -128,16 +161,20 @@
 				}
 			}
 			.right {
-				width: 48%;
+				width: 50%;
 				p {
 					font-size: 18px;
-				}
-				.sign {
-					font-size: 100px;
-					font-family: 'Sacramento', cursive;
+					margin-bottom: 20px;
 				}
 				span {
-					font-size: 12px;
+					display: block;
+					text-align: right;
+					.sign {
+						display: inline-block;
+						font-size: 100px;
+						font-family: 'Sacramento', cursive;
+						margin-left: 20px;
+					}
 				}
 			}
 		}
@@ -146,45 +183,40 @@
 
 @media screen and (max-width: $tablet) {
 	.ABOUT {
-		.value {
+		.member {
 			.inner {
-				div {
-					width: 100%;
+				h2 {
+					font-size: 34px;
 				}
 			}
-		}
-		.member {
+
 			ul {
 				li {
-					.pic {
-						height: 400px;
-						img {
-							object-fit: fill;
-						}
-					}
-					p {
-						font-size: 12px;
-						strong {
-							font-size: 16px;
+					width: calc(100% / 2);
+					height: 100vh;
+					&:nth-of-type(11) {
+						padding: 20vh 10vw;
+						button {
+							width: 60%;
 						}
 					}
 				}
 			}
 		}
-		.ceo {
-			.inner {
-				.left {
-					h2 {
-						font-size: 34px;
-					}
-					p {
-						font-size: 16px;
-					}
+	}
+	.ceo {
+		.inner {
+			.left {
+				h2 {
+					font-size: 34px;
 				}
-				.right {
-					p {
-						font-size: 16px;
-					}
+				p {
+					font-size: 16px;
+				}
+			}
+			.right {
+				p {
+					font-size: 16px;
 				}
 			}
 		}
@@ -194,12 +226,23 @@
 @media screen and (max-width: $mobile) {
 	.ABOUT {
 		.member {
+			.inner {
+				h2 {
+					font-size: 30px;
+				}
+			}
 			ul {
-				flex-wrap: wrap;
 				li {
-					width: 50%;
-					.pic {
-						height: 300px;
+					width: 100%;
+					height: 50vh;
+					&:nth-of-type(11) {
+						padding: 5vh 10vw;
+						button {
+							width: 60%;
+						}
+					}
+					.info {
+						bottom: -40%;
 					}
 				}
 			}
@@ -210,50 +253,22 @@
 				.left {
 					width: 100%;
 					margin-bottom: 20px;
+					h2 {
+						font-size: 30px;
+					}
 				}
 				.right {
 					width: 100%;
-					.sign {
-						line-height: 100%;
-						text-align: right;
-					}
 					span {
 						display: block;
 						text-align: right;
+						.sign {
+							line-height: 100%;
+							text-align: right;
+						}
 					}
 				}
 			}
 		}
 	}
 }
-// 	.ABOUT {
-// 		.member {
-// 			height: 1500px;
-
-// 			.team {
-// 				.tabBox {
-// 					flex-direction: column;
-// 					li {
-// 						width: 100%;
-// 						margin-left: 0;
-// 						margin-right: 0;
-// 						padding-bottom: 0px;
-// 						margin-bottom: 20px;
-// 						display: flex;
-// 						align-items: center;
-// 						.pic {
-// 							width: 50%;
-// 						}
-// 						p {
-// 							width: 50%;
-// 							padding: 10px;
-// 							strong {
-// 								font-size: 20px;
-// 							}
-// 						}
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// }

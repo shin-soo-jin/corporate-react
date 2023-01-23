@@ -1,44 +1,21 @@
-import { faHome } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
-
 function Layout(props) {
 	return (
 		<section className={`content ${props.name}`}>
 			<figure
-				/* style={{
-					backgroundImage: `url(${process.env.PUBLIC_URL}/img/${props.backgroundImageUrl})`,
-				}} */
-				/* 				style={{
-					background: `url(${process.env.PUBLIC_URL}/img/visual1.jpg) no-repeat 0 0/cover`,
-				}} */
-				style={{ backgrund: '#eee' }}
+				// style={{
+				// 	backgroundImage: `url(${process.env.PUBLIC_URL}/img/${props.backgroundImageUrl})`,
+				// }}
+				style={{
+					background: `url(${process.env.PUBLIC_URL}/img/1visual.jpg) no-repeat 0 0/cover`,
+				}}
 			>
 				<div className='inner'>
-					<h1>{props.name}</h1>
-					<p>{props.txt}</p>
+					<h1>{props.txt}</h1>
 				</div>
 			</figure>
-			<nav className='breadcrumb'>
-				<div className='inner'>
-					<ul>
-						<li>
-							<Link to='/'>
-								<FontAwesomeIcon icon={faHome} />
-							</Link>
-						</li>
-						<li>
-							<Link to={props.link}>{props.name}</Link>
-						</li>
-					</ul>
-				</div>
-			</nav>
-			<article className='tit'>
-				<div className='inner'>
-					<h2>{props.tit}</h2>
-					<p>{props.titTxt}</p>
-				</div>
-			</article>
+			<div className='inner'>
+				<h1>{props.txt}</h1>
+			</div>
 			{props.children}
 		</section>
 	);

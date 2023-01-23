@@ -1,7 +1,7 @@
 @mixin button(
 	$width: 190px,
 	$height: 45px,
-	$background: #4b84db,
+	$background: $color1,
 	$fontSize: 12px,
 	$fontWeight: bold,
 	$color: #fff,

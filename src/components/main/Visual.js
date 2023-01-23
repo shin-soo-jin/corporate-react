@@ -65,10 +65,18 @@ function Visual() {
 	return (
 		<figure id='visual' className='scrollSection'>
 			<ul className='slider' ref={frameRef}>
-				<li className='on' style={{ backgroundImage: `url(${publicUrl}/img/visual1.jpg)` }} />
-				<li style={{ backgroundImage: `url(${publicUrl}/img/visual2.jpg)` }} />
-				<li style={{ backgroundImage: `url(${publicUrl}/img/visual3.jpg)` }} />
-				<li style={{ backgroundImage: `url(${publicUrl}/img/visual4.jpg)` }} />
+				{Array(pageNumRef.current)
+					.fill()
+					.map((_, idx) => {
+						let isOn = '';
+						idx === 0 && (isOn = 'on');
+						return (
+							<li key={idx} className={isOn}>
+								<img src={`${publicUrl}/img/${idx + 1}visual.jpg`} alt='visual' />
+								{/* <img src={`${publicUrl}/img/visual${idx + 1}.jpg`} alt='visual' /> */}
+							</li>
+						);
+					})}
 			</ul>
 
 			<div className='inner'>
@@ -109,9 +117,7 @@ function Visual() {
 						WE CREATE <br />
 						CAREERS
 					</p>
-					<a href='#' className='btn'>
-						SEE OUR LATEST WORK
-					</a>
+					<button className='btn'>SEE OUR LATEST WORK</button>
 				</div>
 			</div>
 		</figure>
