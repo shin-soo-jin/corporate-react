@@ -1,4 +1,4 @@
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useRef, useState } from 'react';
 import Layout from '../common/Layout';
@@ -9,15 +9,17 @@ import * as types from '../../redux/actionType';
 
 function Gallery() {
 	const dispatch = useDispatch();
-	const my_id = '197333350@N05';
+	// const my_id = '197333350@N05';
+	const gallery_france = '72157721439772026';
+	const gallery_hawaii = '72157721436347749';
 	const masonryOptions = { transitionDuration: '0.5s' };
 	const input = useRef(null);
 	const frame = useRef(null);
 	const modal = useRef(null);
 	const [Loading, setLoading] = useState(true);
 	const [Index, setIndex] = useState(0);
-	// const [Opt, setOpt] = useState({ type: 'user', user: my_id });
-	const [Opt, setOpt] = useState({ type: 'interest' });
+	const [Opt, setOpt] = useState({ type: 'gallery', gallery: gallery_france });
+	const [IsOn, setIsOn] = useState(1);
 	const Items = useSelector((store) => store.flickrReducer.flickr);
 
 	const showInterest = () => {
@@ -39,8 +41,8 @@ function Gallery() {
 		frame.current.classList.remove('on');
 		setLoading(true);
 	};
-	const showMine = () => {
-		setOpt({ type: 'user', user: my_id });
+	const showGallery = (gallery_id) => {
+		setOpt({ type: 'gallery', gallery: gallery_id });
 		frame.current.classList.remove('on');
 		setLoading(true);
 	};
@@ -60,7 +62,7 @@ function Gallery() {
 		<>
 			<Layout
 				name={'GALLERY'}
-				txt={'Meet Gallery'}
+				txt={'OUR GALLERY'}
 				link={'gallery'}
 				tit={'Lorem ipsum dolor sit.'}
 				titTxt={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt, in.'}
@@ -69,8 +71,33 @@ function Gallery() {
 					<div className='inner'>
 						<div className='controls'>
 							<nav>
-								<button onClick={showMine}>My Gallery</button>
-								<button onClick={showInterest}>Interest</button>
+								<button
+									className={IsOn === 1 ? 'on' : ''}
+									onClick={() => {
+										showGallery(gallery_france);
+										setIsOn(1);
+									}}
+								>
+									France
+								</button>
+								<button
+									className={IsOn === 2 ? 'on' : ''}
+									onClick={() => {
+										showGallery(gallery_hawaii);
+										setIsOn(2);
+									}}
+								>
+									Hawaii
+								</button>
+								<button
+									className={IsOn === 3 ? 'on' : ''}
+									onClick={() => {
+										showInterest();
+										setIsOn(3);
+									}}
+								>
+									Interest
+								</button>
 							</nav>
 							<div className='searchBox'>
 								<input
@@ -89,7 +116,7 @@ function Gallery() {
 							<ul ref={frame}>
 								<Masonry elementType={'ul'} options={masonryOptions}>
 									{Items.map((el, idx) => {
-										if (idx >= 9) return null;
+										if (idx >= 10) return null;
 										return (
 											<li key={idx}>
 												<div>
@@ -101,10 +128,13 @@ function Gallery() {
 														}}
 													>
 														<img
-															src={`https://live.staticflickr.com/${el.server}/${el.id}_${el.secret}_m.jpg`}
+															src={`https://live.staticflickr.com/${el.server}/${el.id}_${el.secret}_z.jpg`}
 															alt={el.title}
 															className='thumb'
 														/>
+														<i>
+															<FontAwesomeIcon icon={faPlus} />
+														</i>
 													</div>
 													<span>
 														<p>{el.title}</p>

@@ -17,7 +17,7 @@ import Contact from './components/sub/Contact';
 import Gallery from './components/sub/Gallery';
 import Join from './components/sub/Join';
 import News from './components/sub/News';
-import Youtube from './components/sub/Youtube';
+import Service from './components/sub/Service';
 
 import './scss/style.scss';
 
@@ -26,8 +26,7 @@ function App() {
 
 	useEffect(() => {
 		dispatch({ type: types.YOUTUBE.start });
-		// dispatch({ type: types.FLICKR.start, Opt: { type: 'user', user: '197333350@N05' } });
-		dispatch({ type: types.FLICKR.start, Opt: { type: 'interest' } });
+		dispatch({ type: types.FLICKR.start, Opt: { type: 'gallery', gallery: '72157721439772026' } });
 		dispatch({ type: types.MENU.close });
 	}, [dispatch]);
 
@@ -43,7 +42,7 @@ function App() {
 			<Route path='/contact' component={Contact} />
 			<Route path='/gallery' component={Gallery} />
 			<Route path='/news' component={News} />
-			<Route path='/youtube' component={Youtube} />
+			<Route path='/service' component={Service} />
 			<Route path='/join' component={Join} />
 
 			<Footer />

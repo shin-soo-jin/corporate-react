@@ -34,8 +34,21 @@ textarea {
 	position: relative;
 }
 
+h3 {
+	font-size: 40px;
+}
+
 @media screen and (max-width: $tablet) {
 	.inner {
 		width: 95%;
+	}
+	h3 {
+		font-size: 34px;
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	h3 {
+		font-size: 30px;
 	}
 }

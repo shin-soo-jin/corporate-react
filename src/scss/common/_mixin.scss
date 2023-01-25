@@ -24,12 +24,19 @@
 	}
 }
 
+@mixin dark {
+	content: '';
+	display: block;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.3);
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
 @mixin clear {
 	content: '';
 	display: block;
 	clear: both;
 }
-
-$h3Fz: 40px;
-$h3FzTab: 34px;
-$h3FzMo: 30px;

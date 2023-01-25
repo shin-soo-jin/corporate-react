@@ -4,41 +4,45 @@
 		padding: 0 0 100px;
 		.inner {
 			.controls {
-				margin-bottom: 60px;
-				position: relative;
+				margin-bottom: 50px;
+				display: flex;
+				justify-content: space-between;
 				nav {
-					text-align: center;
 					button {
-						@include button($color: #333, $background: #fff, $fontWeight: normal);
-						border: 1px solid #333;
+						@include button($background: #eee, $color: #000, $fontSize: 16px, $width: auto);
+						padding: 0 20px;
+						border-radius: 50px;
 						display: inline-block;
 						margin-right: 10px;
+						&:last-of-type {
+							margin-right: 0px;
+						}
+						&:hover {
+							background: #ddd;
+							color: #000;
+						}
+						&.on {
+							background: $color2;
+							color: #fff;
+						}
 					}
 				}
 				.searchBox {
-					position: absolute;
-					right: 10px;
-					top: 0;
 					input {
+						display: inline-block;
 						width: 200px;
-						height: 40px;
+						height: 45px;
 						padding: 10px;
 						font-size: 16px;
-						border: 1px solid #333;
+						border: 1px solid #ddd;
 					}
 					button {
-						display: inline-block;
-						width: 40px;
-						height: 40px;
-						line-height: 40px;
-						text-align: center;
-						vertical-align: top;
-						border: 1px solid #333;
-						border-left: none;
-						font-size: 20px;
-						color: #333;
-						background: #fff;
-						cursor: pointer;
+						@include button($width: 45px, $background: $color2, $fontSize: 16px);
+						display: inline;
+						&:hover {
+							background: $color2;
+							color: #fff;
+						}
 					}
 				}
 			}
@@ -61,15 +65,58 @@
 						padding: 10px;
 						div {
 							position: relative;
+
 							&:hover {
 								span {
 									opacity: 1;
 								}
+								.pic {
+									&::after {
+										opacity: 1;
+									}
+								}
 							}
 							.pic {
 								width: 100%;
+								overflow: hidden;
+								cursor: pointer;
+								&::after {
+									content: '';
+									display: block;
+									position: absolute;
+									top: 0;
+									left: 0;
+									width: 100%;
+									height: 100%;
+									background: rgba(0, 0, 0, 0.4);
+									z-index: 0;
+									opacity: 0;
+									transition: 0.5s;
+								}
 								> img {
 									width: 100%;
+									object-fit: cover;
+									transition: 0.5s;
+								}
+								i {
+									position: absolute;
+									top: 50%;
+									left: 50%;
+									transform: translate(-50%, -50%) scale(0);
+									font-size: 30px;
+									color: #fff;
+									z-index: 1;
+									opacity: 0;
+									transition: 0.5s;
+								}
+								&:hover {
+									> img {
+										transform: scale(1.1);
+									}
+									i {
+										transform: translate(-50%, -50%) scale(1);
+										opacity: 1;
+									}
 								}
 							}
 							span {
@@ -83,24 +130,27 @@
 								opacity: 0;
 								transition: 0.5s;
 								p {
-									font-size: 14px;
-									font-weight: bold;
+									font-size: 16px;
 									color: #fff;
 									margin-bottom: 10px;
 								}
 								> img {
-									width: 20px;
-									height: 20px;
+									width: 25px;
+									height: 25px;
 									border-radius: 50%;
 									margin-right: 5px;
 								}
 								strong {
-									font-size: 10px;
+									font-size: 12px;
 									font-weight: normal;
 									color: #eee;
+									line-height: 25px;
 									vertical-align: top;
-									line-height: 20px;
 									cursor: pointer;
+									transition: 0.3s;
+									&:hover {
+										font-size: 13px;
+									}
 								}
 							}
 						}
@@ -140,32 +190,16 @@
 		}
 	}
 }
+aside {
+	.con {
+		> img {
+			object-fit: contain;
+		}
+	}
+}
 
 @media screen and (max-width: $tablet) {
 	.GALLERY {
-		.images {
-			.inner {
-				.controls {
-					nav {
-						text-align: left;
-						margin-left: 10px;
-						button {
-							width: 20%;
-						}
-					}
-					.searchBox {
-						top: 2.5px;
-					}
-				}
-				.imgList {
-					> ul {
-						li {
-							width: calc(100% / 2);
-						}
-					}
-				}
-			}
-		}
 		.text {
 			.inner {
 				p {
@@ -184,24 +218,15 @@
 		.images {
 			.inner {
 				.controls {
+					flex-direction: column;
+					gap: 20px;
 					nav {
-						margin-left: 0;
-						button {
-							width: calc((100% - 10px) / 2);
-							margin-right: 10px;
-							margin-bottom: 10px;
-							&:nth-of-type(2) {
-								margin-right: 0px;
-							}
-						}
+						display: flex;
 					}
 					.searchBox {
-						position: static;
+						width: 100%;
 						input {
-							width: 90%;
-						}
-						button {
-							width: 10%;
+							width: calc(100% - 45px);
 						}
 					}
 				}
