@@ -184,7 +184,7 @@ function Gallery() {
 					</div>
 				</article>
 
-				<article className='bottom'>
+				<article className='gallery_Info'>
 					<div className='bg bgL'>
 						<i>
 							<FontAwesomeIcon icon={faChartLine} />

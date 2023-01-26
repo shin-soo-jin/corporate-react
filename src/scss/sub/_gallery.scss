@@ -167,7 +167,7 @@
 			}
 		}
 	}
-	.bottom {
+	.gallery_Info {
 		width: 100%;
 		background: #fafafa;
 		padding: 100px 0;
@@ -238,6 +238,7 @@
 				color: rgba($color2, 0.8);
 				box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.04);
 				font-size: 40px;
+				transform: scale(1);
 			}
 		}
 		.inner {
@@ -247,14 +248,19 @@
 			}
 			p {
 				padding: 0 250px;
+				margin-bottom: 50px;
 				color: #555;
 			}
 			button {
 				@include button($height: 50px, $fontSize: 16px, $background: $color2);
-				margin: 50px auto;
+				margin: 0 auto;
 				&:hover {
 					border: 1px solid $color2;
 				}
+			}
+			span {
+				display: block;
+				margin: 50px 0;
 			}
 		}
 	}
@@ -280,13 +286,18 @@ aside {
 				}
 			}
 		}
-		.text {
+		.gallery_Info {
+			.bg {
+				i {
+					opacity: 0.5;
+				}
+			}
 			.inner {
+				h3 {
+					padding: 0;
+				}
 				p {
-					&:nth-of-type(2),
-					&:nth-of-type(3) {
-						font-size: 14px;
-					}
+					padding: 0;
 				}
 			}
 		}
@@ -319,9 +330,14 @@ aside {
 				}
 			}
 		}
-		.text {
+		.gallery_Info {
+			.bg {
+				display: none;
+			}
 			.inner {
-				padding: 0 20px;
+				span {
+					margin: 20px 0;
+				}
 			}
 		}
 	}
