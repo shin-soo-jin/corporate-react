@@ -1,4 +1,19 @@
-import { faMagnifyingGlass, faPlus } from '@fortawesome/free-solid-svg-icons';
+import {
+	faMagnifyingGlass,
+	faPlus,
+	faChartLine,
+	faDisplay,
+	faLayerGroup,
+	faPenNib,
+} from '@fortawesome/free-solid-svg-icons';
+import {
+	faHourglass,
+	faLifeRing,
+	faLightbulb,
+	faMessage,
+	faCalendar,
+	faFolderOpen,
+} from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useRef, useState } from 'react';
 import Layout from '../common/Layout';
@@ -9,17 +24,16 @@ import * as types from '../../redux/actionType';
 
 function Gallery() {
 	const dispatch = useDispatch();
-	// const my_id = '197333350@N05';
-	const gallery_france = '72157721439772026';
-	const gallery_hawaii = '72157721436347749';
+	const my_id = '197333350@N05';
 	const masonryOptions = { transitionDuration: '0.5s' };
 	const input = useRef(null);
 	const frame = useRef(null);
 	const modal = useRef(null);
 	const [Loading, setLoading] = useState(true);
+	const [Init, setInit] = useState(true);
 	const [Index, setIndex] = useState(0);
-	const [Opt, setOpt] = useState({ type: 'gallery', gallery: gallery_france });
-	const [IsOn, setIsOn] = useState(1);
+	const [Opt, setOpt] = useState({ type: 'user', user: my_id });
+	const [IsOn, setIsOn] = useState(0);
 	const Items = useSelector((store) => store.flickrReducer.flickr);
 
 	const showInterest = () => {
@@ -34,6 +48,7 @@ function Gallery() {
 		setOpt({ type: 'search', tags: tags });
 		frame.current.classList.remove('on');
 		setLoading(true);
+		setIsOn('');
 	};
 	const showUser = (e) => {
 		let user_id = e.target.innerText;
@@ -41,13 +56,23 @@ function Gallery() {
 		frame.current.classList.remove('on');
 		setLoading(true);
 	};
-	const showGallery = (gallery_id) => {
-		setOpt({ type: 'gallery', gallery: gallery_id });
+	const showMine = () => {
+		setOpt({ type: 'user', user: my_id });
 		frame.current.classList.remove('on');
 		setLoading(true);
 	};
 
 	useEffect(() => {
+		setInit(false);
+	}, []);
+
+	useEffect(() => {
+		if (Items.length === 0 && !Init) {
+			alert('해당 검색어에 대한 검색결과가 없습니다.');
+			showMine();
+			setIsOn(0);
+		}
+
 		setTimeout(() => {
 			frame.current?.classList.add('on');
 			setLoading(false);
@@ -55,6 +80,7 @@ function Gallery() {
 	}, [Items]);
 
 	useEffect(() => {
+		setLoading(true);
 		dispatch({ type: types.FLICKR.start, Opt });
 	}, [Opt, dispatch]);
 
@@ -63,7 +89,6 @@ function Gallery() {
 			<Layout
 				name={'GALLERY'}
 				txt={'OUR GALLERY'}
-				link={'gallery'}
 				tit={'Lorem ipsum dolor sit.'}
 				titTxt={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt, in.'}
 			>
@@ -72,31 +97,22 @@ function Gallery() {
 						<div className='controls'>
 							<nav>
 								<button
+									className={IsOn === 0 ? 'on' : ''}
+									onClick={() => {
+										showMine();
+										setIsOn(0);
+									}}
+								>
+									GALLERY
+								</button>
+								<button
 									className={IsOn === 1 ? 'on' : ''}
 									onClick={() => {
-										showGallery(gallery_france);
+										showInterest();
 										setIsOn(1);
 									}}
 								>
-									France
-								</button>
-								<button
-									className={IsOn === 2 ? 'on' : ''}
-									onClick={() => {
-										showGallery(gallery_hawaii);
-										setIsOn(2);
-									}}
-								>
-									Hawaii
-								</button>
-								<button
-									className={IsOn === 3 ? 'on' : ''}
-									onClick={() => {
-										showInterest();
-										setIsOn(3);
-									}}
-								>
-									Interest
+									INTEREST
 								</button>
 							</nav>
 							<div className='searchBox'>
@@ -116,7 +132,7 @@ function Gallery() {
 							<ul ref={frame}>
 								<Masonry elementType={'ul'} options={masonryOptions}>
 									{Items.map((el, idx) => {
-										if (idx >= 10) return null;
+										if (idx >= 6) return null;
 										return (
 											<li key={idx}>
 												<div>
@@ -167,21 +183,52 @@ function Gallery() {
 						)}
 					</div>
 				</article>
-				<article className='text'>
+
+				<article className='bottom'>
+					<div className='bg bgL'>
+						<i>
+							<FontAwesomeIcon icon={faChartLine} />
+						</i>
+						<i>
+							<FontAwesomeIcon icon={faDisplay} />
+						</i>
+						<i>
+							<FontAwesomeIcon icon={faLayerGroup} />
+						</i>
+						<i>
+							<FontAwesomeIcon icon={faPenNib} />
+						</i>
+						<i>
+							<FontAwesomeIcon icon={faHourglass} />
+						</i>
+					</div>
+					<div className='bg bgR'>
+						<i>
+							<FontAwesomeIcon icon={faLifeRing} />
+						</i>
+						<i>
+							<FontAwesomeIcon icon={faLightbulb} />
+						</i>
+						<i>
+							<FontAwesomeIcon icon={faMessage} />
+						</i>
+						<i>
+							<FontAwesomeIcon icon={faCalendar} />
+						</i>
+						<i>
+							<FontAwesomeIcon icon={faFolderOpen} />
+						</i>
+					</div>
+
 					<div className='inner'>
-						<h2>Lorem, ipsum.</h2>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, natus?</p>
+						<h3>Let’s talk about your project and see how we can work together</h3>
 						<p>
-							Lorem ipsum dolor, sit amet consectetur adipisicing elit. In laborum recusandae
-							assumenda, excepturi, nostrum id aperiam ratione corporis, necessitatibus nihil
-							ducimus expedita. Alias molestiae, nesciunt repellendus labore esse modi explicabo.
+							Our team of business consultants, analysts and creatives are perfectionists who love
+							what they do and where they work.
 						</p>
-						<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, quas. Ab sed quas
-							alias eaque, et nostrum deleniti velit error aliquid aspernatur cum autem maiores
-							laborum ratione recusandae nemo! Exercitationem nulla voluptate deleniti. Consectetur
-							nostrum, veniam velit obcaecati doloremque quaerat?
-						</p>
+						<button>070-000-1111</button>
+						<span>Or</span>
+						<button>Contact Us</button>
 					</div>
 				</article>
 			</Layout>

@@ -26,7 +26,7 @@ function App() {
 
 	useEffect(() => {
 		dispatch({ type: types.YOUTUBE.start });
-		dispatch({ type: types.FLICKR.start, Opt: { type: 'gallery', gallery: '72157721439772026' } });
+		dispatch({ type: types.FLICKR.start, Opt: { type: 'user', user: '197333350@N05' } });
 		dispatch({ type: types.MENU.close });
 	}, [dispatch]);
 
