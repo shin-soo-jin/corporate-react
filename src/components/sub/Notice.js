@@ -1,114 +1,31 @@
+import { useRef } from 'react';
 import { forwardRef } from 'react';
 
 const Notice = forwardRef((props, ref) => {
+	const num = useRef(10);
 	return (
 		<section className='notice' ref={ref}>
 			<table>
 				<tbody>
-					<tr>
-						<td>
-							<span>NEWS</span>
-						</td>
-						<td>
-							<strong>Lorem ipsum dolor sit amet.</strong>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores quos expedita
-								officia.
-							</p>
-						</td>
-						<td>2022.12.11</td>
-					</tr>
-					<tr>
-						<td>
-							<span>NEWS</span>
-						</td>
-						<td>
-							<strong>Lorem ipsum dolor sit amet.</strong>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores quos expedita
-								officia.
-							</p>
-						</td>
-						<td>2022.12.11</td>
-					</tr>
-					<tr>
-						<td>
-							<span>NEWS</span>
-						</td>
-						<td>
-							<strong>Lorem ipsum dolor sit amet.</strong>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores quos expedita
-								officia.
-							</p>
-						</td>
-						<td>2022.12.11</td>
-					</tr>
-					<tr>
-						<td>
-							<span>NEWS</span>
-						</td>
-						<td>
-							<strong>Lorem ipsum dolor sit amet.</strong>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores quos expedita
-								officia.
-							</p>
-						</td>
-						<td>2022.12.11</td>
-					</tr>
-					<tr>
-						<td>
-							<span>NEWS</span>
-						</td>
-						<td>
-							<strong>Lorem ipsum dolor sit amet.</strong>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores quos expedita
-								officia.
-							</p>
-						</td>
-						<td>2022.12.11</td>
-					</tr>
-					<tr>
-						<td>
-							<span>NEWS</span>
-						</td>
-						<td>
-							<strong>Lorem ipsum dolor sit amet.</strong>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores quos expedita
-								officia.
-							</p>
-						</td>
-						<td>2022.12.11</td>
-					</tr>
-					<tr>
-						<td>
-							<span>NEWS</span>
-						</td>
-						<td>
-							<strong>Lorem ipsum dolor sit amet.</strong>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores quos expedita
-								officia.
-							</p>
-						</td>
-						<td>2022.12.11</td>
-					</tr>
-					<tr>
-						<td>
-							<span>NEWS</span>
-						</td>
-						<td>
-							<strong>Lorem ipsum dolor sit amet.</strong>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores quos expedita
-								officia.
-							</p>
-						</td>
-						<td>2022.12.11</td>
-					</tr>
+					{Array(num.current)
+						.fill()
+						.map((_, idx) => {
+							return (
+								<tr key={idx}>
+									<td>
+										<span>NOTICE</span>
+									</td>
+									<td>
+										<strong>Lorem ipsum dolor sit amet.</strong>
+										<p>
+											Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores quos expedita
+											officia.
+										</p>
+									</td>
+									<td>2023.01.01</td>
+								</tr>
+							);
+						})}
 				</tbody>
 			</table>
 			<ul className='pagination'>

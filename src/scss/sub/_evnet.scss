@@ -1,0 +1,170 @@
+.community {
+	display: none;
+	&.on {
+		display: block;
+	}
+	.inputBox {
+		margin-bottom: 50px;
+		padding: 20px;
+		border-top: 1px solid #666;
+		border-bottom: 1px solid #666;
+		.txt {
+			font-size: 0;
+			margin-bottom: 20px;
+			input[type='text'],
+			textarea {
+				width: 100%;
+				padding: 10px;
+				font-size: 14px;
+				border: 1px solid #ddd;
+			}
+			input[type='text'] {
+				margin-bottom: 20px;
+			}
+		}
+		.btns {
+			text-align: center;
+			button {
+				margin: 0 10px;
+				&:first-of-type {
+					@include button($background: #aaa);
+					display: inline;
+					border: 1px solid #aaa;
+					&:hover {
+						background: #aaa;
+						color: #fff;
+					}
+				}
+				&:last-of-type {
+					@include button($background: $color2);
+					display: inline;
+					border: 1px solid $color2;
+					&:hover {
+						background: $color2;
+						color: #fff;
+					}
+				}
+			}
+		}
+	}
+
+	.showBox {
+		article {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			border-bottom: 1px solid #ddd;
+			padding: 30px 0;
+			position: relative;
+			&:hover {
+				.txt {
+					h2 {
+						color: $color2;
+					}
+					p {
+						color: $color2;
+					}
+				}
+			}
+			.category {
+				width: 15%;
+				text-align: center;
+				span {
+					padding: 0 20px;
+					margin: 0 auto;
+					border: 1px solid $color2;
+					border-radius: 15px;
+					color: $color2;
+				}
+			}
+			.txt {
+				width: 85%;
+				h2 {
+					font-size: 24px;
+					font-weight: 500;
+					margin-bottom: 10px;
+				}
+				p {
+					color: #888;
+				}
+				input[type='text'],
+				textarea {
+					width: 100%;
+					padding: 10px;
+					border: 1px solid #ddd;
+					background: #f5f5f5;
+				}
+			}
+			.btns {
+				position: absolute;
+				top: 0;
+				right: 0;
+				button {
+					border: transparent;
+					background: transparent;
+					font-size: 16px;
+					color: #888;
+					padding: 10px;
+					cursor: pointer;
+					&.btnUpdate,
+					&.btnUpdatePost {
+						color: $color2;
+					}
+					&.btnCancle,
+					&.btnDelete {
+						color: #f66;
+					}
+					&:hover {
+						transform: scale(1.2);
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $tablet) {
+	.community {
+		.showBox {
+			article {
+				.category {
+					width: 20%;
+				}
+				.txt {
+					width: 80%;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	.community {
+		.inputBox {
+			.btns {
+				button {
+					margin: 0;
+					&:first-of-type {
+						width: 48%;
+						margin-right: 4%;
+					}
+					&:last-of-type {
+						width: 48%;
+					}
+				}
+			}
+		}
+		.showBox {
+			article {
+				display: block;
+				.category {
+					margin-bottom: 20px;
+				}
+				.txt {
+					width: 100%;
+				}
+			}
+		}
+	}
+}

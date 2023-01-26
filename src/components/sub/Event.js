@@ -2,7 +2,7 @@ import { faCheck, faPen, faTrash, faXmark } from '@fortawesome/free-solid-svg-ic
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { forwardRef, useEffect, useRef, useState } from 'react';
 
-const Community = forwardRef((props, ref) => {
+const Event = forwardRef((props, ref) => {
 	const getLocalData = () => {
 		const data = localStorage.getItem('post');
 		return JSON.parse(data);
@@ -88,10 +88,11 @@ const Community = forwardRef((props, ref) => {
 					<textarea cols='30' rows='4' placeholder='본문을 입력하세요' ref={textarea} />
 				</div>
 				<div className='btns'>
-					<button onClick={resetForm}>취소</button>
-					<button onClick={creatPost}>작성</button>
+					<button onClick={resetForm}>CANCLE</button>
+					<button onClick={creatPost}>CREATE</button>
 				</div>
 			</div>
+
 			<div className='showBox'>
 				{Posts.map((post, idx) => {
 					return (
@@ -99,6 +100,9 @@ const Community = forwardRef((props, ref) => {
 							{post.enableUpdate ? (
 								// 수정 모드
 								<>
+									<div className='category'>
+										<span>EVENT</span>
+									</div>
 									<div className='txt'>
 										<h2>
 											<input type='text' defaultValue={post.title} ref={inputEdit} />
@@ -108,26 +112,31 @@ const Community = forwardRef((props, ref) => {
 										</p>
 									</div>
 									<div className='btns'>
-										<button onClick={() => disableUpdate(idx)}>
-											<FontAwesomeIcon icon={faCheck} />
-										</button>
-										<button onClick={() => updatePost(idx)}>
+										<button className='btnCancle' onClick={() => updatePost(idx)}>
 											<FontAwesomeIcon icon={faXmark} />
+										</button>
+										<button className='btnUpdatePost' onClick={() => disableUpdate(idx)}>
+											<FontAwesomeIcon icon={faCheck} />
 										</button>
 									</div>
 								</>
 							) : (
 								// 출력 모드
 								<>
+									<div className='category'>
+										<span>EVENT</span>
+									</div>
 									<div className='txt'>
-										<h2>{post.title}</h2>
-										<p>{post.content}</p>
+										<div className='wrap'>
+											<h2>{post.title}</h2>
+											<p>{post.content}</p>
+										</div>
 									</div>
 									<div className='btns'>
-										<button onClick={() => enableUpdate(idx)}>
+										<button className='btnUpdate' onClick={() => enableUpdate(idx)}>
 											<FontAwesomeIcon icon={faPen} />
 										</button>
-										<button onClick={() => deletePost(idx)}>
+										<button className='btnDelete' onClick={() => deletePost(idx)}>
 											<FontAwesomeIcon icon={faTrash} />
 										</button>
 									</div>
@@ -141,4 +150,4 @@ const Community = forwardRef((props, ref) => {
 	);
 });
 
-export default Community;
+export default Event;
