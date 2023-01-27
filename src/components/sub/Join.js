@@ -20,6 +20,8 @@ function Join() {
 		phone1: '',
 		phone2: '',
 		phone3: '',
+		services: null,
+		contact: null,
 	};
 	const [Val, setVal] = useState(initVal);
 	const [Err, setErr] = useState({});
@@ -55,6 +57,12 @@ function Join() {
 		if (isNaN(value.phone2) || isNaN(value.phone3) || !value.phone2 || !value.phone3) {
 			errs.phone2 = 'PHONE NUMBER는 숫자만 입력하세요';
 		}
+		if (!value.services) {
+			errs.services = 'SERVICES YOU REQUIRE를 선택하세요';
+		}
+		if (!value.contact) {
+			errs.contact = 'PREFERRED METHOD OF CONTACT를 선택하세요';
+		}
 
 		return errs;
 	};
@@ -64,21 +72,39 @@ function Join() {
 		setVal({ ...Val, [name]: value });
 	};
 
-	const handleCheck = (e) => {
-		const { name } = e.target;
-		const isChecked = e.target.checked;
-		setVal({ ...Val, [name]: isChecked });
-	};
-
 	const handleSelect = (e) => {
 		const { name } = e.target;
 		const isSelected = e.target.value;
 		setVal({ ...Val, [name]: isSelected });
 	};
 
+	const handleCheck = (e) => {
+		let isChecked = false;
+		const { name } = e.target;
+		const inputs = e.target.parentElement.querySelectorAll('input');
+
+		inputs.forEach((el) => {
+			if (el.checked) isChecked = true;
+		});
+		setVal({ ...Val, [name]: isChecked });
+	};
+
+	const handleRadio = (e) => {
+		const { name } = e.target;
+		const isChecked = e.target.checked;
+		setVal({ ...Val, [name]: isChecked });
+	};
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setErr(check(Val));
+		setSubmit(true);
+	};
+
+	const handleReset = (e) => {
+		setSubmit(false);
+		setErr({});
+		setVal(initVal);
 	};
 
 	useEffect(() => {
@@ -91,7 +117,7 @@ function Join() {
 	}, [Err, Submit, history]);
 
 	return (
-		<Layout name={'JOIN'} txt={'Join Our Company'} link={'join'}>
+		<Layout name={'JOIN'} txt={'JOIN OUR COMPANY'}>
 			<div className='inner'>
 				<form action='' onSubmit={handleSubmit}>
 					<legend className='hidden'>Terms of Use</legend>
@@ -242,16 +268,60 @@ function Join() {
 									</span>
 								</td>
 							</tr>
+							{/* services */}
+							<tr>
+								<th scope='row'>SERVICES YOU REQUIRE</th>
+								<td>
+									<div>
+										<input type='checkbox' name='services' id='web' onChange={handleCheck} />
+										<label htmlFor='web'>WEB DESIGN & DEVELOPMENT</label>
+									</div>
+
+									<div>
+										<input type='checkbox' name='services' id='e-commerce' onChange={handleCheck} />
+										<label htmlFor='e-commerce'>E-COMMERCE STORE</label>
+									</div>
+
+									<div>
+										<input type='checkbox' name='services' id='search' onChange={handleCheck} />
+										<label htmlFor='search'>SEARCH ENGINE MARKETING</label>
+									</div>
+
+									<span className='err'>
+										<i className={!Err.services ? '' : 'on'}>
+											<FontAwesomeIcon icon={faInfoCircle} />
+										</i>
+										{Err.services}
+									</span>
+								</td>
+							</tr>
+							{/* contact */}
+							<tr>
+								<th scope='row'>PREFERRED METHOD OF CONTACT</th>
+								<td>
+									<div>
+										<input type='radio' name='contact' id='contact_phone' onChange={handleRadio} />
+										<label htmlFor='contact_phone'>PHONE</label>
+									</div>
+
+									<div>
+										<input type='radio' name='contact' id='contact_email' onChange={handleRadio} />
+										<label htmlFor='contact_email'>EMAIL</label>
+									</div>
+
+									<span className='err'>
+										<i className={!Err.contact ? '' : 'on'}>
+											<FontAwesomeIcon icon={faInfoCircle} />
+										</i>
+										{Err.contact}
+									</span>
+								</td>
+							</tr>
 						</tbody>
 					</table>
 					<div className='joinBtn'>
-						<input
-							type='submit'
-							value='SIGN UP'
-							onClick={() => {
-								setSubmit(true);
-							}}
-						/>
+						<input type='reset' value='CANCEL' onClick={handleReset} />
+						<input type='submit' value='SIGN UP' />
 					</div>
 				</form>
 			</div>

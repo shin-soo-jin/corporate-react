@@ -1,4 +1,5 @@
 .JOIN {
+	margin-bottom: 150px;
 	h2 {
 		font-size: 24px;
 		margin-bottom: 20px;
@@ -55,7 +56,8 @@
 			}
 			td {
 				padding: 20px;
-				input {
+				input[type='text'],
+				input[type='password'] {
 					width: 200px;
 					height: 40px;
 					border: 1px solid #ccc;
@@ -70,6 +72,18 @@
 				b {
 					font-weight: normal;
 					text-align: center;
+				}
+				div {
+					input[type='checkbox'],
+					input[type='radio'] {
+						margin-right: 10px;
+					}
+					input[type='checkbox'] + label,
+					input[type='radio'] + label {
+						font-size: 14px;
+						vertical-align: 1px;
+						color: #555;
+					}
 				}
 				span {
 					display: block;
@@ -90,16 +104,61 @@
 	.joinBtn {
 		text-align: center;
 		input {
-			width: 150px;
-			height: 40px;
-			border-radius: 5px;
-			border: 1px solid #ccc;
-			background: #fff;
-			color: #333;
-			cursor: pointer;
+			@include button;
+			display: inline;
+			margin: 0 10px;
+			&:first-child {
+				background: #aaa;
+			}
+			&:last-child {
+				background: $color2;
+			}
 			&:hover {
-				background: #3c6ab0;
 				color: #fff;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $tablet) {
+	.JOIN {
+		table {
+			tr {
+				td {
+					select {
+						margin-bottom: 10px;
+					}
+					input#phone2 {
+						margin-bottom: 10px;
+					}
+					b {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	.JOIN {
+		table {
+			tr {
+				td {
+					input[type='text'],
+					input[type='password'] {
+						width: 100%;
+					}
+					select {
+						width: 100%;
+					}
+				}
+			}
+		}
+		.joinBtn {
+			input {
+				width: 48%;
+				margin: 0 1%;
 			}
 		}
 	}
