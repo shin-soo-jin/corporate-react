@@ -1,79 +1,94 @@
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useRef } from 'react';
+import { useCallback } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import Anime from '../../asset/anime';
 
 function Visual() {
 	const publicUrl = process.env.PUBLIC_URL;
-	const frameRef = useRef(null);
-	const pageRef = useRef(null);
-	const btnStartRef = useRef(null);
-	const btnStopRef = useRef(null);
-	const pageNumRef = useRef(4);
-
-	const interval = 5000;
-	let num = 0;
-	let timer = null;
+	const pageNum = useRef(4);
+	const btnStart = useRef(null);
+	const btnStop = useRef(null);
+	const interval = useRef(null);
+	const bar = useRef(null);
+	const txt1 = useRef(null);
+	const txt2 = useRef(null);
+	const [Index, setIndex] = useState(0);
+	const [RollingOn, setRollingOn] = useState(0);
+	const len = pageNum.current - 1;
+	const time = 5000;
 
 	const activation = (index) => {
-		const frames = frameRef.current.children;
-		const pages = pageRef.current.children;
-
-		for (const frame of frames) frame.classList.remove('on');
-		for (const page of pages) page.classList.remove('on');
-		frames[index].classList.add('on');
-		pages[index].classList.add('on');
-
-		num = index;
+		setIndex(index);
 	};
 
-	const nextBtn = () => {
-		const frames = frameRef.current.children;
-		let len = frames.length - 1;
+	const nextSlide = useCallback(() => {
+		Index < len ? setIndex(Index + 1) : setIndex(0);
+	}, [Index, len]);
 
-		num < len ? num++ : (num = 0);
-		activation(num);
+	const prevSlide = () => {
+		Index === 0 ? setIndex(len) : setIndex(Index - 1);
 	};
 
-	const prevBtn = () => {
-		const frames = frameRef.current.children;
-		let len = frames.length - 1;
+	const startRolling = useCallback(() => {
+		interval.current = setInterval(nextSlide, time);
+		bar.current.style.display = 'block';
+		bar.current.style.width = '0%';
+		progress();
 
-		num === 0 ? (num = len) : num--;
-		activation(num);
-	};
-
-	const startRolling = () => {
-		timer = setInterval(nextBtn, interval);
-
-		btnStartRef.current.classList.add('on');
-		btnStopRef.current.classList.remove('on');
-	};
+		setRollingOn(0);
+	}, [nextSlide]);
 
 	const stopRolling = () => {
-		clearInterval(timer);
+		clearInterval(interval.current);
+		bar.current.style.display = 'none';
 
-		btnStartRef.current?.classList.remove('on');
-		btnStopRef.current?.classList.add('on');
+		setRollingOn(1);
+	};
+
+	const progress = () => {
+		new Anime(bar.current, {
+			prop: 'width',
+			value: '100%',
+			duration: time,
+		});
+	};
+
+	const textAni = (txt) => {
+		const strTxt = txt.current.innerText;
+		let tags = '';
+
+		for (const el of strTxt) tags += `<span>${el}</span>`;
+		txt.current.innerHTML = tags;
+
+		const span = txt.current.querySelectorAll('span');
+		span.forEach((el, idx) => {
+			if (el.innerText.length === 0) el.style.width = '20px';
+			el.style.opacity = '1';
+			el.style.transform = 'translateX(0%)';
+			el.style.transitionDelay = 0.1 * (idx / 2) + 's';
+		});
 	};
 
 	useEffect(() => {
-		startRolling();
+		textAni(txt1);
+		textAni(txt2);
+	}, [Index]);
 
+	useEffect(() => {
+		startRolling();
 		return () => stopRolling();
-	}, []);
+	}, [startRolling]);
 
 	return (
 		<figure id='visual' className='scrollSection'>
-			<ul className='slider' ref={frameRef}>
-				{Array(pageNumRef.current)
+			<ul className='slider'>
+				{Array(pageNum.current)
 					.fill()
 					.map((_, idx) => {
-						let isOn = '';
-						idx === 0 && (isOn = 'on');
 						return (
-							<li key={idx} className={isOn}>
-								<img src={`${publicUrl}/img/${idx + 1}visual.jpg`} alt='visual' />
-								{/* <img src={`${publicUrl}/img/visual${idx + 1}.jpg`} alt='visual' /> */}
+							<li key={idx} className={Index === idx ? 'on' : ''}>
+								<img src={`${publicUrl}/img/visual0${idx + 1}.jpg`} alt='visual' />
 							</li>
 						);
 					})}
@@ -81,16 +96,14 @@ function Visual() {
 
 			<div className='inner'>
 				<div className='btns'>
-					<ul className='sliderPage' ref={pageRef}>
-						{Array(pageNumRef.current)
+					<ul className='sliderPage'>
+						{Array(pageNum.current)
 							.fill()
 							.map((_, idx) => {
-								let isOn = '';
-								idx === 0 && (isOn = 'on');
 								return (
 									<li
 										key={idx}
-										className={isOn}
+										className={Index === idx ? 'on' : ''}
 										onClick={() => {
 											activation(idx);
 										}}
@@ -98,26 +111,63 @@ function Visual() {
 								);
 							})}
 					</ul>
-
-					<button className='sliderBtn sliderNext' onClick={nextBtn}>
+					<button className='sliderBtn sliderNext' onClick={nextSlide}>
 						<img src={`${publicUrl}/img/next.png`} alt='다음 슬라이드 버튼' />
 					</button>
-					<button className='sliderBtn sliderPrev' onClick={prevBtn}>
+					<button className='sliderBtn sliderPrev' onClick={prevSlide}>
 						<img src={`${publicUrl}/img/prev.png`} alt='이전 슬라이드 버튼' />
 					</button>
+
 					<span className='sliderRollingBtn'>
-						<FontAwesomeIcon icon={faPlay} ref={btnStartRef} onClick={startRolling} />
-						<FontAwesomeIcon icon={faPause} ref={btnStopRef} onClick={stopRolling} />
+						<i className={RollingOn === 0 ? 'on' : ''} ref={btnStart} onClick={startRolling}>
+							<FontAwesomeIcon icon={faPlay} />
+						</i>
+						<i className={RollingOn === 1 ? 'on' : ''} ref={btnStop} onClick={stopRolling}>
+							<FontAwesomeIcon icon={faPause} />
+						</i>
 					</span>
+
+					<div className='bar'>
+						<div className='barInner' ref={bar}></div>
+					</div>
 				</div>
 
 				<div className='text'>
-					<h2>WELCOME TO YOUR NEW WEBSITE</h2>
-					<p>
-						WE CREATE <br />
-						CAREERS
-					</p>
-					<button className='btn'>SEE OUR LATEST WORK</button>
+					{Index === 0 && (
+						<>
+							<h2>WELCOME TO YOUR NEW WEBSITE</h2>
+							<p ref={txt1}>WE CREATE</p>
+							<p ref={txt2}>CAREERS</p>
+							<button className='btn'>SEE OUR LATEST WORK</button>
+						</>
+					)}
+
+					{Index === 1 && (
+						<>
+							<h2>TOTAL IT SOLUTION</h2>
+							<p ref={txt1}>BEST IT</p>
+							<p ref={txt2}>SOLUTION AGENCY</p>
+							<button className='btn'>SEE OUR LATEST WORK</button>
+						</>
+					)}
+
+					{Index === 2 && (
+						<>
+							<h2>BUILT AS A FRAMEWORK</h2>
+							<p ref={txt1}>WE ARE</p>
+							<p ref={txt2}>A CREATIVE AGENCY</p>
+							<button className='btn'>SEE OUR LATEST WORK</button>
+						</>
+					)}
+
+					{Index === 3 && (
+						<>
+							<h2>DIGITAL EXPERIENCE</h2>
+							<p ref={txt1}>WE PROVIDE</p>
+							<p ref={txt2}>THE BEST VALUE</p>
+							<button className='btn'>SEE OUR LATEST WORK</button>
+						</>
+					)}
 				</div>
 			</div>
 		</figure>
