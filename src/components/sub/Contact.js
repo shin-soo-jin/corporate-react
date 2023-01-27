@@ -60,16 +60,14 @@ function Contact() {
 	}, [Index, kakao, marker, mapTypeControl, zoomControl]);
 
 	return (
-		<Layout
-			name={'CONTACT'}
-			txt={'Contact Our Company'}
-			link={'contact'}
-			tit={'Come and visit us'}
-			titTxt={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, dignissimos?'}
-		>
+		<Layout name={'CONTACT'} txt={'CONTACT OUR COMPANY'}>
 			<article className='mapCon'>
 				<div className='inner'>
-					<h2 className='hidden'>지도</h2>
+					<h3>Come and visit us</h3>
+					<p>
+						If you have any questions, just fill in the contact form, and we will answer you
+						shortly. If you are living nearby, come visit Starbis in one of our comfortable offices.
+					</p>
 					<div id='map' ref={mapContainer}></div>
 					<ul className='mapList'>
 						{mapList.current.map((el, idx) => {
@@ -85,56 +83,45 @@ function Contact() {
 					<ul className='info'>
 						<li>
 							<FontAwesomeIcon icon={faPhoneAlt} />
-							<strong>Lorem ipsum dolor sit amet.</strong>
+							<strong>070-1234-5678</strong>
 							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, corporis cumque
-								libero assumenda iusto perspiciatis?
+								Starting a collaboration is easy! Order a free consultation or call back. We are
+								always in touch and happy to cooperate with you
 							</p>
 						</li>
 						<li>
 							<FontAwesomeIcon icon={faClock} />
-							<strong>Lorem ipsum dolor sit amet.</strong>
+							<strong>9AM - 6PM</strong>
 							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, corporis cumque
-								libero assumenda iusto perspiciatis?
+								If you have any questions, comments or ideas we can be reached by phone, fax or
+								mail.
 							</p>
 						</li>
 					</ul>
 				</div>
 			</article>
-			<article className='contactCon'>
+			<article className='formCon'>
 				<div className='inner'>
-					<h2>Lorem, ipsum.</h2>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, sint?</p>
+					<h3>Interested in working with us?</h3>
+					<p>
+						Starting a collaboration is easy! Order a free consultation or call back. We are always
+						in touch and happy to cooperate with you
+					</p>
 					<form action=''>
 						<fieldset>
 							<legend className='hidden'>Contact us</legend>
-
-							<b>CATEGORY</b>
-							<label htmlFor='pc'>
-								<input type='checkbox' name='category' id='pc' value='pc' />
-								PC
-							</label>
-							<label htmlFor='mobile'>
-								<input type='checkbox' name='category' id='mobile' value='mobile' />
-								MOBILE
-							</label>
-							<label htmlFor='responsive'>
-								<input type='checkbox' name='category' id='responsive' value='responsive' />
-								RESPONSIVE
-							</label>
 
 							<div className='wrap'>
 								<div className='left'>
 									<label htmlFor='name' className='hidden'>
 										NAME
 									</label>
-									<input type='text' name='name' id='name' placeholder='NAME' />
+									<input type='text' name='name' id='name' placeholder='NAME' required />
 
 									<label htmlFor='email' className='hidden'>
 										E-MAIL
 									</label>
-									<input type='text' name='email' id='email' placeholder='E-MAIL' />
+									<input type='text' name='email' id='email' placeholder='E-MAIL' required />
 								</div>
 
 								<div className='right'>
@@ -147,9 +134,15 @@ function Contact() {
 										cols='30'
 										rows='5'
 										placeholder='MESSAGE'
+										required
 									></textarea>
 								</div>
 							</div>
+
+							<input type='checkbox' name='agree' id='agree' required />
+							<label htmlFor='agree'>
+								I agree to the transfer of personal data in accordance with the Privacy Policy
+							</label>
 
 							<input type='submit' value='SEND' />
 						</fieldset>

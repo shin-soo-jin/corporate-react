@@ -3,14 +3,14 @@
 	.mapCon {
 		.inner {
 			padding: 0 0 100px;
-			h2 {
-				font-size: 20px;
-				font-weight: normal;
-				padding: 20px 0;
-				svg {
-					margin-right: 10px;
-				}
+			h3 {
 				text-align: center;
+				margin-bottom: 10px;
+			}
+			> p {
+				text-align: center;
+				margin-bottom: 50px;
+				padding: 0 250px;
 			}
 			#map {
 				width: 100%;
@@ -42,18 +42,15 @@
 						left: 0;
 						width: 100%;
 						height: 2px;
-						background: #3c6ab0;
+						background: $color2;
 					}
 					&:hover {
 						font-weight: bold;
-						color: #3c6ab0;
-						&::before {
-							opacity: 1;
-						}
+						color: $color2;
 					}
 					&.on {
 						font-weight: bold;
-						color: #3c6ab0;
+						color: $color2;
 						&::before {
 							opacity: 1;
 						}
@@ -65,6 +62,7 @@
 				display: flex;
 				gap: 20px;
 				li {
+					width: 50%;
 					font-size: 16px;
 					strong {
 						margin-left: 10px;
@@ -77,36 +75,20 @@
 			}
 		}
 	}
-	.contactCon {
+	.formCon {
 		background: #fafafa;
 		padding: 100px 0;
-		h2 {
+		h3 {
 			text-align: center;
 			margin-bottom: 10px;
 		}
 		p {
 			text-align: center;
 			margin-bottom: 50px;
+			padding: 0 250px;
 		}
 		form {
 			fieldset {
-				b {
-					font-size: 16px;
-					font-weight: bold;
-					color: #333;
-					margin-right: 40px;
-				}
-				label {
-					margin-right: 20px;
-					font-size: 16px;
-					color: #333;
-					input[type='checkbox'] {
-						display: inline-block;
-						margin-right: 10px;
-						margin-bottom: 20px;
-					}
-				}
-
 				.wrap {
 					display: flex;
 					justify-content: space-between;
@@ -143,12 +125,37 @@
 					}
 				}
 
-				input[type='submit'] {
-					@include button($background: #333);
-					font-size: 16px;
-					float: right;
+				input#agree {
 					margin-top: 20px;
+					margin-right: 10px;
 				}
+				label {
+					color: #555;
+					font-size: 14px;
+				}
+
+				input[type='submit'] {
+					@include button($background: $color2, $fontSize: 16px);
+					border: 1px solid $color2;
+					float: right;
+					margin-top: 50px;
+				}
+			}
+		}
+	}
+}
+@media screen and (max-width: $tablet) {
+	.CONTACT {
+		.mapCon {
+			.inner {
+				> p {
+					padding: 0;
+				}
+			}
+		}
+		.formCon {
+			p {
+				padding: 0;
 			}
 		}
 	}
