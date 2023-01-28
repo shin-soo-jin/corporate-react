@@ -1,5 +1,11 @@
 import { faCalendar, faCirclePlay, faFolderOpen } from '@fortawesome/free-regular-svg-icons';
-import { faChartLine, faDisplay, faLayerGroup, faPenNib } from '@fortawesome/free-solid-svg-icons';
+import {
+	faChartLine,
+	faDisplay,
+	faLayerGroup,
+	faPenNib,
+	faPlay,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -34,7 +40,7 @@ function Service() {
 										setIndex(0);
 									}}
 								>
-									<FontAwesomeIcon icon={faCirclePlay} />
+									<FontAwesomeIcon icon={faPlay} />
 									WATCH THE VIDEO
 								</button>
 								<p>
@@ -55,7 +61,7 @@ function Service() {
 									alt={Vids[0]?.snippet.title}
 								/>
 								<button>
-									<FontAwesomeIcon icon={faCirclePlay} />
+									<FontAwesomeIcon icon={faPlay} />
 								</button>
 							</div>
 						</div>
@@ -80,7 +86,7 @@ function Service() {
 												setIndex(idx);
 											}}
 										>
-											<FontAwesomeIcon icon={faCirclePlay} />
+											<FontAwesomeIcon icon={faPlay} />
 										</button>
 									</li>
 								);
