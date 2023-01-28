@@ -1,11 +1,12 @@
 import Header from '../common/Header';
 import About from './About';
-import Btns from './Btns';
 import Company from './Company';
 import Contact from './Contact';
 import News from './News';
 import Visual from './Visual';
 import Work from './Work';
+import Scrollnav from './Scrollnav';
+import Btntop from '../common/Btntop';
 
 function Main() {
 	return (
@@ -17,7 +18,8 @@ function Main() {
 			<Work />
 			<News />
 			<Contact />
-			<Btns />
+			<Scrollnav />
+			<Btntop />
 		</main>
 	);
 }

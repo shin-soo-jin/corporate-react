@@ -14,6 +14,7 @@ $color4: #f7fff7;
 @import './common/modal';
 @import './common/menu';
 @import './common/mixin';
+@import './common/btntop';
 
 // main
 @import './main/visual';
@@ -22,7 +23,7 @@ $color4: #f7fff7;
 @import './main/contact';
 @import './main/news';
 @import './main/work';
-@import './main/btns';
+@import './main/scrollnav';
 
 // sub
 @import './sub/about';

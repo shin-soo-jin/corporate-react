@@ -1,12 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import * as types from '../../redux/actionType';
+import { faUserAlt } from '@fortawesome/free-solid-svg-icons';
 
 function Menu() {
-	const active = { color: '#4b84db' };
+	const active = { color: '$color1' };
 	const dispatch = useDispatch();
 	const menu = useSelector((store) => store.menuReducer.open);
 
@@ -54,7 +54,7 @@ function Menu() {
 					<ul className='util'>
 						<li>
 							<NavLink to='/join' activeStyle={active}>
-								<FontAwesomeIcon icon={faUser} />
+								<FontAwesomeIcon icon={faUserAlt} />
 							</NavLink>
 						</li>
 					</ul>

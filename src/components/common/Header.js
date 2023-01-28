@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as types from '../../redux/actionType';
 
 function Header(props) {
-	const active = { color: '#4b84db' };
+	const active = { color: '$color1' };
 	const dispatch = useDispatch();
 	const menu = useSelector((store) => store.menuReducer.open);
 

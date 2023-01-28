@@ -6,7 +6,7 @@
 	width: 50%;
 	height: 100vh;
 	padding: 80px 30px;
-	background: #082f6a;
+	background: $color1;
 	z-index: 3;
 	#gnbMo {
 		ul {
@@ -14,15 +14,12 @@
 				a {
 					display: block;
 					padding: 20px;
-					border-bottom: 1px solid #3c6ab0;
+					border-bottom: 1px solid rgba($color2, 0.3);
 					text-align: center;
 					font-size: 16px;
 					font-weight: bold;
 					color: #fff;
 					transition: 0.3s;
-					&:hover {
-						color: #4b84db;
-					}
 				}
 			}
 		}
@@ -39,7 +36,7 @@
 				color: #fff;
 				transition: 0.3s;
 				&:hover {
-					color: #4b84db;
+					color: $color2;
 				}
 			}
 		}

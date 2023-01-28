@@ -12,7 +12,7 @@ header {
 		h1 {
 			width: 60px;
 			height: 60px;
-			background: #4b84db;
+			background: $color1;
 			text-align: center;
 			a {
 				display: block;
@@ -42,13 +42,14 @@ header {
 								content: '';
 								width: 0%;
 								height: 2px;
-								background: #4b84db;
+								background: $color1;
 								position: absolute;
 								top: 100%;
 								left: 50%;
 								transition: 0.3s;
 							}
 							&:hover {
+								color: $color1;
 								&::after {
 									left: 0%;
 									width: 100%;
@@ -67,7 +68,7 @@ header {
 						color: #fff;
 						transition: 0.3s;
 						&:hover {
-							color: #4b84db;
+							color: $color1;
 						}
 					}
 				}
@@ -149,6 +150,12 @@ header {
 							a {
 								color: #333;
 							}
+							.active {
+								&::after {
+									left: 0%;
+									width: 100%;
+								}
+							}
 						}
 					}
 				}
@@ -157,7 +164,7 @@ header {
 						a {
 							color: #333;
 							&:hover {
-								color: #4b84db;
+								color: $color2;
 							}
 						}
 					}
