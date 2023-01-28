@@ -1,4 +1,7 @@
-import { useEffect, useRef } from 'react';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useEffect, useRef, useState } from 'react';
+import Anime from '../../asset/anime';
 
 function News() {
 	const getLocalData = () => {
@@ -41,6 +44,50 @@ function News() {
 	};
 	const data = useRef(getLocalData());
 
+	const slider = useRef('');
+
+	const init = () => {
+		const panel = slider.current.querySelector('ul');
+		const lis = panel.querySelectorAll('li');
+		const len = lis.length;
+
+		panel.style.width = 100 * len + '%';
+		lis.forEach((el) => (el.style.width = 100 / len + '%'));
+		panel.lastElementChild !== null && panel.prepend(panel.lastElementChild);
+	};
+
+	const nextSlide = () => {
+		const panel = slider.current.children[0];
+
+		new Anime(panel, {
+			prop: 'margin-left',
+			value: '-200%',
+			duration: 500,
+			callback: () => {
+				panel.append(panel.firstElementChild);
+				panel.style.marginLeft = '-100%';
+			},
+		});
+	};
+
+	const prevSlide = () => {
+		const panel = slider.current.children[0];
+
+		new Anime(panel, {
+			prop: 'margin-left',
+			value: '0%',
+			duration: 500,
+			callback: () => {
+				panel.prepend(panel.lastElementChild);
+				panel.style.marginLeft = '-100%';
+			},
+		});
+	};
+
+	useEffect(() => {
+		init();
+	}, []);
+
 	useEffect(() => {
 		localStorage.setItem('post', JSON.stringify(data.current));
 	}, []);
@@ -54,11 +101,30 @@ function News() {
 			<div className='inner'>
 				<div className='text'>
 					<h2>NEWS OF OUR COMPANY</h2>
-					<p>
-						<strong>{data.current[0].title}</strong>
-						<br />
-						{data.current[0].content}
-					</p>
+					<div className='slider' ref={slider}>
+						<ul className='panel'>
+							{data.current.map((el, idx) => {
+								if (idx >= 3) {
+									return null;
+								}
+								return (
+									<li key={idx}>
+										<p>
+											<strong>{data.current[idx].title}</strong>
+											{data.current[idx].content}
+										</p>
+									</li>
+								);
+							})}
+						</ul>
+					</div>
+					<i className='btnNext' onClick={nextSlide}>
+						<FontAwesomeIcon icon={faAngleRight} />
+					</i>
+					<i className='btnPrev' onClick={prevSlide}>
+						<FontAwesomeIcon icon={faAngleLeft} />
+					</i>
+
 					<button className='btn'>SEE OUR LATEST WORK</button>
 				</div>
 				<div className='chart'>

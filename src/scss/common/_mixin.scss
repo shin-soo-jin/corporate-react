@@ -24,6 +24,20 @@
 	}
 }
 
+@mixin vidBtn() {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -40px;
+	width: 80px;
+	height: 80px;
+	background: rgba(255, 255, 255, 1);
+	border-radius: 50%;
+	border: transparent;
+	font-size: 26px;
+	cursor: pointer;
+}
+
 @mixin dark {
 	content: '';
 	display: block;

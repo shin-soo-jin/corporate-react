@@ -41,7 +41,7 @@ function Visual() {
 
 	const stopRolling = () => {
 		clearInterval(interval.current);
-		bar.current.style.display = 'none';
+		bar.current && (bar.current.style.display = 'none');
 
 		setRollingOn(1);
 	};

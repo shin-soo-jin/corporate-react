@@ -1,4 +1,9 @@
+import { useEffect } from 'react';
+
 function Layout(props) {
+	useEffect(() => {
+		window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+	}, []);
 	return (
 		<section className={`content ${props.name}`}>
 			<figure

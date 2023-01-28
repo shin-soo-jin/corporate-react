@@ -2,6 +2,7 @@ import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Modal from '../common/Modal';
 
 function Company() {
@@ -20,7 +21,9 @@ function Company() {
 							ex exercitationem alias quos veritatis debitis error modi facilis tempora repellat
 							repudiandae illo amet corporis, repellendus officiis minima inventore?
 						</p>
-						<button className='btn'>SEE OUR LATEST WORK</button>
+						<Link to='/service'>
+							<button className='btn'>SEE OUR LATEST WORK</button>
+						</Link>
 					</div>
 					<div className='vid' onClick={() => modal.current.open()}>
 						<img alt={vid[idx]?.id} src={`${vid[idx]?.snippet.thumbnails.maxres.url}`}></img>

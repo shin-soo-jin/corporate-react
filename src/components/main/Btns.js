@@ -17,7 +17,7 @@ function Btns() {
 	};
 
 	const activation = () => {
-		const btns = btnsRef.current.children;
+		const btns = btnsRef.current?.children;
 		const sections = btnsRef.current.parentElement.querySelectorAll('.scrollSection');
 		const scroll = window.scrollY;
 		const base = -window.innerHeight / 3;

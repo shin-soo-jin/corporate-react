@@ -5,43 +5,67 @@
 	background-size: cover;
 	position: relative;
 	&::after {
-		content: '';
-		display: block;
-		width: 100%;
-		height: 100%;
-		background: rgba(0, 0, 0, 0.4);
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: 1;
+		@include dark;
+		z-index: 0;
 	}
 	.inner {
-		width: 1180px;
-		margin: 0 auto;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		.text {
 			width: 49%;
+			z-index: 1;
+			overflow: hidden;
 			position: relative;
-			z-index: 2;
 			h2 {
 				font-size: 20px;
 				color: #fff;
 				margin-bottom: 40px;
 			}
-			p {
-				font-size: 12px;
-				color: #fff;
-				margin-bottom: 40px;
+			.slider {
+				width: 100%;
+				overflow: hidden;
+				ul {
+					width: calc(100% * 3);
+					margin-left: -100%;
+
+					li {
+						width: calc(100% / 3);
+						float: left;
+
+						p {
+							font-size: 12px;
+							color: #fff;
+							margin-bottom: 40px;
+							strong {
+								display: block;
+								margin-bottom: 10px;
+							}
+						}
+					}
+				}
 			}
+
+			.btnNext,
+			.btnPrev {
+				position: absolute;
+				bottom: 20%;
+				right: 0;
+				font-size: 18px;
+				color: #fff;
+				cursor: pointer;
+			}
+			.btnPrev {
+				right: 10%;
+			}
+
 			.btn {
 				@include button;
 			}
 		}
 		.chart {
 			width: 49%;
-			z-index: 2;
+			z-index: 1;
 			p {
 				font-size: 12px;
 				font-weight: bold;
@@ -72,26 +96,58 @@
 				}
 				&:nth-of-type(1) {
 					b {
-						width: 20%;
+						animation: bar1 0.5s linear 0.5s forwards;
 					}
 				}
 				&:nth-of-type(2) {
 					b {
-						width: 45%;
+						animation: bar2 1s linear 0.5s forwards;
 					}
 				}
 				&:nth-of-type(3) {
 					b {
-						width: 75%;
+						animation: bar3 1.5s linear 0.5s forwards;
 					}
 				}
 				&:nth-of-type(4) {
 					b {
-						width: 95%;
+						animation: bar4 2s linear 0.5s forwards;
 					}
 				}
 			}
 		}
+	}
+}
+@keyframes bar1 {
+	0% {
+		width: 0%;
+	}
+	100% {
+		width: 20%;
+	}
+}
+@keyframes bar2 {
+	0% {
+		width: 0%;
+	}
+	100% {
+		width: 45%;
+	}
+}
+@keyframes bar3 {
+	0% {
+		width: 0%;
+	}
+	100% {
+		width: 75%;
+	}
+}
+@keyframes bar4 {
+	0% {
+		width: 0%;
+	}
+	100% {
+		width: 95%;
 	}
 }
 
