@@ -1,0 +1,54 @@
+{
+  "team": [
+    {
+      "name": "Aiden",
+      "position": "CEO",
+      "pic": "member01.jpg"
+    },
+    {
+      "name": "Olivia",
+      "position": "MANAGER",
+      "pic": "member02.jpg"
+    },
+    {
+      "name": "Gael",
+      "position": "ANIMATOR",
+      "pic": "member03.jpg"
+    },
+    {
+      "name": "Amy",
+      "position": "ACCOUNTANT",
+      "pic": "member04.jpg"
+    },
+    {
+      "name": "James",
+      "position": "MANAGER",
+      "pic": "member05.jpg"
+    },
+    {
+      "name": "Isabella",
+      "position": "DESIGNER",
+      "pic": "member06.jpg"
+    },
+    {
+      "name": "Lina",
+      "position": "DEVELOPER",
+      "pic": "member07.jpg"
+    },
+    {
+      "name": "Derek",
+      "position": "ENGINEER",
+      "pic": "member08.jpg"
+    },
+    {
+      "name": "Henry",
+      "position": "ENGINEER",
+      "pic": "member09.jpg"
+    },
+    {
+      "name": "Michael",
+      "position": "ANIMATOR",
+      "pic": "member10.jpg"
+    }
+  ]
+}

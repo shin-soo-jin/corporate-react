@@ -1,24 +1,34 @@
 {
-  "team1": [
+  "team": [
+    {
+      "name": "Aiden",
+      "position": "CEO",
+      "pic": "member01.jpg"
+    },
+    {
+      "name": "Isabella",
+      "position": "MANAGER",
+      "pic": "member02.jpg"
+    },
     {
       "name": "James",
-      "position": "co-founder, mobile apps production",
-      "pic": "member1.jpg"
+      "position": "MANAGER",
+      "pic": "member03.jpg"
+    },
+    {
+      "name": "Amy",
+      "position": "ACCOUNTANT",
+      "pic": "member04.jpg"
+    },
+    {
+      "name": "Gael",
+      "position": "DEVELOPER",
+      "pic": "member05.jpg"
     },
     {
       "name": "Jane",
-      "position": " co-founder, web apps development",
-      "pic": "member2.jpg"
-    },
-    {
-      "name": "Charles",
-      "position": "designer",
-      "pic": "member3.jpg"
-    },
-    {
-      "name": "Noah",
-      "position": "developer",
-      "pic": "member1.jpg"
+      "position": "DESIGNER",
+      "pic": "member06.jpg"
     }
   ]
 }
